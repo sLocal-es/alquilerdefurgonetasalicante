@@ -1,0 +1,366 @@
+---
+interface Props {
+  vehicleType?: string;
+}
+
+const { vehicleType } = Astro.props;
+---
+
+<div class="contact-section" id="contacto">
+  <div class="contact-container">
+    <div class="contact-info">
+      <h2>Solicita tu presupuesto sin compromiso</h2>
+      <p>¿Necesitas una furgoneta en Alicante? Cuéntanos qué necesitas y te enviaremos un presupuesto adaptado a tus necesidades en menos de 1 hora.</p>
+      
+      <div class="trust-signals">
+        <div class="trust-item">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+            <polyline points="22 4 12 14.01 9 11.01"/>
+          </svg>
+          <span>Respuesta en menos de 1 hora</span>
+        </div>
+        <div class="trust-item">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+            <polyline points="22 4 12 14.01 9 11.01"/>
+          </svg>
+          <span>Sin compromiso</span>
+        </div>
+        <div class="trust-item">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+            <polyline points="22 4 12 14.01 9 11.01"/>
+          </svg>
+          <span>Precios transparentes</span>
+        </div>
+      </div>
+      
+      <div class="info-items">
+        <div class="info-item">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+          <div>
+            <strong>Teléfono</strong>
+            <a href="tel:+34965123456">965 123 456</a>
+          </div>
+        </div>
+        
+        <div class="info-item">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
+          </svg>
+          <div>
+            <strong>Email</strong>
+            <a href="mailto:info@alquilerfurgonetasalicante.es">info@alquilerfurgonetasalicante.es</a>
+          </div>
+        </div>
+        
+        <div class="info-item">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+          <div>
+            <strong>Dirección</strong>
+            <span>Calle Ejemplo 123, Alicante</span>
+          </div>
+        </div>
+        
+        <div class="info-item">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12 6 12 12 16 14"/>
+          </svg>
+          <div>
+            <strong>Horario</strong>
+            <span>Lun-Vie: 8:00-20:00 | Sáb-Dom: 9:00-14:00</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <form class="contact-form" id="leadForm">
+      <h3>Solicitar presupuesto</h3>
+      
+      <div class="form-group">
+        <label for="service">¿Qué servicio necesitas?</label>
+        <select id="service" name="service" required>
+          <option value="">Selecciona una opción</option>
+          <option value="mudanza" selected={vehicleType === 'mudanza'}>Mudanza</option>
+          <option value="transporte" selected={vehicleType === 'transporte'}>Transporte de mercancías</option>
+          <option value="reforma" selected={vehicleType === 'reforma'}>Reforma / Obra</option>
+          <option value="otro" selected={vehicleType === 'otro'}>Otro</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label for="vehicle">Tipo de furgoneta</label>
+        <select id="vehicle" name="vehicle" required>
+          <option value="">Selecciona una opción</option>
+          <option value="pequeña" selected={vehicleType === 'pequeña'}>Pequeña (3-4m³) - Desde 35€/día</option>
+          <option value="mediana" selected={vehicleType === 'mediana'}>Mediana (6-7m³) - Desde 45€/día</option>
+          <option value="grande" selected={vehicleType === 'grande'}>Grande (8-10m³) - Desde 55€/día</option>
+          <option value="extra grande" selected={vehicleType === 'extra grande'}>Extra Grande (12-15m³) - Desde 65€/día</option>
+        </select>
+      </div>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label for="name">Nombre completo *</label>
+          <input type="text" id="name" name="name" required placeholder="Tu nombre" />
+        </div>
+        
+        <div class="form-group">
+          <label for="phone">Teléfono *</label>
+          <input type="tel" id="phone" name="phone" required placeholder="600 123 456" />
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="email">Email *</label>
+        <input type="email" id="email" name="email" required placeholder="tu@email.com" />
+      </div>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label for="date">Fecha de recogida</label>
+          <input type="date" id="date" name="date" />
+        </div>
+        
+        <div class="form-group">
+          <label for="duration">Duración estimada</label>
+          <select id="duration" name="duration">
+            <option value="hours">Por horas</option>
+            <option value="1day">1 día</option>
+            <option value="weekend">Fin de semana</option>
+            <option value="week">1 semana</option>
+            <option value="month">1 mes</option>
+          </select>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="message">Cuéntanos más detalles</label>
+        <textarea id="message" name="message" rows="3" placeholder="¿Qué necesitas transportar? ¿De dónde a dónde? Cuantos más detalles, mejor presupuesto te haremos."></textarea>
+      </div>
+      
+      <button type="submit" class="btn btn-primary btn-block">
+        Enviar solicitud
+      </button>
+      
+      <p class="form-note">Te responderemos en menos de 1 hora durante horario laboral. Sin compromiso.</p>
+    </form>
+  </div>
+</div>
+
+<script>
+  // Form submission handler
+  document.getElementById('leadForm')?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    
+    const form = e.target as HTMLFormElement;
+    const formData = new FormData(form);
+    
+    // Collect form data
+    const lead = {
+      service: formData.get('service'),
+      vehicle: formData.get('vehicle'),
+      name: formData.get('name'),
+      phone: formData.get('phone'),
+      email: formData.get('email'),
+      date: formData.get('date'),
+      duration: formData.get('duration'),
+      message: formData.get('message'),
+      timestamp: new Date().toISOString(),
+      source: window.location.pathname
+    };
+    
+    // Store in localStorage for now (later we'll add email/API)
+    const leads = JSON.parse(localStorage.getItem('leads') || '[]');
+    leads.push(lead);
+    localStorage.setItem('leads', JSON.stringify(leads));
+    
+    // Show success message
+    form.innerHTML = `
+      <div class="success-message">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+          <polyline points="22 4 12 14.01 9 11.01"/>
+        </svg>
+        <h3>¡Solicitud enviada!</h3>
+        <p>Te contactaremos en menos de 1 hora con tu presupuesto personalizado.</p>
+        <p><strong>¿Necesitas algo urgente? Llámanos:</strong></p>
+        <a href="tel:+34965123456" class="btn btn-primary">965 123 456</a>
+      </div>
+    `;
+  });
+</script>
+
+<style>
+  .contact-section {
+    background: var(--bg-alt);
+    padding: 4rem 0;
+  }
+  
+  .contact-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  
+  .contact-info h2 {
+    margin-top: 0;
+  }
+  
+  .trust-signals {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background: white;
+    border-radius: 8px;
+    border-left: 4px solid var(--primary);
+  }
+  
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 0;
+    font-weight: 500;
+    color: var(--secondary);
+  }
+  
+  .trust-item svg {
+    color: var(--primary);
+    flex-shrink: 0;
+  }
+  
+  .info-items {
+    margin-top: 2rem;
+  }
+  
+  .info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .info-item svg {
+    color: var(--primary);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  
+  .info-item strong {
+    display: block;
+    color: var(--secondary);
+    margin-bottom: 0.25rem;
+  }
+  
+  .info-item a, .info-item span {
+    color: var(--text);
+  }
+  
+  .contact-form {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  }
+  
+  .contact-form h3 {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    color: var(--secondary);
+  }
+  
+  .form-group {
+    margin-bottom: 1.25rem;
+  }
+  
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  
+  label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: var(--secondary);
+    font-size: 0.9rem;
+  }
+  
+  input, select, textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  
+  input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(255, 107, 0, 0.1);
+  }
+  
+  textarea {
+    resize: vertical;
+    min-height: 80px;
+  }
+  
+  .btn-block {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 14px 24px;
+    font-size: 1rem;
+  }
+  
+  .form-note {
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--text-light);
+    margin-top: 1rem;
+    margin-bottom: 0;
+  }
+  
+  .success-message {
+    text-align: center;
+    padding: 2rem;
+  }
+  
+  .success-message svg {
+    color: var(--primary);
+    margin-bottom: 1rem;
+  }
+  
+  .success-message h3 {
+    color: var(--secondary);
+    margin-bottom: 1rem;
+  }
+  
+  .success-message p {
+    color: var(--text);
+    margin-bottom: 1rem;
+  }
+  
+  @media (max-width: 768px) {
+    .contact-container {
+      grid-template-columns: 1fr;
+    }
+    
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

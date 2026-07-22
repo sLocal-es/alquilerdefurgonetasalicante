@@ -1,0 +1,120 @@
+---
+const faqData = [
+  {
+    question: "¿Qué documentos necesito para alquilar una furgoneta?",
+    answer: "Necesitas tu permiso de conducir válido (carnet B), un documento de identidad o pasaporte, y una tarjeta de crédito a tu nombre para la fianza. El permiso debe tener al menos 2 años de antigüedad."
+  },
+  {
+    question: "¿Puedo cancelar o modificar mi reserva?",
+    answer: "Sí, puedes cancelar o modificar tu reserva sin coste alguno hasta 12 horas antes de la recogida. Solo avísanos por teléfono o email."
+  },
+  {
+    question: "¿Cuál es el horario de recogida y devolución?",
+    answer: "Nuestra oficina está abierta de lunes a viernes de 8:00 a 20:00, y sábados y domingos de 9:00 a 14:00. Para devoluciones fuera de horario, disponemos de un buzón seguro de llaves."
+  },
+  {
+    question: "¿El seguro está incluido en el precio?",
+    answer: "Sí, todos nuestros alquileres incluyen seguro a todo riesgo con franquicia. Puedes contratar una cobertura adicional para reducir la franquicia a 0€."
+  },
+  {
+    question: "¿Puedo alquilar la furgoneta por horas?",
+    answer: "Sí, ofrecemos alquiler por horas desde 4 horas. Es ideal para mudanzas puntuales o traslados de muebles. Consulta nuestros precios especiales para alquileres de corta duración."
+  },
+  {
+    question: "¿Hay límite de kilómetros?",
+    answer: "El alquiler incluye 200 km por día. Si necesitas más kilómetros, puedes comprar paquetes adicionales con descuento o contratar el alquiler sin límite de kilómetros."
+  }
+];
+---
+
+<div class="faq-section">
+  <div class="faq-list">
+    {faqData.map((item, index) => (
+      <details class="faq-item" open={index === 0}>
+        <summary class="faq-question">
+          <span>{item.question}</span>
+          <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 9l6 6 6-6"/>
+          </svg>
+        </summary>
+        <div class="faq-answer">
+          <p>{item.answer}</p>
+        </div>
+      </details>
+    ))}
+  </div>
+</div>
+
+<style>
+  .faq-section {
+    padding: 2rem 0;
+  }
+  
+  .faq-list {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .faq-item {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+  }
+  
+  .faq-item[open] {
+    border-color: var(--primary);
+  }
+  
+  .faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 1.5rem;
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--secondary);
+    background: white;
+    list-style: none;
+    transition: background 0.2s;
+  }
+  
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+  
+  .faq-question:hover {
+    background: var(--bg-alt);
+  }
+  
+  .faq-icon {
+    flex-shrink: 0;
+    margin-left: 1rem;
+    transition: transform 0.2s;
+  }
+  
+  .faq-item[open] .faq-icon {
+    transform: rotate(180deg);
+  }
+  
+  .faq-answer {
+    padding: 0 1.5rem 1.5rem;
+    color: var(--text);
+    line-height: 1.7;
+  }
+  
+  .faq-answer p {
+    margin: 0;
+  }
+  
+  @media (max-width: 768px) {
+    .faq-question {
+      padding: 1rem;
+      font-size: 0.95rem;
+    }
+    
+    .faq-answer {
+      padding: 0 1rem 1rem;
+    }
+  }
+</style>

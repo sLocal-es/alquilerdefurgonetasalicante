@@ -1,0 +1,140 @@
+---
+const pricingData = [
+  { type: "Pequeña", vehicle: "Furgoneta 3-4m³", price: "35€", features: ["Ideal para mudanzas pequeñas", "Carga útil: 600 kg", "2-3 plazas"] },
+  { type: "Mediana", vehicle: "Furgoneta 6-7m³", price: "45€", features: ["Mudanzas medianas", "Carga útil: 850 kg", "2-3 plazas"] },
+  { type: "Grande", vehicle: "Furgoneta 8-10m³", price: "55€", features: ["Grandes mudanzas", "Carga útil: 1000 kg", "3 plazas"] },
+  { type: "Extra Grande", vehicle: "Camión 12-15m³", price: "65€", features: ["Transporte profesional", "Carga útil: 1300 kg", "3 plazas"] },
+];
+---
+
+<div class="pricing-section">
+  <div class="pricing-grid">
+    {pricingData.map((item) => (
+      <div class="pricing-card">
+        <div class="pricing-header">
+          <h3 class="pricing-type">{item.type}</h3>
+          <div class="pricing-vehicle">{item.vehicle}</div>
+        </div>
+        
+        <div class="pricing-price">
+          <span class="price-from">Desde</span>
+          <span class="price-amount">{item.price}</span>
+          <span class="price-period">/día</span>
+        </div>
+        
+        <ul class="pricing-features">
+          {item.features.map((feature) => (
+            <li>{feature}</li>
+          ))}
+        </ul>
+        
+        <a href="#contacto" class="btn btn-outline">Solicitar presupuesto</a>
+      </div>
+    ))}
+  </div>
+</div>
+
+<style>
+  .pricing-section {
+    padding: 2rem 0;
+  }
+  
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .pricing-card {
+    background: white;
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  
+  .pricing-card:hover {
+    border-color: var(--primary);
+    transform: translateY(-4px);
+  }
+  
+  .pricing-header {
+    margin-bottom: 1rem;
+  }
+  
+  .pricing-type {
+    font-size: 1.3rem;
+    color: var(--secondary);
+    margin-bottom: 0.25rem;
+  }
+  
+  .pricing-vehicle {
+    color: var(--text-light);
+    font-size: 0.9rem;
+  }
+  
+  .pricing-price {
+    background: var(--bg-alt);
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+  }
+  
+  .price-from {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--text-light);
+  }
+  
+  .price-amount {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary);
+  }
+  
+  .price-period {
+    font-size: 0.85rem;
+    color: var(--text-light);
+  }
+  
+  .pricing-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem;
+    text-align: left;
+  }
+  
+  .pricing-features li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+  }
+  
+  .pricing-features li:last-child {
+    border-bottom: none;
+  }
+  
+  .btn-outline {
+    display: block;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    background: transparent;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: all 0.2s;
+  }
+  
+  .btn-outline:hover {
+    background: var(--primary);
+    color: white;
+    text-decoration: none;
+  }
+  
+  @media (max-width: 768px) {
+    .pricing-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

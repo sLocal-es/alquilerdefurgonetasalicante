@@ -1,0 +1,508 @@
+---
+import Layout from '../layouts/Layout.astro';
+import FAQ from '../components/FAQ.astro';
+import ContactForm from '../components/ContactForm.astro';
+
+const specs = {
+  capacity: "3-4m³",
+  dimensions_interior: "1.82 x 1.55 x 1.24 m",
+  dimensions_exterior: "4.40 x 1.88 x 1.88 m",
+  maxLoad: "600 kg",
+  seats: "2-3 plazas",
+  consumption: "5.4 - 5.6 L/100 km",
+  emissions: "136 - 170 g/km"
+};
+
+const idealFor = [
+  "Mudanzas de habitación o piso pequeño",
+  "Traslado de muebles y electrodomésticos",
+  "Transporte de material de trabajo",
+  "Entregas de paquetería",
+  "Reformas y obras pequeñas"
+];
+
+const includes = [
+  "Seguro a todo riesgo con franquicia",
+  "Asistencia en carretera 24h",
+  "200 km diarios incluidos",
+  "Equipamiento básico (A/C, bluetooth)",
+  "Revisión técnica antes del alquiler"
+];
+---
+
+<Layout 
+  title="Alquiler Furgoneta Pequeña en Alicante | Desde 35€/día" 
+  description="Alquiler de furgonetas pequeñas en Alicante. Capacidad 3-4m³, 600 kg de carga. Ideal para mudanzas y traslados. Precios desde 35€/día."
+>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <nav class="breadcrumb">
+        <a href="/">Inicio</a>
+        <span>/</span>
+        <a href="/#flota">Furgonetas</a>
+        <span>/</span>
+        <span>Pequeña</span>
+      </nav>
+      
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1>Alquiler Furgoneta Pequeña en Alicante</h1>
+          <p class="hero-subtitle">Ágil, versátil y bien organizada. Perfecta para el transporte de pequeñas cargas en entornos urbanos.</p>
+          
+          <div class="hero-price">
+            <span class="price-from">Desde</span>
+            <span class="price-amount">35€</span>
+            <span class="price-period">/día</span>
+          </div>
+          
+          <div class="hero-features">
+            <div class="feature">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+              <span>{specs.capacity} capacidad</span>
+            </div>
+            <div class="feature">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+              <span>{specs.maxLoad} carga útil</span>
+            </div>
+            <div class="feature">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+              <span>{specs.seats}</span>
+            </div>
+          </div>
+          
+          <a href="#contacto" class="btn btn-primary btn-lg">Solicitar presupuesto</a>
+        </div>
+        
+        <div class="hero-image">
+          <div class="image-placeholder">
+            <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 16H9m10 0h3v-3.15a1 1 0 0 0-.84-.99L16 11l-2.7-3.6a1 1 0 0 0-.8-.4H5.24a2 2 0 0 0-1.8 1.1l-.8 1.63A6 6 0 0 0 2 12.42V16h2"/>
+              <circle cx="6.5" cy="16.5" r="2.5"/>
+              <circle cx="16.5" cy="16.5" r="2.5"/>
+            </svg>
+            <p>Furgoneta Pequeña</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Specs -->
+  <section class="specs">
+    <div class="container">
+      <h2>Especificaciones técnicas</h2>
+      
+      <div class="specs-grid">
+        <div class="spec-card">
+          <div class="spec-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="18" height="18" rx="2"/>
+              <path d="M3 9h18"/>
+            </svg>
+          </div>
+          <div class="spec-info">
+            <span class="spec-label">Volumen de carga</span>
+            <span class="spec-value">{specs.capacity}</span>
+          </div>
+        </div>
+        
+        <div class="spec-card">
+          <div class="spec-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2v20M2 12h20"/>
+            </svg>
+          </div>
+          <div class="spec-info">
+            <span class="spec-label">Carga útil máxima</span>
+            <span class="spec-value">{specs.maxLoad}</span>
+          </div>
+        </div>
+        
+        <div class="spec-card">
+          <div class="spec-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+            </svg>
+          </div>
+          <div class="spec-info">
+            <span class="spec-label">Plazas</span>
+            <span class="spec-value">{specs.seats}</span>
+          </div>
+        </div>
+        
+        <div class="spec-card">
+          <div class="spec-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M8 12h8"/>
+            </svg>
+          </div>
+          <div class="spec-info">
+            <span class="spec-label">Consumo</span>
+            <span class="spec-value">{specs.consumption}</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="dimensions">
+        <h3>Dimensiones</h3>
+        <div class="dimensions-grid">
+          <div class="dimension">
+            <span class="dim-label">Exterior</span>
+            <span class="dim-value">{specs.dimensions_exterior}</span>
+          </div>
+          <div class="dimension">
+            <span class="dim-label">Interior (zona carga)</span>
+            <span class="dim-value">{specs.dimensions_interior}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Description -->
+  <section class="description">
+    <div class="container">
+      <div class="desc-content">
+        <h2>¿Para qué sirve la furgoneta pequeña?</h2>
+        <p>Nuestra furgoneta pequeña es <strong>perfecta para el transporte ágil y eficiente de pequeñas cargas</strong>. Su tamaño compacto y maniobrabilidad la hacen ideal para entornos urbanos, permitiendo llevar pasajeros, carga y material de trabajo al mismo tiempo.</p>
+        
+        <p>Con una capacidad de {specs.capacity} y una carga útil de {specs.maxLoad}, es la opción más económica para tus necesidades de transporte en Alicante.</p>
+        
+        <ul class="benefits-list">
+          {idealFor.map((item) => (
+            <li>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Includes -->
+  <section class="includes">
+    <div class="container">
+      <h2>¿Qué incluye el alquiler?</h2>
+      <div class="includes-grid">
+        {includes.map((item) => (
+          <div class="include-item">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+              <polyline points="22 4 12 14.01 9 11.01"/>
+            </svg>
+            <span>{item}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq">
+    <div class="container">
+      <h2>Preguntas frecuentes</h2>
+      <FAQ />
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <ContactForm vehicleType="pequeña" />
+
+</Layout>
+
+<style>
+  .hero {
+    background: linear-gradient(135deg, var(--secondary) 0%, #2d2d2d 100%);
+    color: white;
+    padding: 4rem 0 5rem;
+  }
+  
+  .breadcrumb {
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+    opacity: 0.8;
+  }
+  
+  .breadcrumb a {
+    color: white;
+  }
+  
+  .breadcrumb span {
+    margin: 0 0.5rem;
+  }
+  
+  .hero-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+  
+  .hero h1 {
+    color: white;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+  
+  .hero-price {
+    background: rgba(255, 107, 0, 0.2);
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    display: inline-block;
+    margin-bottom: 1.5rem;
+  }
+  
+  .price-from {
+    font-size: 0.9rem;
+    opacity: 0.8;
+  }
+  
+  .price-amount {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin: 0 0.25rem;
+  }
+  
+  .price-period {
+    font-size: 0.9rem;
+    opacity: 0.8;
+  }
+  
+  .hero-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .feature {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+  }
+  
+  .feature svg {
+    color: var(--primary);
+  }
+  
+  .btn-lg {
+    padding: 16px 32px;
+    font-size: 1.1rem;
+  }
+  
+  .hero-image {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .image-placeholder {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 3rem;
+    text-align: center;
+  }
+  
+  .image-placeholder svg {
+    color: var(--primary);
+    margin-bottom: 1rem;
+  }
+  
+  .image-placeholder p {
+    margin: 0;
+    font-weight: 600;
+  }
+  
+  /* Specs */
+  .specs {
+    padding: 4rem 0;
+    background: white;
+  }
+  
+  .specs-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  
+  .spec-card {
+    background: var(--bg-alt);
+    padding: 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+  }
+  
+  .spec-icon {
+    color: var(--primary);
+    margin-bottom: 1rem;
+  }
+  
+  .spec-label {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--text-light);
+    margin-bottom: 0.25rem;
+  }
+  
+  .spec-value {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--secondary);
+  }
+  
+  .dimensions {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+  }
+  
+  .dimensions h3 {
+    margin-bottom: 1rem;
+  }
+  
+  .dimensions-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+  
+  .dimension {
+    background: var(--bg-alt);
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+  }
+  
+  .dim-label {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--text-light);
+    margin-bottom: 0.25rem;
+  }
+  
+  .dim-value {
+    font-weight: 600;
+    color: var(--secondary);
+  }
+  
+  /* Description */
+  .description {
+    padding: 4rem 0;
+    background: var(--bg-alt);
+  }
+  
+  .desc-content {
+    max-width: 800px;
+  }
+  
+  .desc-content h2 {
+    margin-top: 0;
+  }
+  
+  .desc-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+  }
+  
+  .benefits-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 1.5rem;
+  }
+  
+  .benefits-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  
+  .benefits-list li:last-child {
+    border-bottom: none;
+  }
+  
+  .benefits-list svg {
+    color: var(--primary);
+    flex-shrink: 0;
+  }
+  
+  /* Includes */
+  .includes {
+    padding: 4rem 0;
+    background: white;
+  }
+  
+  .includes-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  
+  .include-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem;
+    background: var(--bg-alt);
+    border-radius: 8px;
+  }
+  
+  .include-item svg {
+    color: var(--primary);
+    flex-shrink: 0;
+  }
+  
+  /* FAQ */
+  .faq {
+    padding: 4rem 0;
+    background: var(--bg-alt);
+  }
+  
+  @media (max-width: 768px) {
+    .hero-content {
+      grid-template-columns: 1fr;
+    }
+    
+    .hero-image {
+      display: none;
+    }
+    
+    .specs-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .dimensions-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .includes-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

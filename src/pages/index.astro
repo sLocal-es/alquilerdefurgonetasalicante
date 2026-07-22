@@ -1,0 +1,514 @@
+---
+import Layout from '../layouts/Layout.astro';
+import VehicleCard from '../components/VehicleCard.astro';
+import PricingTable from '../components/PricingTable.astro';
+import FAQ from '../components/FAQ.astro';
+import ContactForm from '../components/ContactForm.astro';
+
+const vehicles = [
+  {
+    group: "Grupo AM",
+    name: "Furgoneta Pequeña",
+    slug: "furgoneta-pequeña-alicante",
+    capacity: "3-4m³",
+    dimensions: "1.82 x 1.55 x 1.24 m",
+    maxLoad: "600 kg",
+    price: "35€",
+    seats: "2-3 plazas",
+    description: "Ágil y versátil para mudanzas pequeñas y traslados urbanos"
+  },
+  {
+    group: "Grupo B",
+    name: "Furgoneta Mediana",
+    slug: "furgoneta-mediana-alicante",
+    capacity: "6-7m³",
+    dimensions: "2.60 x 1.65 x 1.40 m",
+    maxLoad: "850 kg",
+    price: "45€",
+    seats: "2-3 plazas",
+    description: "El equilibrio perfecto entre capacidad y maniobrabilidad"
+  },
+  {
+    group: "Grupo C",
+    name: "Furgoneta Grande",
+    slug: "furgoneta-grande-alicante",
+    capacity: "8-10m³",
+    dimensions: "3.00 x 1.70 x 1.70 m",
+    maxLoad: "1000 kg",
+    price: "55€",
+    seats: "3 plazas",
+    description: "Espaciosa y versátil para cargas voluminosas"
+  },
+  {
+    group: "Grupo D",
+    name: "Furgoneta Extra Grande",
+    slug: "furgoneta-extra-grande-alicante",
+    capacity: "12-15m³",
+    dimensions: "3.70 x 1.76 x 1.85 m",
+    maxLoad: "1300 kg",
+    price: "65€",
+    seats: "3 plazas",
+    description: "La máxima capacidad para mudanzas grandes"
+  }
+];
+---
+
+<Layout 
+  title="Alquiler de Furgonetas en Alicante | Desde 35€/día" 
+  description="Alquiler de furgonetas baratas en Alicante. Precios desde 35€/día. Por horas, por días y sin conductor. Reserva online."
+>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <h1>Alquiler de furgonetas baratas en Alicante</h1>
+      <p class="hero-subtitle">El mejor alquiler por horas, por días y sin conductor en Alicante</p>
+      <div class="hero-features">
+        <div class="feature">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+            <polyline points="22 4 12 14.01 9 11.01"/>
+          </svg>
+          <span>Desde 35€/día</span>
+        </div>
+        <div class="feature">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+            <polyline points="22 4 12 14.01 9 11.01"/>
+          </svg>
+          <span>Por horas disponibles</span>
+        </div>
+        <div class="feature">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+            <polyline points="22 4 12 14.01 9 11.01"/>
+          </svg>
+          <span>Seguro incluido</span>
+        </div>
+      </div>
+      <a href="#contacto" class="btn btn-primary btn-lg">Reservar ahora</a>
+    </div>
+  </section>
+
+  <!-- How to Get There -->
+  <section class="how-to-get">
+    <div class="container">
+      <h2>Cómo llegar a nuestra oficina</h2>
+      <div class="directions-grid">
+        <div class="direction-card">
+          <div class="direction-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="1" y="3" width="15" height="13"/>
+              <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
+              <circle cx="5.5" cy="18.5" r="2.5"/>
+              <circle cx="18.5" cy="18.5" r="2.5"/>
+            </svg>
+          </div>
+          <h3>En coche</h3>
+          <p>Nuestra oficina está ubicada en el centro de Alicante, con fácil acceso desde la AP-7 y la A-31.</p>
+          <ul>
+            <li>Desde la AP-7: Salida Alicante Centro</li>
+            <li>Aparcamiento gratuito cerca</li>
+            <li>Zona azul en las calles cercanas</li>
+          </ul>
+        </div>
+        
+        <div class="direction-card">
+          <div class="direction-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="4" y="3" width="16" height="14" rx="2"/>
+              <path d="M4 10h16"/>
+              <path d="M9 17v4"/>
+              <path d="M15 17v4"/>
+            </svg>
+          </div>
+          <h3>Transporte público</h3>
+          <p>Accesible en autobús y tren desde cualquier punto de Alicante.</p>
+          <ul>
+            <li>Autobuses: Líneas 1, 3, 5, 9</li>
+            <li>Cercanías: Estación de Alicante</li>
+            <li>Tranvía: Líneas 1 y 4</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Office Info -->
+  <section class="office-info">
+    <div class="container">
+      <div class="office-card">
+        <div class="office-details">
+          <h2>Nuestra oficina en Alicante</h2>
+          <p>Vení a vernos o contactanos por teléfono o email. Estamos aquí para ayudarte.</p>
+          
+          <div class="office-contact">
+            <div class="contact-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+              <span>965 123 456</span>
+            </div>
+            <div class="contact-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+              <span>info@alquilerfurgonetasalicante.es</span>
+            </div>
+          </div>
+          
+          <div class="office-hours">
+            <h4>Horario</h4>
+            <p><strong>Lunes a Viernes:</strong> 8:00 - 20:00</p>
+            <p><strong>Sábados y Domingos:</strong> 9:00 - 14:00</p>
+          </div>
+        </div>
+        
+        <div class="office-map">
+          <div class="map-placeholder">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            <p>Mapa de Google</p>
+            <small>Calle Ejemplo 123, Alicante</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Vehicle Types -->
+  <section class="vehicles">
+    <div class="container">
+      <h2>Tipos de furgonetas disponibles</h2>
+      <p class="section-subtitle">Elige la furgoneta que mejor se adapte a tus necesidades</p>
+      
+      <div class="vehicles-grid">
+        {vehicles.map((vehicle) => (
+          <VehicleCard {...vehicle} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="pricing">
+    <div class="container">
+      <h2>Precio de alquiler de furgonetas en Alicante</h2>
+      <p class="section-subtitle">Precios transparentes, sin sorpresas. Todo incluido.</p>
+      <PricingTable />
+    </div>
+  </section>
+
+  <!-- Van Rental Types -->
+  <section class="van-types">
+    <div class="container">
+      <h2>Alquiler de vans en Alicante</h2>
+      <div class="van-types-grid">
+        <div class="van-type-card">
+          <div class="van-icon">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+              <polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+          </div>
+          <h3>Para mudanzas</h3>
+          <p>Transporta muebles y cajas de forma segura. Disponemos de furgonetas de todos los tamaños para mudanzas pequeñas y grandes.</p>
+          <ul>
+            <li>Furgonetas desde 3m³</li>
+            <li>Carga útil hasta 1300 kg</li>
+            <li>Ayuda de carga disponible</li>
+          </ul>
+        </div>
+        
+        <div class="van-type-card">
+          <div class="van-icon">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+              <line x1="9" y1="9" x2="9.01" y2="9"/>
+              <line x1="15" y1="9" x2="15.01" y2="9"/>
+            </svg>
+          </div>
+          <h3>De pasajeros</h3>
+          <p>Viaja con tu familia o amigos en nuestras vans de 7, 8 y 9 plazas. Ideales para excursiones y escapadas.</p>
+          <ul>
+            <li>Vans de 7-9 plazas</li>
+            <li>Aire acondicionado</li>
+            <li>Espacio para equipaje</li>
+          </ul>
+        </div>
+        
+        <div class="van-type-card">
+          <div class="van-icon">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="1" y="3" width="15" height="13"/>
+              <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
+              <circle cx="5.5" cy="18.5" r="2.5"/>
+              <circle cx="18.5" cy="18.5" r="2.5"/>
+            </svg>
+          </div>
+          <h3>Sin conductor</h3>
+          <p>Alquila y conduce por tu cuenta. Total flexibilidad para tus traslados por Alicante y alrededores.</p>
+          <ul>
+            <li>Permiso B válido</li>
+            <li>Recogida y devolución fácil</li>
+            <li>Seguro incluido</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq">
+    <div class="container">
+      <h2>Preguntas frecuentes</h2>
+      <p class="section-subtitle">Resolvemos tus dudas sobre el alquiler de furgonetas</p>
+      <FAQ />
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <ContactForm />
+
+</Layout>
+
+<style>
+  /* Hero */
+  .hero {
+    background: linear-gradient(135deg, var(--secondary) 0%, #2d2d2d 100%);
+    color: white;
+    padding: 5rem 0;
+    text-align: center;
+  }
+  
+  .hero h1 {
+    color: white;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.3rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+  }
+  
+  .hero-features {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+  
+  .feature {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+  }
+  
+  .feature svg {
+    color: var(--primary);
+  }
+  
+  .btn-lg {
+    padding: 16px 32px;
+    font-size: 1.1rem;
+  }
+  
+  /* How to Get */
+  .how-to-get {
+    padding: 4rem 0;
+    background: white;
+  }
+  
+  .directions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  
+  .direction-card {
+    background: var(--bg-alt);
+    padding: 2rem;
+    border-radius: 12px;
+  }
+  
+  .direction-icon {
+    color: var(--primary);
+    margin-bottom: 1rem;
+  }
+  
+  .direction-card h3 {
+    margin-bottom: 0.5rem;
+  }
+  
+  .direction-card ul {
+    margin: 1rem 0 0;
+    padding-left: 1.25rem;
+  }
+  
+  .direction-card li {
+    margin-bottom: 0.5rem;
+    color: var(--text);
+  }
+  
+  /* Office Info */
+  .office-info {
+    padding: 4rem 0;
+    background: var(--bg-alt);
+  }
+  
+  .office-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  }
+  
+  .office-details h2 {
+    margin-top: 0;
+  }
+  
+  .office-contact {
+    margin: 1.5rem 0;
+  }
+  
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    color: var(--text);
+  }
+  
+  .contact-item svg {
+    color: var(--primary);
+  }
+  
+  .office-hours {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+  }
+  
+  .office-hours h4 {
+    margin-bottom: 0.5rem;
+  }
+  
+  .office-hours p {
+    margin-bottom: 0.25rem;
+    color: var(--text);
+  }
+  
+  .map-placeholder {
+    background: var(--bg-alt);
+    border-radius: 8px;
+    padding: 3rem;
+    text-align: center;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-light);
+  }
+  
+  .map-placeholder svg {
+    margin-bottom: 1rem;
+  }
+  
+  /* Vehicles */
+  .vehicles {
+    padding: 4rem 0;
+    background: white;
+  }
+  
+  .section-subtitle {
+    color: var(--text-light);
+    font-size: 1.1rem;
+    margin-top: -0.5rem;
+  }
+  
+  .vehicles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  
+  /* Pricing */
+  .pricing {
+    padding: 4rem 0;
+    background: var(--bg-alt);
+  }
+  
+  /* Van Types */
+  .van-types {
+    padding: 4rem 0;
+    background: white;
+  }
+  
+  .van-types-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  
+  .van-type-card {
+    background: var(--bg-alt);
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+  }
+  
+  .van-icon {
+    color: var(--primary);
+    margin-bottom: 1rem;
+  }
+  
+  .van-type-card h3 {
+    margin-bottom: 0.5rem;
+  }
+  
+  .van-type-card ul {
+    text-align: left;
+    margin: 1rem 0 0;
+    padding-left: 1.25rem;
+  }
+  
+  .van-type-card li {
+    margin-bottom: 0.5rem;
+    color: var(--text);
+  }
+  
+  /* FAQ */
+  .faq {
+    padding: 4rem 0;
+    background: var(--bg-alt);
+  }
+  
+  @media (max-width: 768px) {
+    .hero {
+      padding: 3rem 0;
+    }
+    
+    .hero-features {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .office-card {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
