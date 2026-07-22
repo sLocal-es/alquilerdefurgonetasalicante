@@ -1,43 +1,64 @@
-# Astro Starter Kit: Minimal
+# Alquiler Furgonetas Alicante
 
-```sh
-npm create astro@latest -- --template minimal
+Sitio web profesional para el alquiler de furgonetas en Alicante. Optimizado para SEO y captación de leads.
+
+## Stack Tecnológico
+
+- **Framework:** [Astro](https://astro.build/) v7
+- **Hosting:** [Cloudflare Pages](https://pages.cloudflare.com/)
+- **Lenguaje:** TypeScript
+- **Estilos:** CSS con variables CSS
+
+## Características
+
+- Landing page optimizada para SEO
+- Páginas individuales por tipo de furgoneta
+- Formulario de captación de leads
+- Structured Data (Schema.org)
+- Responsive design
+- Deploy automático via GitHub
+
+## Desarrollo Local
+
+```bash
+# Instalar dependencias
+npm install
+
+# Iniciar servidor de desarrollo
+npm run dev
+
+# Build para producción
+npm run build
+
+# Preview del build
+npm run preview
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Estructura del Proyecto
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
+```
 /
-├── public/
+├── public/              # Assets estáticos
 ├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+│   ├── components/      # Componentes Astro
+│   ├── layouts/         # Layouts
+│   └── pages/           # Páginas (rutas)
+├── astro.config.mjs     # Configuración de Astro
+└── package.json         # Dependencias
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Páginas
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+- `/` - Landing page principal
+- `/furgoneta-pequeña-alicante/` - Furgoneta pequeña (3-4m³)
+- `/furgoneta-mediana-alicante/` - Furgoneta mediana (6-7m³)
+- `/furgoneta-grande-alicante/` - Furgoneta grande (8-10m³)
+- `/furgoneta-extra-grande-alicante/` - Furgoneta extra grande (12-15m³)
 
-Any static assets, like images, can be placed in the `public/` directory.
+## Deploy
 
-## 🧞 Commands
+El deploy se realiza automáticamente a Cloudflare Pages al hacer push a la rama `main`.
 
-All commands are run from the root of the project, from a terminal:
+## Licencia
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+© 2026 sLocal. Todos los derechos reservados.
