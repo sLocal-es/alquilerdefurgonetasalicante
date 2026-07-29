@@ -1,11 +1,12 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
-
-import cloudflare from '@astrojs/cloudflare';
+import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  adapter: cloudflare(),
+  output: 'static',
+  site: 'https://alquilerdefurgonetasalicante.es',
+  integrations: [sitemap()],
   vite: {
     server: {
       allowedHosts: true

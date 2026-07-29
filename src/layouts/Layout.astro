@@ -1,14 +1,25 @@
 ---
+interface ProductSchema {
+  name: string;
+  description: string;
+  capacity: string;
+  maxLoad: string;
+  seats: string;
+  price: string;
+  image?: string;
+}
+
 interface Props {
   title: string;
   description: string;
   ogImage?: string;
   canonical?: string;
+  product?: ProductSchema;
 }
 
-const { title, description, ogImage, canonical } = Astro.props;
+const { title, description, ogImage, canonical, product } = Astro.props;
 
-const siteUrl = "https://alquilerfurgonetasalicante.es";
+const siteUrl = "https://alquilerdefurgonetasalicante.es";
 const currentUrl = `${siteUrl}${Astro.url.pathname}`;
 ---
 
@@ -18,10 +29,16 @@ const currentUrl = `${siteUrl}${Astro.url.pathname}`;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    <meta name="keywords" content="alquiler furgonetas Alicante, alquiler furgonetas, furgonetas alicante, alquiler coche, mudanzas alicante, renting furgonetas, alquiler camiones alicante" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
     <meta name="generator" content={Astro.generator} />
     
     <!-- Canonical URL -->
     <link rel="canonical" href={canonical || currentUrl} />
+    
+    <!-- Preconnect to external origins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     
     <!-- Open Graph -->
     <meta property="og:title" content={title} />
@@ -46,7 +63,7 @@ const currentUrl = `${siteUrl}${Astro.url.pathname}`;
       "description": "Alquiler de furgonetas baratas en Alicante. Precios desde 35€/día.",
       "url": siteUrl,
       "telephone": "+34 965 123 456",
-      "email": "info@alquilerfurgonetasalicante.es",
+      "email": "info@alquilerdefurgonetasalicante.es",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Calle Ejemplo 123",
@@ -124,31 +141,154 @@ const currentUrl = `${siteUrl}${Astro.url.pathname}`;
       }
     })} />
     
+    <!-- Structured Data - Product -->
+    {product && (
+      <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": product.name,
+        "description": product.description,
+        "url": currentUrl,
+        "image": product.image || `${siteUrl}/favicon.svg`,
+        "offers": {
+          "@type": "Offer",
+          "price": product.price,
+          "priceCurrency": "EUR",
+          "availability": "https://schema.org/InStock"
+        },
+        "additionalProperty": [
+          { "@type": "PropertyValue", "name": "Volumen de carga", "value": product.capacity },
+          { "@type": "PropertyValue", "name": "Carga útil", "value": product.maxLoad },
+          { "@type": "PropertyValue", "name": "Plazas", "value": product.seats }
+        ]
+      })} />
+    )}
+    
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     
-    <!-- Preconnect to Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <!-- Fonts: Plus Jakarta Sans (headings) + DM Sans (body) -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" media="print" onload="this.media='all'" />
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" />
+    </noscript>
     
     <title>{title}</title>
   </head>
   <body>
     <slot />
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-brand">
+            <strong>Alquiler Furgonetas Alicante</strong>
+            <p>Alquiler de furgonetas baratas por horas, días y sin conductor en Alicante.</p>
+          </div>
+          <div class="footer-links">
+            <a href="/">Inicio</a>
+            <a href="/#flota">Furgonetas</a>
+            <a href="/#contacto">Contacto</a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; {new Date().getFullYear()} Alquiler Furgonetas Alicante. Todos los derechos reservados.</p>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
 
 <style is:global>
   :root {
-    --primary: #ff6b00;
-    --primary-dark: #e55a00;
-    --secondary: #1a1a1a;
+    /* ── Fonts ── */
+    --font-heading: "Plus Jakarta Sans", sans-serif;
+    --font-body: "DM Sans", sans-serif;
+
+    /* ── Colors: Surfaces ── */
+    --color-bg: hsl(48, 15%, 97%);
+    --color-bg-white: #FFFFFF;
+    --color-fg: hsl(240, 17%, 12%);
+    --color-fg-muted: hsl(240, 8%, 56%);
+
+    /* ── Colors: Brand ── */
+    --color-primary: hsl(18, 82%, 54%);
+    --color-primary-hover: hsl(18, 82%, 48%);
+    --color-primary-fg: #FFFFFF;
+    --color-primary-rgb: 234, 88, 12;
+
+    /* ── Colors: Surfaces (warm/dark) ── */
+    --color-warm-bg: hsl(38, 22%, 93%);
+    --color-warm-fg: hsl(240, 17%, 12%);
+    --color-dark-bg: hsl(240, 17%, 12%);
+    --color-dark-fg: #FFFFFF;
+    --color-dark-fg-muted: rgba(255, 255, 255, 0.6);
+
+    /* ── Colors: Functional ── */
+    --color-border: hsl(36, 14%, 88%);
+    --color-input: hsl(36, 14%, 88%);
+    --color-ring: hsl(18, 82%, 54%);
+    --color-destructive: hsl(0, 84%, 60%);
+    --color-success: #16a34a;
+    --color-star: #FABB05;
+
+    /* ── Legacy mappings (backward compat — remove after Batch 2-3) ── */
+    --primary: #EA580C;
+    --primary-dark: #D44E08;
+    --secondary: #191923;
     --text: #333333;
     --text-light: #666666;
-    --bg: #ffffff;
-    --bg-alt: #f8f9fa;
-    --border: #e0e0e0;
+    --bg: hsl(48, 15%, 97%);
+    --bg-alt: hsl(38, 22%, 93%);
+    --border: hsl(36, 14%, 88%);
+
+    /* ── Radius ── */
+    --radius-sm: 8px;
+    --radius-md: 10px;
+    --radius-lg: 12px;
+    --radius-xl: 16px;
+    --radius-2xl: 20px;
+    --radius-3xl: 24px;
+    --radius-full: 9999px;
+
+    /* ── Shadows ── */
+    --shadow-soft: 0 1px 2px rgba(17, 17, 17, 0.04), 0 8px 24px rgba(17, 17, 17, 0.05);
+    --shadow-card: 0 10px 40px -30px rgba(0, 0, 0, 0.08);
+    --shadow-float: 0 2px 4px rgba(17, 17, 17, 0.04), 0 20px 48px rgba(17, 17, 17, 0.08);
+    --shadow-lift: 0 20px 60px -30px rgba(0, 0, 0, 0.12);
+    --shadow-step: 0 8px 30px -15px rgba(26, 26, 36, 0.08);
+    --shadow-orange: 0 8px 24px rgba(234, 88, 12, 0.25);
+
+    /* ── Container ── */
+    --container-max: 1080px;
+    --container-px: 1.5rem;
+
+    /* ── Section Spacing ── */
+    --section-py: 6rem;
+    --section-py-lg: 8rem;
+    --section-py-compact: 3rem;
+    --section-py-compact-lg: 5rem;
+
+    /* ── Typography ── */
+    --text-eyebrow: 11px;
+    --text-sm: 14px;
+    --text-base: 16px;
+    --text-lg: 18px;
+    --h1-size: clamp(36px, 6vw, 60px);
+    --h2-size: clamp(30px, 5vw, 60px);
+    --h3-size: clamp(24px, 4vw, 48px);
+    --leading-heading: 1.05;
+    --leading-body: 1.625;
+    --tracking-eyebrow: 0.2em;
+    --tracking-heading: -0.02em;
+
+    /* ── Animation ── */
+    --duration-fast: 150ms;
+    --duration-default: 200ms;
+    --duration-slow: 250ms;
+    --duration-card: 300ms;
+    --ease-card-hover: ease-out;
   }
 
   * {
@@ -158,35 +298,42 @@ const currentUrl = `${siteUrl}${Astro.url.pathname}`;
   }
 
   body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-    color: var(--text);
-    line-height: 1.6;
-    background: var(--bg);
+    font-family: var(--font-body);
+    color: var(--color-fg);
+    line-height: var(--leading-body);
+    background: var(--color-bg);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   .container {
-    max-width: 1200px;
+    max-width: var(--container-max);
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 var(--container-px);
   }
 
-  h1, h2, h3, h4 {
-    color: var(--secondary);
-    line-height: 1.2;
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    color: var(--color-fg);
+    line-height: var(--leading-heading);
+    letter-spacing: var(--tracking-heading);
   }
 
   h1 {
-    font-size: 2.5rem;
+    font-size: var(--h1-size);
+    font-weight: 600;
     margin-bottom: 1rem;
   }
 
   h2 {
-    font-size: 1.8rem;
+    font-size: var(--h2-size);
+    font-weight: 600;
     margin: 3rem 0 1.5rem;
   }
 
   h3 {
-    font-size: 1.3rem;
+    font-size: var(--h3-size);
+    font-weight: 600;
     margin-bottom: 0.5rem;
   }
 
@@ -195,7 +342,7 @@ const currentUrl = `${siteUrl}${Astro.url.pathname}`;
   }
 
   a {
-    color: var(--primary);
+    color: var(--color-primary);
     text-decoration: none;
   }
 
@@ -203,28 +350,194 @@ const currentUrl = `${siteUrl}${Astro.url.pathname}`;
     text-decoration: underline;
   }
 
+  .eyebrow {
+    font-family: var(--font-heading);
+    font-size: var(--text-eyebrow);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-eyebrow);
+    color: var(--color-primary);
+  }
+
   .btn {
     display: inline-block;
-    background: var(--primary);
-    color: white;
-    padding: 12px 24px;
-    border-radius: 6px;
+    background: var(--color-primary);
+    color: var(--color-primary-fg);
+    padding: 12px 28px;
+    border-radius: var(--radius-full);
+    font-family: var(--font-heading);
     font-weight: 600;
+    font-size: var(--text-base);
     text-decoration: none;
-    transition: background 0.2s;
+    transition: background var(--duration-default) var(--ease-card-hover),
+                box-shadow var(--duration-default) var(--ease-card-hover);
+    border: none;
+    cursor: pointer;
   }
 
   .btn:hover {
-    background: var(--primary-dark);
+    background: var(--color-primary-hover);
+    box-shadow: var(--shadow-orange);
     text-decoration: none;
+  }
+
+  .slocal-curve {
+    clip-path: ellipse(120% 100% at 50% 100%);
+  }
+
+  .related {
+    padding: var(--section-py) 0;
+    background: var(--color-bg-white);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .related h2 {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 2rem;
+  }
+
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .related-card {
+    background: var(--color-bg-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-3xl);
+    padding: 1.5rem;
+    text-align: center;
+    text-decoration: none;
+    transition: border-color var(--duration-card) var(--ease-card-hover),
+                transform var(--duration-card) var(--ease-card-hover),
+                box-shadow var(--duration-card) var(--ease-card-hover);
+  }
+
+  .related-card:hover {
+    border-color: var(--color-primary);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lift);
+    text-decoration: none;
+  }
+
+  .related-icon {
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .related-card h3 {
+    color: var(--color-fg);
+    margin-bottom: 0.5rem;
+  }
+
+  .related-card p {
+    color: var(--color-fg-muted);
+    margin-bottom: 0.75rem;
+  }
+
+  .related-link {
+    color: var(--color-primary);
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+
+  .site-footer {
+    background: var(--color-dark-bg);
+    color: var(--color-dark-fg-muted);
+    padding: var(--section-py-compact) 0 0;
+  }
+
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .footer-brand strong {
+    color: var(--color-dark-fg);
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+  }
+
+  .footer-brand p {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    max-width: 400px;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .footer-links a {
+    color: var(--color-dark-fg-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color var(--duration-default) var(--ease-card-hover);
+  }
+
+  .footer-links a:hover {
+    color: var(--color-dark-fg);
+    text-decoration: none;
+  }
+
+  .footer-bottom {
+    padding: 1.5rem 0;
+    text-align: center;
+  }
+
+  .footer-bottom p {
+    margin: 0;
+    font-size: 0.85rem;
   }
 
   @media (max-width: 768px) {
     h1 {
-      font-size: 1.8rem;
+      font-size: clamp(28px, 6vw, 36px);
     }
     h2 {
-      font-size: 1.4rem;
+      font-size: clamp(24px, 5vw, 30px);
+    }
+    .footer-content {
+      flex-direction: column;
+    }
+    .footer-links {
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+  }
+
+  @keyframes slocal-rise {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slocal-float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-6px);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
     }
   }
 </style>

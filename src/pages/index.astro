@@ -61,6 +61,7 @@ const vehicles = [
   <!-- Hero Section -->
   <section class="hero">
     <div class="container">
+      <span class="eyebrow">— Alquiler de Furgonetas en Alicante</span>
       <h1>Alquiler de furgonetas baratas en Alicante</h1>
       <p class="hero-subtitle">El mejor alquiler por horas, por días y sin conductor en Alicante</p>
       <div class="hero-features">
@@ -154,7 +155,7 @@ const vehicles = [
                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
                 <polyline points="22,6 12,13 2,6"/>
               </svg>
-              <span>info@alquilerfurgonetasalicante.es</span>
+              <span>info@alquilerdefurgonetasalicante.es</span>
             </div>
           </div>
           
@@ -277,25 +278,26 @@ const vehicles = [
 </Layout>
 
 <style>
-  /* Hero */
   .hero {
-    background: linear-gradient(135deg, var(--secondary) 0%, #2d2d2d 100%);
-    color: white;
-    padding: 5rem 0;
+    background: var(--color-dark-bg);
+    color: var(--color-dark-fg);
+    padding: 5rem 0 7rem;
     text-align: center;
+    clip-path: ellipse(120% 100% at 50% 100%);
   }
-  
+
   .hero h1 {
-    color: white;
+    color: var(--color-dark-fg);
     margin-bottom: 1rem;
   }
-  
+
   .hero-subtitle {
     font-size: 1.3rem;
     opacity: 0.9;
     margin-bottom: 2rem;
+    color: var(--color-dark-fg-muted);
   }
-  
+
   .hero-features {
     display: flex;
     justify-content: center;
@@ -303,115 +305,114 @@ const vehicles = [
     margin-bottom: 2rem;
     flex-wrap: wrap;
   }
-  
+
   .feature {
     display: flex;
     align-items: center;
     gap: 0.5rem;
     font-size: 1rem;
+    color: var(--color-dark-fg);
   }
-  
+
   .feature svg {
-    color: var(--primary);
+    color: var(--color-primary);
   }
-  
+
   .btn-lg {
     padding: 16px 32px;
     font-size: 1.1rem;
   }
-  
-  /* How to Get */
+
   .how-to-get {
-    padding: 4rem 0;
-    background: white;
+    padding: var(--section-py) 0;
+    background: var(--color-bg-white);
   }
-  
+
   .directions-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
     margin-top: 2rem;
   }
-  
+
   .direction-card {
-    background: var(--bg-alt);
+    background: var(--color-warm-bg);
     padding: 2rem;
-    border-radius: 12px;
+    border-radius: var(--radius-2xl);
   }
-  
+
   .direction-icon {
-    color: var(--primary);
+    color: var(--color-primary);
     margin-bottom: 1rem;
   }
-  
+
   .direction-card h3 {
     margin-bottom: 0.5rem;
   }
-  
+
   .direction-card ul {
     margin: 1rem 0 0;
     padding-left: 1.25rem;
   }
-  
+
   .direction-card li {
     margin-bottom: 0.5rem;
-    color: var(--text);
+    color: var(--color-fg);
   }
-  
-  /* Office Info */
+
   .office-info {
-    padding: 4rem 0;
-    background: var(--bg-alt);
+    padding: var(--section-py) 0;
+    background: var(--color-warm-bg);
   }
-  
+
   .office-card {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 3rem;
-    background: white;
-    border-radius: 12px;
+    background: var(--color-bg-white);
+    border-radius: var(--radius-3xl);
     padding: 2rem;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    box-shadow: var(--shadow-card);
   }
-  
+
   .office-details h2 {
     margin-top: 0;
   }
-  
+
   .office-contact {
     margin: 1.5rem 0;
   }
-  
+
   .contact-item {
     display: flex;
     align-items: center;
     gap: 0.75rem;
     margin-bottom: 0.75rem;
-    color: var(--text);
+    color: var(--color-fg);
   }
-  
+
   .contact-item svg {
-    color: var(--primary);
+    color: var(--color-primary);
   }
-  
+
   .office-hours {
     margin-top: 1.5rem;
     padding-top: 1.5rem;
-    border-top: 1px solid var(--border);
+    border-top: 1px solid var(--color-border);
   }
-  
+
   .office-hours h4 {
     margin-bottom: 0.5rem;
   }
-  
+
   .office-hours p {
     margin-bottom: 0.25rem;
-    color: var(--text);
+    color: var(--color-fg);
   }
-  
+
   .map-placeholder {
-    background: var(--bg-alt);
-    border-radius: 8px;
+    background: var(--color-warm-bg);
+    border-radius: var(--radius-lg);
     padding: 3rem;
     text-align: center;
     height: 100%;
@@ -419,94 +420,90 @@ const vehicles = [
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    color: var(--text-light);
+    color: var(--color-fg-muted);
   }
-  
+
   .map-placeholder svg {
     margin-bottom: 1rem;
   }
-  
-  /* Vehicles */
+
   .vehicles {
-    padding: 4rem 0;
-    background: white;
+    padding: var(--section-py) 0;
+    background: var(--color-bg-white);
   }
-  
+
   .section-subtitle {
-    color: var(--text-light);
+    color: var(--color-fg-muted);
     font-size: 1.1rem;
     margin-top: -0.5rem;
   }
-  
+
   .vehicles-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 1.5rem;
     margin-top: 2rem;
   }
-  
-  /* Pricing */
+
   .pricing {
-    padding: 4rem 0;
-    background: var(--bg-alt);
+    padding: var(--section-py) 0;
+    background: var(--color-warm-bg);
   }
-  
-  /* Van Types */
+
   .van-types {
-    padding: 4rem 0;
-    background: white;
+    padding: var(--section-py) 0;
+    background: var(--color-bg-white);
   }
-  
+
   .van-types-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
     margin-top: 2rem;
   }
-  
+
   .van-type-card {
-    background: var(--bg-alt);
+    background: var(--color-warm-bg);
     padding: 2rem;
-    border-radius: 12px;
+    border-radius: var(--radius-2xl);
     text-align: center;
   }
-  
+
   .van-icon {
-    color: var(--primary);
+    color: var(--color-primary);
     margin-bottom: 1rem;
   }
-  
+
   .van-type-card h3 {
     margin-bottom: 0.5rem;
   }
-  
+
   .van-type-card ul {
     text-align: left;
     margin: 1rem 0 0;
     padding-left: 1.25rem;
   }
-  
+
   .van-type-card li {
     margin-bottom: 0.5rem;
-    color: var(--text);
+    color: var(--color-fg);
   }
-  
-  /* FAQ */
+
   .faq {
-    padding: 4rem 0;
-    background: var(--bg-alt);
+    padding: var(--section-py) 0;
+    background: var(--color-warm-bg);
   }
-  
+
   @media (max-width: 768px) {
     .hero {
-      padding: 3rem 0;
+      padding: 3rem 0 5rem;
     }
-    
+
     .hero-features {
       flex-direction: column;
       align-items: center;
     }
-    
+
     .office-card {
       grid-template-columns: 1fr;
     }

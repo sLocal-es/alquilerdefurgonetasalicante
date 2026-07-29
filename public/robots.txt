@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://alquilerdefurgonetasalicante.es/sitemap-index.xml
+
+# Bloquear archivos innecesarios
+Disallow: /_astro/
+Disallow: /*.woff2
+Disallow: /*.css.map

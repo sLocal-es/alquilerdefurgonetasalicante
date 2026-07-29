@@ -38,100 +38,104 @@ const pricingData = [
   .pricing-section {
     padding: 2rem 0;
   }
-  
+
   .pricing-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1.5rem;
   }
-  
+
   .pricing-card {
-    background: white;
-    border: 2px solid var(--border);
-    border-radius: 12px;
+    background: var(--color-bg-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-3xl);
     padding: 1.5rem;
     text-align: center;
-    transition: border-color 0.2s, transform 0.2s;
+    transition: border-color var(--duration-card) var(--ease-card-hover),
+                transform var(--duration-card) var(--ease-card-hover),
+                box-shadow var(--duration-card) var(--ease-card-hover);
   }
-  
+
   .pricing-card:hover {
-    border-color: var(--primary);
+    border-color: var(--color-primary);
     transform: translateY(-4px);
+    box-shadow: var(--shadow-lift);
   }
-  
+
   .pricing-header {
     margin-bottom: 1rem;
   }
-  
+
   .pricing-type {
     font-size: 1.3rem;
-    color: var(--secondary);
+    color: var(--color-fg);
     margin-bottom: 0.25rem;
   }
-  
+
   .pricing-vehicle {
-    color: var(--text-light);
+    color: var(--color-fg-muted);
     font-size: 0.9rem;
   }
-  
+
   .pricing-price {
-    background: var(--bg-alt);
+    background: var(--color-warm-bg);
     padding: 1rem;
-    border-radius: 8px;
+    border-radius: var(--radius-lg);
     margin-bottom: 1.5rem;
   }
-  
+
   .price-from {
     display: block;
     font-size: 0.85rem;
-    color: var(--text-light);
+    color: var(--color-fg-muted);
   }
-  
+
   .price-amount {
     font-size: 2rem;
     font-weight: 700;
-    color: var(--primary);
+    color: var(--color-primary);
   }
-  
+
   .price-period {
     font-size: 0.85rem;
-    color: var(--text-light);
+    color: var(--color-fg-muted);
   }
-  
+
   .pricing-features {
     list-style: none;
     padding: 0;
     margin: 0 0 1.5rem;
     text-align: left;
   }
-  
+
   .pricing-features li {
     padding: 0.5rem 0;
-    border-bottom: 1px solid var(--border);
-    color: var(--text);
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-fg);
   }
-  
+
   .pricing-features li:last-child {
     border-bottom: none;
   }
-  
+
   .btn-outline {
     display: block;
-    border: 2px solid var(--primary);
-    color: var(--primary);
+    border: 2px solid var(--color-primary);
+    color: var(--color-primary);
     background: transparent;
     padding: 10px 20px;
-    border-radius: 6px;
+    border-radius: var(--radius-full);
+    font-family: var(--font-heading);
     font-weight: 600;
-    transition: all 0.2s;
+    transition: all var(--duration-default) var(--ease-card-hover);
   }
-  
+
   .btn-outline:hover {
-    background: var(--primary);
-    color: white;
+    background: var(--color-primary);
+    color: var(--color-primary-fg);
     text-decoration: none;
   }
-  
+
   @media (max-width: 768px) {
     .pricing-grid {
       grid-template-columns: 1fr;
