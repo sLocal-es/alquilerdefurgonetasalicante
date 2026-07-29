@@ -135,46 +135,65 @@ const { vehicleType } = Astro.props;
 </div>
 
 <script>
-  // Form submission handler
-  document.getElementById('leadForm')?.addEventListener('submit', (e) => {
-    e.preventDefault();
-    
-    const form = e.target as HTMLFormElement;
-    const formData = new FormData(form);
-    
-    // Collect form data
-    const lead = {
-      service: formData.get('service'),
-      vehicle: formData.get('vehicle'),
-      name: formData.get('name'),
-      phone: formData.get('phone'),
-      email: formData.get('email'),
-      date: formData.get('date'),
-      duration: formData.get('duration'),
-      message: formData.get('message'),
-      timestamp: new Date().toISOString(),
-      source: window.location.pathname
-    };
-    
-    // Store in localStorage for now (later we'll add email/API)
-    const leads = JSON.parse(localStorage.getItem('leads') || '[]');
-    leads.push(lead);
-    localStorage.setItem('leads', JSON.stringify(leads));
-    
-    // Show success message
-    form.innerHTML = `
-      <div class="success-message">
-        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-          <polyline points="22 4 12 14.01 9 11.01"/>
-        </svg>
-        <h3>¡Solicitud enviada!</h3>
-        <p>Te contactaremos en menos de 1 hora con tu presupuesto personalizado.</p>
-        <p><strong>¿Necesitas algo urgente? Llámanos:</strong></p>
-        <a href="tel:+34645818944" class="btn btn-primary">645 81 89 44</a>
-      </div>
-    `;
-  });
+  const form = document.getElementById('leadForm');
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const submitBtn = form.querySelector('.btn-block');
+      const formData = new FormData(form);
+
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Enviando...';
+      }
+
+      try {
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: formData.get('name'),
+            phone: formData.get('phone'),
+            email: formData.get('email'),
+            service: formData.get('service'),
+            vehicle: formData.get('vehicle'),
+            date: formData.get('date'),
+            duration: formData.get('duration'),
+            message: formData.get('message'),
+          }),
+        });
+
+        if (response.ok) {
+          form.innerHTML = `
+            <div class="success-message">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+              <h3>¡Solicitud enviada!</h3>
+              <p>Te contactaremos en menos de 1 hora con tu presupuesto personalizado.</p>
+              <p><strong>¿Necesitas algo urgente? Llámanos:</strong></p>
+              <a href="tel:+34645818944" class="btn btn-primary">645 81 89 44</a>
+            </div>
+          `;
+        } else {
+          const data = await response.json().catch(() => ({}));
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Enviar solicitud';
+          }
+          alert(data.error || 'Error al enviar. Intenta de nuevo o llámanos al 645 81 89 44.');
+        }
+      } catch {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Enviar solicitud';
+        }
+        alert('Error de conexión. Intenta de nuevo o llámanos al 645 81 89 44.');
+      }
+    });
+  }
 </script>
 
 <style>
