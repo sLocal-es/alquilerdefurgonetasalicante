@@ -9,9 +9,10 @@ interface Props {
   price: string;
   seats: string;
   description: string;
+  image?: string;
 }
 
-const { group, name, slug, capacity, dimensions, maxLoad, price, seats, description } = Astro.props;
+const { group, name, slug, capacity, dimensions, maxLoad, price, seats, description, image } = Astro.props;
 ---
 
 <div class="vehicle-card">
@@ -21,13 +22,24 @@ const { group, name, slug, capacity, dimensions, maxLoad, price, seats, descript
   </div>
   
   <div class="vehicle-image">
-    <div class="image-placeholder">
-      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M14 16H9m10 0h3v-3.15a1 1 0 0 0-.84-.99L16 11l-2.7-3.6a1 1 0 0 0-.8-.4H5.24a2 2 0 0 0-1.8 1.1l-.8 1.63A6 6 0 0 0 2 12.42V16h2"/>
-        <circle cx="6.5" cy="16.5" r="2.5"/>
-        <circle cx="16.5" cy="16.5" r="2.5"/>
-      </svg>
-    </div>
+    {image ? (
+      <img
+        src={image}
+        alt={`Alquiler ${name} en Alicante - ${capacity}`}
+        width="400"
+        height="250"
+        loading="lazy"
+        decoding="async"
+      />
+    ) : (
+      <div class="image-placeholder">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M14 16H9m10 0h3v-3.15a1 1 0 0 0-.84-.99L16 11l-2.7-3.6a1 1 0 0 0-.8-.4H5.24a2 2 0 0 0-1.8 1.1l-.8 1.63A6 6 0 0 0 2 12.42V16h2"/>
+          <circle cx="6.5" cy="16.5" r="2.5"/>
+          <circle cx="16.5" cy="16.5" r="2.5"/>
+        </svg>
+      </div>
+    )}
   </div>
   
   <p class="vehicle-description">{description}</p>
@@ -97,11 +109,23 @@ const { group, name, slug, capacity, dimensions, maxLoad, price, seats, descript
   .vehicle-image {
     background: var(--color-warm-bg);
     border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin-bottom: 1rem;
+  }
+
+  .vehicle-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    aspect-ratio: 16 / 10;
+  }
+
+  .vehicle-image .image-placeholder {
     padding: 2rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 1rem;
   }
 
   .image-placeholder {

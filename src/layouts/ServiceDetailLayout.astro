@@ -26,6 +26,7 @@ interface Props {
   price: string;
   vehicleType: string;
   breadcrumbLabel: string;
+  image?: string;
   specs: ServiceSpecs;
   idealFor: string[];
   includes: string[];
@@ -43,7 +44,7 @@ interface Props {
 }
 
 const {
-  title, subtitle, price, vehicleType, breadcrumbLabel,
+  title, subtitle, price, vehicleType, breadcrumbLabel, image,
   specs, idealFor, includes, related,
   metaTitle, metaDescription, product
 } = Astro.props;
@@ -105,14 +106,25 @@ const {
         </div>
 
         <div class="hero-image">
-          <div class="image-placeholder">
-            <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M14 16H9m10 0h3v-3.15a1 1 0 0 0-.84-.99L16 11l-2.7-3.6a1 1 0 0 0-.8-.4H5.24a2 2 0 0 0-1.8 1.1l-.8 1.63A6 6 0 0 0 2 12.42V16h2"/>
-              <circle cx="6.5" cy="16.5" r="2.5"/>
-              <circle cx="16.5" cy="16.5" r="2.5"/>
-            </svg>
-            <p>{breadcrumbLabel}</p>
-          </div>
+          {image ? (
+            <img
+              src={image}
+              alt={`${title} - ${specs.capacity}`}
+              width="600"
+              height="400"
+              loading="eager"
+              decoding="sync"
+            />
+          ) : (
+            <div class="image-placeholder">
+              <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14 16H9m10 0h3v-3.15a1 1 0 0 0-.84-.99L16 11l-2.7-3.6a1 1 0 0 0-.8-.4H5.24a2 2 0 0 0-1.8 1.1l-.8 1.63A6 6 0 0 0 2 12.42V16h2"/>
+                <circle cx="6.5" cy="16.5" r="2.5"/>
+                <circle cx="16.5" cy="16.5" r="2.5"/>
+              </svg>
+              <p>{breadcrumbLabel}</p>
+            </div>
+          )}
         </div>
       </div>
     </div>
@@ -356,6 +368,15 @@ const {
   .hero-image {
     display: flex;
     justify-content: center;
+  }
+
+  .hero-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: var(--radius-3xl);
+    object-fit: cover;
+    aspect-ratio: 3 / 2;
   }
 
   .image-placeholder {
