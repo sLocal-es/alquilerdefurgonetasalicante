@@ -1,4 +1,6 @@
 ---
+import WhatsAppButton from '../components/common/WhatsAppButton.astro';
+
 interface ProductSchema {
   name: string;
   description: string;
@@ -15,9 +17,10 @@ interface Props {
   ogImage?: string;
   canonical?: string;
   product?: ProductSchema;
+  breadcrumb?: { name: string; url: string }[];
 }
 
-const { title, description, ogImage, canonical, product } = Astro.props;
+const { title, description, ogImage, canonical, product, breadcrumb } = Astro.props;
 
 const siteUrl = "https://alquilerdefurgonetasalicante.es";
 const currentUrl = `${siteUrl}${Astro.url.pathname}`;
@@ -60,59 +63,16 @@ const currentUrl = `${siteUrl}${Astro.url.pathname}`;
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
       "name": "Alquiler Furgonetas Alicante",
-      "description": "Alquiler de furgonetas baratas en Alicante. Precios desde 35€/día.",
+      "description": "Alquiler de furgonetas en Alicante. Precios desde 35€/día.",
       "url": siteUrl,
       "telephone": "+34 645 81 89 44",
       "email": "alquilerfurgonetasalicante@proton.me",
       "priceRange": "€€",
       "image": `${siteUrl}/favicon.svg`,
-      "sameAs": [],
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "Alquiler de Furgonetas",
-        "itemListElement": [
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Alquiler Furgoneta Pequeña",
-              "description": "Furgoneta pequeña 3-4m³, 600 kg de carga útil"
-            },
-            "price": "35",
-            "priceCurrency": "EUR"
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Alquiler Furgoneta Mediana",
-              "description": "Furgoneta mediana 6-7m³, 850 kg de carga útil"
-            },
-            "price": "45",
-            "priceCurrency": "EUR"
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Alquiler Furgoneta Grande",
-              "description": "Furgoneta grande 8-10m³, 1000 kg de carga útil"
-            },
-            "price": "55",
-            "priceCurrency": "EUR"
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Alquiler Furgoneta Extra Grande",
-              "description": "Furgoneta extra grande 12-15m³, 1300 kg de carga útil"
-            },
-            "price": "65",
-            "priceCurrency": "EUR"
-          }
-        ]
-      }
+      "areaServed": {
+        "@type": "City",
+        "name": "Alicante",
+      },
     })} />
     
     <!-- Structured Data - Product -->
@@ -137,7 +97,20 @@ const currentUrl = `${siteUrl}${Astro.url.pathname}`;
         ]
       })} />
     )}
-    
+
+    {breadcrumb && breadcrumb.length > 0 && (
+      <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": breadcrumb.map((b, i) => ({
+          "@type": "ListItem",
+          "position": i + 1,
+          "name": b.name,
+          "item": b.url,
+        })),
+      })} />
+    )}
+
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     
@@ -158,12 +131,13 @@ const currentUrl = `${siteUrl}${Astro.url.pathname}`;
         <div class="footer-content">
           <div class="footer-brand">
             <strong>Alquiler Furgonetas Alicante</strong>
-            <p>Alquiler de furgonetas baratas por horas, días y sin conductor en Alicante.</p>
+            <p>Alquiler de furgonetas por horas, días y sin conductor en Alicante.</p>
           </div>
           <div class="footer-links">
             <a href="/">Inicio</a>
             <a href="/#flota">Furgonetas</a>
             <a href="/#contacto">Contacto</a>
+            <span class="footer-area">Área de servicio: Alicante y alrededores</span>
           </div>
         </div>
         <div class="footer-bottom">
@@ -171,6 +145,8 @@ const currentUrl = `${siteUrl}${Astro.url.pathname}`;
         </div>
       </div>
     </footer>
+
+    <WhatsAppButton phone="34645818944" />
   </body>
 </html>
 
@@ -459,6 +435,12 @@ const currentUrl = `${siteUrl}${Astro.url.pathname}`;
   .footer-links a:hover {
     color: var(--color-dark-fg);
     text-decoration: none;
+  }
+
+  .footer-area {
+    color: var(--color-dark-fg-muted);
+    font-size: 0.85rem;
+    opacity: 0.7;
   }
 
   .footer-bottom {

@@ -1,0 +1,37 @@
+---
+const testimonials = [
+  { name: 'María G.', rating: 5, text: 'Alquilé la furgoneta grande para mi mudanza y fue todo perfecto. El vehículo impecable y el trato excelente. Repetiré sin duda.', date: '2026-06' },
+  { name: 'Carlos R.', rating: 5, text: 'Muy buena experiencia. Reservé online por la mañana y por la tarde ya tenía la furgoneta. Precios transparentes y sin sorpresas.', date: '2026-06' },
+  { name: 'Laura M.', rating: 4, text: 'Necesitaba una furgoneta pequeña para una reforma y fue la solución perfecta. Fácil de conducir, consumo bajo. Muy recomendable.', date: '2026-05' },
+];
+
+function stars(rating: number) { return Array.from({ length: 5 }, (_, i) => i < rating ? '★' : '☆'); }
+---
+<section class="reviews">
+  <div class="container">
+    <span class="eyebrow">Testimonios</span>
+    <h2>Lo que dicen nuestros clientes</h2>
+    <div class="reviews-grid">
+      {testimonials.map((t) => (
+        <div class="review-card">
+          <div class="review-stars">{stars(t.rating).join('')}</div>
+          <p class="review-text">"{t.text}"</p>
+          <div class="review-author"><strong>{t.name}</strong>{t.date && <span class="review-date">{t.date}</span>}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .reviews { padding: var(--section-py) 0; background: var(--color-warm-bg); }
+  .reviews h2 { text-align: center; margin-top: 1rem; margin-bottom: 2rem; }
+  .eyebrow { display: block; text-align: center; }
+  .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+  .review-card { background: var(--color-bg-white); border-radius: var(--radius-3xl); padding: 1.5rem; box-shadow: var(--shadow-card); }
+  .review-stars { color: var(--color-star); font-size: 1.2rem; letter-spacing: 2px; margin-bottom: 0.75rem; }
+  .review-text { color: var(--color-fg); font-size: 0.95rem; line-height: var(--leading-body); margin-bottom: 1rem; font-style: italic; }
+  .review-author { font-size: 0.9rem; color: var(--color-fg-muted); }
+  .review-author strong { color: var(--color-fg); }
+  .review-date { margin-left: 0.5rem; font-size: 0.85rem; }
+</style>

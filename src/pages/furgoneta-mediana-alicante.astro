@@ -20,12 +20,19 @@ const idealFor = [
 ];
 
 const includes = [
-  "Seguro a todo riesgo con franquicia",
-  "Asistencia en carretera 24h",
-  "200 km diarios incluidos",
-  "Equipamiento básico (A/C, bluetooth)",
-  "Revisión técnica antes del alquiler"
+  "Seguro a todo riesgo con franquicia de 300€",
+  "Asistencia en carretera 24h con grúa incluida",
+  "200 km diarios incluidos con paquetes extra disponibles",
+  "Aire acondicionado dual, bluetooth y control de crucero",
+  "Revisión técnica completa antes de cada alquiler",
+  "Kit de amarre con cinchas y mantas de protección"
 ];
+
+const description = `La furgoneta mediana es nuestra opción más versátil y la favorita de nuestros clientes habituales. Con 6-7m³ de capacidad y 850 kg de carga útil, ofrece el equilibrio perfecto entre espacio de carga y facilidad de conducción. Mide 5 metros de largo, lo que la hace manejable tanto en ciudad como en carretera, pero con suficiente volumen interior para afrontar la mayoría de mudanzas domésticas.
+
+Es la elección ideal para mudanzas de pisos de 2-3 habitaciones. En un solo viaje podés cargar sofás de 2-3 plazas, neveras, lavadoras, armarios desmontados, colchones y todas las cajas de una mudanza media. También es muy utilizada por autónomos y pequeños comercios para distribución de mercancía, ya que combina buena capacidad con un consumo moderado de 6.2-6.8 L/100km.
+
+El interior de 2.60m de largo permite transportar muebles alargados que no caben en la pequeña, como estanterías grandes, puertas o tableros. Y a diferencia de la grande, sigue siendo lo suficientemente compacta para acceder a zonas residenciales y parkings de altura estándar. Si no tenés claro qué tamaño elegir, la mediana resuelve el 80% de las necesidades de transporte en Alicante.`;
 
 const related = [
   { name: "Furgoneta Pequeña", slug: "furgoneta-pequeña-alicante", icon: "🚐", price: "35€" },
@@ -37,6 +44,7 @@ const related = [
 <ServiceDetailLayout
   title="Alquiler Furgoneta Mediana en Alicante"
   subtitle="El equilibrio perfecto entre capacidad y maniobrabilidad. Ideal para mudanzas medianas y transportes voluminosos."
+  description={description}
   price="45€"
   vehicleType="mediana"
   breadcrumbLabel="Furgoneta Mediana"

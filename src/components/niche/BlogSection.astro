@@ -1,0 +1,41 @@
+---
+import BlogCard from '../common/BlogCard.astro';
+import { blogArticles } from '../../pages/blog/_blog-data';
+---
+
+<section class="blog-section">
+  <div class="container">
+    <span class="eyebrow">Blog</span>
+    <h2>Consejos y guías sobre alquiler de furgonetas en Alicante</h2>
+    <div class="blog-grid">
+      {blogArticles.slice(0, 3).map((article) => (
+        <BlogCard article={article} />
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .blog-section {
+    padding: var(--section-py) 0;
+    background: var(--color-bg-white);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .blog-section h2 {
+    text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .eyebrow {
+    display: block;
+    text-align: center;
+  }
+
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+</style>

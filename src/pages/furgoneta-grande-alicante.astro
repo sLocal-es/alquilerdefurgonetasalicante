@@ -20,12 +20,19 @@ const idealFor = [
 ];
 
 const includes = [
-  "Seguro a todo riesgo con franquicia",
-  "Asistencia en carretera 24h",
-  "200 km diarios incluidos",
-  "Equipamiento básico (A/C, bluetooth)",
-  "Revisión técnica antes del alquiler"
+  "Seguro a todo riesgo con franquicia de 400€",
+  "Asistencia en carretera 24h con vehículo de sustitución",
+  "250 km diarios incluidos por su mayor autonomía",
+  "Aire acondicionado bizona, pantalla táctil y sensores traseros",
+  "Revisión técnica completa antes de cada alquiler",
+  "Cámara de marcha atrás y kit de amarre profesional"
 ];
+
+const description = `La furgoneta grande es la herramienta de trabajo definitiva para profesionales y mudanzas exigentes. Con 8-10m³ de capacidad y 1.000 kg de carga útil, te permite vaciar un piso de 3-4 habitaciones en un solo viaje. Sus 5.40 metros de largo y 2 metros de ancho ofrecen un volumen de carga que simplemente no conseguís con furgonetas más pequeñas, pero sin llegar a las dimensiones de un camión que requiera permisos especiales.
+
+Es la opción preferida por empresas de reformas, montaje de eventos y distribución comercial en Alicante. La amplitud interior permite cargar palés, maquinaria, muebles de gran tamaño como armarios de 3 cuerpos o sofás esquineros, y todo tipo de mercancía voluminosa. Además, sus 3 plazas delanteras permiten que viaje un equipo de hasta 3 personas, ideal para cuadrillas de trabajo.
+
+A pesar de su tamaño, incorpora ayudas a la conducción como cámara de marcha atrás y sensores de aparcamiento que facilitan las maniobras. Su consumo de 7.0-7.5 L/100km es razonable para el volumen que ofrece. Si tu mudanza o proyecto requiere mover mucho volumen en pocos viajes, la furgoneta grande es la inversión que se amortiza en tiempo y gasolina.`;
 
 const related = [
   { name: "Furgoneta Pequeña", slug: "furgoneta-pequeña-alicante", icon: "🚐", price: "35€" },
@@ -36,7 +43,8 @@ const related = [
 
 <ServiceDetailLayout
   title="Alquiler Furgoneta Grande en Alicante"
-  subtitle="Espaciosa y versátil para cargas voluminosos. La solución profesional para mudanzas grandes y transportes exigentes."
+  subtitle="Espaciosa y versátil para cargas voluminosas. La solución profesional para mudanzas grandes y transportes exigentes."
+  description={description}
   price="55€"
   vehicleType="grande"
   breadcrumbLabel="Furgoneta Grande"

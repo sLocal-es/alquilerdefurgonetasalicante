@@ -20,12 +20,19 @@ const idealFor = [
 ];
 
 const includes = [
-  "Seguro a todo riesgo con franquicia",
-  "Asistencia en carretera 24h",
-  "200 km diarios incluidos",
-  "Equipamiento básico (A/C, bluetooth)",
-  "Revisión técnica antes del alquiler"
+  "Seguro a todo riesgo con franquicia de 500€",
+  "Asistencia en carretera 24h prioritaria con grúa pesada",
+  "300 km diarios incluidos para cubrir grandes desplazamientos",
+  "Aire acondicionado bizona, pantalla táctil 10\" y navegador GPS",
+  "Revisión técnica completa antes de cada alquiler",
+  "Cámara 360°, sensores perimetrales y kit de amarre industrial"
 ];
+
+const description = `La furgoneta extra grande es el buque insignia de nuestra flota. Con 12-15m³ de capacidad y 1.300 kg de carga útil, es la solución definitiva para mudanzas de viviendas grandes, transporte profesional de mercancías y cualquier proyecto logístico que requiera el máximo volumen de carga disponible en un vehículo que se puede conducir con carnet B.
+
+Sus 6 metros de largo y 3.70 metros de interior útil permiten transportar cargas que ninguna otra furgoneta de nuestra flota puede asumir: mobiliario completo de oficina, maquinaria industrial, materiales de construcción para obras de gran envergadura, o el contenido íntegro de un chalet o vivienda unifamiliar en el menor número de viajes posible. Los 1.300 kg de carga útil soportan mercancía densa y pesada sin comprometer la seguridad.
+
+Está equipada con cámara 360° y sensores perimetrales para facilitar las maniobras a pesar de sus dimensiones. Es la opción más rentable cuando necesitás mover mucho volumen en distancias largas, ya que evita tener que hacer varios viajes con una furgoneta más pequeña. Si tu proyecto requiere la máxima capacidad sin tener que recurrir a un camión con permisos especiales, la extra grande es la respuesta.`;
 
 const related = [
   { name: "Furgoneta Pequeña", slug: "furgoneta-pequeña-alicante", icon: "🚐", price: "35€" },
@@ -37,6 +44,7 @@ const related = [
 <ServiceDetailLayout
   title="Alquiler Furgoneta Extra Grande en Alicante"
   subtitle="La máxima capacidad para mudanzas grandes y transportes profesionales. Potencia y espacio sin límites."
+  description={description}
   price="65€"
   vehicleType="extra grande"
   breadcrumbLabel="Furgoneta Extra Grande"

@@ -23,6 +23,7 @@ interface RelatedService {
 interface Props {
   title: string;
   subtitle: string;
+  description: string;
   price: string;
   vehicleType: string;
   breadcrumbLabel: string;
@@ -44,7 +45,7 @@ interface Props {
 }
 
 const {
-  title, subtitle, price, vehicleType, breadcrumbLabel, image,
+  title, subtitle, description, price, vehicleType, breadcrumbLabel, image,
   specs, idealFor, includes, related,
   metaTitle, metaDescription, product
 } = Astro.props;
@@ -209,7 +210,7 @@ const {
     <div class="container">
       <div class="desc-content">
         <h2>¿Para qué sirve la {breadcrumbLabel.toLowerCase()}?</h2>
-        <p>{subtitle}</p>
+        <p>{description}</p>
 
         <ul class="benefits-list">
           {idealFor.map((item) => (
@@ -265,7 +266,7 @@ const {
   <section class="faq">
     <div class="container">
       <h2>Preguntas frecuentes</h2>
-      <FAQ />
+      <FAQ vehicleType={vehicleType} />
     </div>
   </section>
 

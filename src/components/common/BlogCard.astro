@@ -1,0 +1,82 @@
+---
+import type { BlogArticle } from '../../config/schema';
+
+interface Props {
+  article: BlogArticle;
+}
+
+const { article } = Astro.props;
+---
+
+<a href={`/blog/${article.slug}/`} class="blog-card">
+  <div class="blog-meta">
+    <span class="blog-category">{article.category}</span>
+    <span class="blog-date">{article.date}</span>
+  </div>
+  <h3>{article.title}</h3>
+  <p>{article.excerpt}</p>
+  <span class="blog-link">Leer más →</span>
+</a>
+
+<style>
+  .blog-card {
+    display: block;
+    background: var(--color-bg-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-3xl);
+    padding: 1.5rem;
+    text-decoration: none;
+    transition: border-color var(--duration-card) var(--ease-card-hover),
+                transform var(--duration-card) var(--ease-card-hover),
+                box-shadow var(--duration-card) var(--ease-card-hover);
+  }
+
+  .blog-card:hover {
+    border-color: var(--color-primary);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lift);
+    text-decoration: none;
+  }
+
+  .blog-meta {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+    align-items: center;
+  }
+
+  .blog-category {
+    background: rgba(var(--color-primary-rgb), 0.1);
+    color: var(--color-primary);
+    padding: 2px 12px;
+    border-radius: var(--radius-full);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .blog-date {
+    color: var(--color-fg-muted);
+    font-size: 0.8rem;
+  }
+
+  .blog-card h3 {
+    color: var(--color-fg);
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+  }
+
+  .blog-card p {
+    color: var(--color-fg-muted);
+    font-size: 0.9rem;
+    line-height: var(--leading-body);
+    margin-bottom: 0.75rem;
+  }
+
+  .blog-link {
+    color: var(--color-primary);
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+</style>

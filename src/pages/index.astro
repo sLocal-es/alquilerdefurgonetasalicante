@@ -3,6 +3,8 @@ import Layout from '../layouts/Layout.astro';
 import VehicleCard from '../components/VehicleCard.astro';
 import PricingTable from '../components/PricingTable.astro';
 import FAQ from '../components/FAQ.astro';
+import ReviewsSection from '../components/niche/ReviewsSection.astro';
+import BlogSection from '../components/niche/BlogSection.astro';
 import ContactForm from '../components/ContactForm.astro';
 
 const vehicles = [
@@ -59,14 +61,14 @@ const vehicles = [
 
 <Layout 
   title="Alquiler de Furgonetas en Alicante | Desde 35€/día" 
-  description="Alquiler de furgonetas baratas en Alicante. Precios desde 35€/día. Por horas, por días y sin conductor. Reserva online."
+  description="Alquiler de furgonetas en Alicante. Precios desde 35€/día. Por horas, por días y sin conductor. Reserva online."
 >
 
   <!-- Hero Section -->
   <section class="hero">
     <div class="container">
       <span class="eyebrow">— Alquiler de Furgonetas en Alicante</span>
-      <h1>Alquiler de furgonetas baratas en Alicante</h1>
+      <h1>Alquiler de furgonetas en Alicante</h1>
       <p class="hero-subtitle">El mejor alquiler por horas, por días y sin conductor en Alicante</p>
       <div class="hero-features">
         <div class="feature">
@@ -186,6 +188,10 @@ const vehicles = [
       <FAQ />
     </div>
   </section>
+
+  <ReviewsSection />
+
+  <BlogSection />
 
   <!-- Contact -->
   <ContactForm />

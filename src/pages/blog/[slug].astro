@@ -1,0 +1,83 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { blogArticles } from './_blog-data';
+
+const siteUrl = "https://alquilerdefurgonetasalicante.es";
+const shortName = "Furgonetas Alicante";
+
+export function getStaticPaths() {
+  return blogArticles.map((article) => ({
+    params: { slug: article.slug },
+    props: { article },
+  }));
+}
+
+const { article } = Astro.props;
+---
+
+<Layout
+  title={`${article.title} | ${shortName}`}
+  description={article.excerpt}
+  canonical={`${siteUrl}/blog/${article.slug}/`}
+  breadcrumb={[
+    { name: 'Inicio', url: siteUrl },
+    { name: 'Blog', url: `${siteUrl}/blog/` },
+    { name: article.title, url: `${siteUrl}/blog/${article.slug}/` },
+  ]}
+>
+
+  <article class="blog-post">
+    <div class="container">
+      <nav class="breadcrumb">
+        <a href="/">Inicio</a>
+        <span>/</span>
+        <span>Blog</span>
+        <span>/</span>
+        <span>{article.category}</span>
+      </nav>
+
+      <header class="post-header">
+        <span class="blog-category">{article.category}</span>
+        <h1>{article.title}</h1>
+        <time class="post-date" datetime={article.date}>{article.date}</time>
+      </header>
+
+      <div class="post-content" set:html={article.content} />
+    </div>
+  </article>
+
+  <section class="post-cta">
+    <div class="container">
+      <h2>¿Necesitás una furgoneta en Alicante?</h2>
+      <p>Solicitá tu presupuesto sin compromiso. Te respondemos en menos de 1 hora.</p>
+      <a href="/#contacto" class="btn btn-primary btn-lg">Solicitar presupuesto</a>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .blog-post {
+    padding: 4rem 0 2rem;
+    background: var(--color-bg-white);
+  }
+
+  .breadcrumb { font-size: 0.9rem; margin-bottom: 2rem; color: var(--color-fg-muted); }
+  .breadcrumb a { color: var(--color-fg-muted); }
+  .breadcrumb span { margin: 0 0.5rem; }
+  .post-header { max-width: 720px; margin-bottom: 3rem; }
+  .blog-category { display: inline-block; background: rgba(var(--color-primary-rgb), 0.1); color: var(--color-primary); padding: 4px 14px; border-radius: var(--radius-full); font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem; }
+  .post-header h1 { margin-bottom: 1rem; }
+  .post-date { color: var(--color-fg-muted); font-size: 0.95rem; }
+  .post-content { max-width: 720px; line-height: var(--leading-body); font-size: 1.05rem; }
+  .post-content :global(h2) { margin: 2.5rem 0 1rem; font-size: 1.4rem; }
+  .post-content :global(h3) { margin: 2rem 0 0.75rem; font-size: 1.2rem; }
+  .post-content :global(p) { margin-bottom: 1.25rem; color: var(--color-fg); }
+  .post-content :global(ul) { margin-bottom: 1.25rem; padding-left: 1.25rem; }
+  .post-content :global(li) { margin-bottom: 0.5rem; }
+  .post-cta { padding: var(--section-py-compact) 0; background: var(--color-warm-bg); text-align: center; }
+  .post-cta h2 { margin-top: 0; margin-bottom: 0.5rem; }
+  .post-cta p { color: var(--color-fg-muted); margin-bottom: 1.5rem; }
+  .btn-lg { padding: 16px 32px; font-size: 1.1rem; }
+  @media (max-width: 768px) { .blog-post { padding: 2rem 0 1rem; } }
+</style>

@@ -20,12 +20,19 @@ const idealFor = [
 ];
 
 const includes = [
-  "Seguro a todo riesgo con franquicia",
-  "Asistencia en carretera 24h",
-  "200 km diarios incluidos",
-  "Equipamiento básico (A/C, bluetooth)",
-  "Revisión técnica antes del alquiler"
+  "Seguro a todo riesgo con franquicia reducida",
+  "Asistencia en carretera 24h en toda la provincia",
+  "200 km diarios incluidos (ampliables sin coste)",
+  "Aire acondicionado, bluetooth y sensores de aparcamiento",
+  "Revisión técnica completa antes de cada alquiler",
+  "Limpieza y desinfección interior profesional"
 ];
+
+const description = `Nuestra furgoneta pequeña es la opción más práctica para moverte por Alicante sin complicaciones. Con solo 4.40 metros de largo y 1.88 de ancho, cabe en cualquier plaza de aparcamiento estándar y circula sin problemas por calles estrechas, zonas de tráfico restringido y parkings subterráneos del centro. Es el vehículo perfecto para estudiantes que se mudan de piso, profesionales que necesitan transportar herramientas o material de trabajo, y particulares que hacen reformas pequeñas en casa.
+
+Gracias a sus 3-4m³ de capacidad y 600 kg de carga útil, puedes transportar el contenido de una habitación completa en un solo viaje: cama desmontada, escritorio, estanterías, cajas de ropa y electrodomésticos pequeños como microondas o televisores. Su consumo reducido de 5.4-5.6 L/100km la convierte en la furgoneta más económica de nuestra flota para trayectos urbanos y desplazamientos cortos por la provincia.
+
+A diferencia de furgonetas más grandes, no necesitas experiencia previa ni habilidades especiales de conducción. Cualquier persona con carnet B puede manejarla con total confianza desde el primer minuto. Si buscas una solución de transporte ágil, eficiente y sin complicaciones para tus gestiones diarias en Alicante, la furgoneta pequeña es tu mejor elección.`;
 
 const related = [
   { name: "Furgoneta Mediana", slug: "furgoneta-mediana-alicante", icon: "🚛", price: "45€" },
@@ -37,6 +44,7 @@ const related = [
 <ServiceDetailLayout
   title="Alquiler Furgoneta Pequeña en Alicante"
   subtitle="Ágil, versátil y bien organizada. Perfecta para el transporte de pequeñas cargas en entornos urbanos."
+  description={description}
   price="35€"
   vehicleType="pequeña"
   breadcrumbLabel="Furgoneta Pequeña"

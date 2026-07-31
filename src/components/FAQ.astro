@@ -1,5 +1,11 @@
 ---
-const faqData = [
+interface Props {
+  vehicleType?: string;
+}
+
+const { vehicleType } = Astro.props;
+
+const generalQuestions = [
   {
     question: "¿Qué documentos necesito para alquilar una furgoneta?",
     answer: "Necesitas tu permiso de conducir válido (carnet B), un documento de identidad o pasaporte, y una tarjeta de crédito a tu nombre para la fianza. El permiso debe tener al menos 2 años de antigüedad."
@@ -12,6 +18,54 @@ const faqData = [
     question: "¿Cuál es el horario de recogida y devolución?",
     answer: "Operamos 100% online. Coordinamos la recogida y devolución de la furgoneta según tu disponibilidad, sin horarios fijos. Solo indícanos tu preferencia al hacer la reserva."
   },
+];
+
+const vehicleQuestions: Record<string, { question: string; answer: string }[]> = {
+  pequeña: [
+    {
+      question: "¿Puedo aparcar la furgoneta pequeña en cualquier zona de Alicante?",
+      answer: "Sí, la furgoneta pequeña (4.40m de largo) cabe en cualquier plaza de aparcamiento estándar y puede circular por zonas de tráfico restringido sin problemas. Es la opción más práctica para moverte por el centro de Alicante, barrios estrechos y parkings subterráneos."
+    },
+    {
+      question: "¿Qué tipo de carnet necesito para la furgoneta pequeña?",
+      answer: "Solo necesitas el carnet B estándar. Nuestra furgoneta pequeña no supera los 3.500 kg de MMA, por lo que cualquier conductor con permiso de conducir español puede alquilarla sin necesidad de permisos especiales."
+    }
+  ],
+  mediana: [
+    {
+      question: "¿La furgoneta mediana consume mucho combustible?",
+      answer: "Tiene un consumo moderado de 6.2-6.8 L/100km. Es el equilibrio perfecto entre capacidad de carga (6-7m³) y eficiencia. Para trayectos largos, es la opción más rentable porque cargas más que la pequeña pero gastas mucho menos que la grande."
+    },
+    {
+      question: "¿Puedo transportar electrodomésticos grandes en una furgoneta mediana?",
+      answer: "Sí, lavadoras, frigoríficos, sofás de 2-3 plazas y muebles de tamaño medio caben perfectamente. El interior de 2.60m de largo por 1.65m de ancho permite cargar la mayoría de muebles del hogar sin problema."
+    }
+  ],
+  grande: [
+    {
+      question: "¿La furgoneta grande es difícil de manejar en ciudad?",
+      answer: "Aunque es más grande (5.40m), incluye sensores de aparcamiento, cámara trasera y dirección asistida que facilitan las maniobras. Para el centro histórico recomendamos la pequeña, pero para polígonos, zonas industriales y carreteras es muy manejable."
+    },
+    {
+      question: "¿Cuántas cajas de mudanza caben en la furgoneta grande?",
+      answer: "Con 8-10m³ de capacidad, puedes transportar aproximadamente 40-50 cajas estándar de mudanza más muebles medianos. Es la opción ideal para pisos de 3-4 habitaciones en un solo viaje."
+    }
+  ],
+  "extra grande": [
+    {
+      question: "¿Necesito un permiso especial para la furgoneta extra grande?",
+      answer: "No, sigue siendo un vehículo de menos de 3.500 kg de MMA, por lo que el carnet B estándar es suficiente. Sin embargo, recomendamos experiencia previa con vehículos grandes, ya que mide 6 metros de largo."
+    },
+    {
+      question: "¿La furgoneta extra grande tiene rampa o plataforma elevadora?",
+      answer: "Dependiendo de la unidad, algunas incluyen rampa de carga para facilitar la subida de mercancía pesada. Si necesitas específicamente rampa o elevador, indícalo al hacer la reserva y te confirmamos la disponibilidad."
+    }
+  ]
+};
+
+const specificQuestions = vehicleType ? vehicleQuestions[vehicleType] || [] : [];
+
+const extraGeneralQuestions = [
   {
     question: "¿El seguro está incluido en el precio?",
     answer: "Sí, todos nuestros alquileres incluyen seguro a todo riesgo con franquicia. Puedes contratar una cobertura adicional para reducir la franquicia a 0€."
@@ -25,6 +79,9 @@ const faqData = [
     answer: "El alquiler incluye 200 km por día. Si necesitas más kilómetros, puedes comprar paquetes adicionales con descuento o contratar el alquiler sin límite de kilómetros."
   }
 ];
+
+const baseQuestions = vehicleType ? generalQuestions : [...generalQuestions, ...extraGeneralQuestions];
+const faqData = [...baseQuestions, ...specificQuestions];
 ---
 
 <div class="faq-section">
@@ -43,6 +100,16 @@ const faqData = [
       </details>
     ))}
   </div>
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map((item) => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": { "@type": "Answer", "text": item.answer },
+    })),
+  })} />
 </div>
 
 <style>

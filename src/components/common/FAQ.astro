@@ -1,0 +1,100 @@
+---
+interface Props {
+  questions: { question: string; answer: string }[];
+  vehicleType?: string;
+}
+
+const { questions, vehicleType } = Astro.props;
+
+const vehicleQuestions: Record<string, { question: string; answer: string }[]> = {
+  pequeña: [
+    {
+      question: '¿Puedo aparcar la furgoneta pequeña en cualquier zona?',
+      answer: 'Sí, la furgoneta pequeña (4.40m de largo) cabe en cualquier plaza de aparcamiento estándar y puede circular por zonas de tráfico restringido sin problemas. Es la opción más práctica para moverte por el centro y parkings subterráneos.'
+    },
+    {
+      question: '¿Qué tipo de carnet necesito para la furgoneta pequeña?',
+      answer: 'Solo necesitas el carnet B estándar. Nuestra furgoneta pequeña no supera los 3.500 kg de MMA, por lo que cualquier conductor con permiso de conducir puede alquilarla sin necesidad de permisos especiales.'
+    }
+  ],
+  mediana: [
+    {
+      question: '¿La furgoneta mediana consume mucho combustible?',
+      answer: 'Tiene un consumo moderado de 6.2-6.8 L/100km. Es el equilibrio perfecto entre capacidad de carga (6-7m³) y eficiencia. Para trayectos largos, es la opción más rentable.'
+    },
+    {
+      question: '¿Puedo transportar electrodomésticos grandes?',
+      answer: 'Sí, lavadoras, frigoríficos, sofás de 2-3 plazas y muebles de tamaño medio caben perfectamente. El interior de 2.60m de largo por 1.65m de ancho permite cargar la mayoría de muebles del hogar.'
+    }
+  ],
+  grande: [
+    {
+      question: '¿Es difícil de manejar en ciudad?',
+      answer: 'Aunque es más grande (5.40m), incluye sensores de aparcamiento, cámara trasera y dirección asistida que facilitan las maniobras. Para el centro histórico recomendamos la pequeña, pero para polígonos y carreteras es muy manejable.'
+    },
+    {
+      question: '¿Cuántas cajas de mudanza caben?',
+      answer: 'Con 8-10m³ de capacidad, podés transportar aproximadamente 40-50 cajas estándar de mudanza más muebles medianos. Es la opción ideal para pisos de 3-4 habitaciones en un solo viaje.'
+    }
+  ],
+  'extra grande': [
+    {
+      question: '¿Necesito un permiso especial?',
+      answer: 'No, sigue siendo un vehículo de menos de 3.500 kg de MMA, por lo que el carnet B estándar es suficiente. Sin embargo, recomendamos experiencia previa con vehículos grandes, ya que mide 6 metros de largo.'
+    },
+    {
+      question: '¿Tiene rampa o plataforma elevadora?',
+      answer: 'Dependiendo de la unidad, algunas incluyen rampa de carga para facilitar la subida de mercancía pesada. Si necesitás específicamente rampa o elevador, indícalo al hacer la reserva y te confirmamos la disponibilidad.'
+    }
+  ]
+};
+
+const specific = vehicleType ? vehicleQuestions[vehicleType] || [] : [];
+const faqData = [...questions, ...specific];
+---
+
+<div class="faq-section">
+  <div class="faq-list">
+    {faqData.map((item, index) => (
+      <details class="faq-item" open={index === 0}>
+        <summary class="faq-question">
+          <span>{item.question}</span>
+          <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 9l6 6 6-6"/>
+          </svg>
+        </summary>
+        <div class="faq-answer">
+          <p>{item.answer}</p>
+        </div>
+      </details>
+    ))}
+  </div>
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map((item) => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer,
+      },
+    })),
+  })} />
+</div>
+
+<style>
+  .faq-section { padding: 2rem 0; }
+  .faq-list { max-width: 800px; margin: 0 auto; }
+  .faq-item { border: 1px solid var(--color-border); border-radius: var(--radius-lg); margin-bottom: 1rem; overflow: hidden; }
+  .faq-item[open] { border-color: var(--color-primary); }
+  .faq-question { display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 1.5rem; cursor: pointer; font-family: var(--font-heading); font-weight: 500; color: var(--color-fg); background: var(--color-bg-white); list-style: none; transition: background var(--duration-default) var(--ease-card-hover); }
+  .faq-question::-webkit-details-marker { display: none; }
+  .faq-question:hover { background: var(--color-warm-bg); }
+  .faq-icon { flex-shrink: 0; margin-left: 1rem; transition: transform var(--duration-default) var(--ease-card-hover); }
+  .faq-item[open] .faq-icon { transform: rotate(180deg); }
+  .faq-answer { padding: 0 1.5rem 1.5rem; color: var(--color-fg); line-height: var(--leading-body); }
+  .faq-answer p { margin: 0; }
+  @media (max-width: 768px) { .faq-question { padding: 1rem; font-size: 0.95rem; } .faq-answer { padding: 0 1rem 1rem; } }
+</style>
