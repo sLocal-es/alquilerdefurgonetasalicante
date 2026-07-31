@@ -3,7 +3,7 @@
 	"compatibility_date": "2026-07-21",
 	"compatibility_flags": ["global_fetch_strictly_public"],
 	"name": "alquilerfurgonetasalicante",
-	"main": "@astrojs/cloudflare/entrypoints/server",
+	"main": "worker/index.js",
 	"assets": {
 		"directory": "./dist",
 		"binding": "ASSETS"
