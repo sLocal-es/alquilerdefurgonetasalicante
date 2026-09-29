@@ -46,24 +46,33 @@ Origen: ${request.headers.get("referer") || "Directo"}
 Fecha:  ${new Date().toLocaleString("es-ES", { timeZone: "Europe/Madrid" })}
 `;
 
+          if (!env.RESEND_API_KEY) {
+            console.error("RESEND_API_KEY is not configured");
+            return new Response(
+              JSON.stringify({ error: "Error al enviar el email. Intenta de nuevo." }),
+              { status: 502, headers: { "Content-Type": "application/json" } },
+            );
+          }
+
           const mailPayload = {
-            personalizations: [{ to: [{ email: "alquilerfurgonetasalicante@proton.me" }] }],
-            from: {
-              email: "noreply@alquilerdefurgonetasalicante.es",
-              name: "Alquiler Furgonetas Alicante",
-            },
+            from: "Alquiler Furgonetas Alicante <noreply@alquilerdefurgonetasalicante.es>",
+            to: ["alquilerfurgonetasalicante@proton.me"],
+            reply_to: email,
             subject: `Nuevo lead: ${name} - ${vehicle || "Sin vehículo"} - ${service || "Sin servicio"}`,
-            content: [{ type: "text/plain", value: mailBody }],
+            text: mailBody,
           };
 
-          const response = await fetch("https://api.mailchannels.net/tx/v1/send", {
+          const response = await fetch("https://api.resend.com/emails", {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${env.RESEND_API_KEY}`,
+            },
             body: JSON.stringify(mailPayload),
           });
 
           if (!response.ok) {
-            console.error("MailChannels error:", await response.text());
+            console.error("Resend error:", await response.text());
             return new Response(
               JSON.stringify({ error: "Error al enviar el email. Intenta de nuevo." }),
               { status: 502, headers: { "Content-Type": "application/json" } },

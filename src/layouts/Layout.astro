@@ -18,12 +18,17 @@ interface Props {
   canonical?: string;
   product?: ProductSchema;
   breadcrumb?: { name: string; url: string }[];
+  noindex?: boolean;
 }
 
-const { title, description, ogImage, canonical, product, breadcrumb } = Astro.props;
+const { title, description, ogImage, canonical, product, breadcrumb, noindex } = Astro.props;
 
 const siteUrl = "https://alquilerdefurgonetasalicante.es";
 const currentUrl = `${siteUrl}${Astro.url.pathname}`;
+
+const defaultOgImage = "/images/furgonetas/grande-hero.webp";
+const ogImagePath = ogImage || defaultOgImage;
+const ogImageUrl = ogImagePath.startsWith("http") ? ogImagePath : `${siteUrl}${ogImagePath}`;
 ---
 
 <!doctype html>
@@ -33,7 +38,7 @@ const currentUrl = `${siteUrl}${Astro.url.pathname}`;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <meta name="keywords" content="alquiler furgonetas Alicante, alquiler furgonetas, furgonetas alicante, alquiler coche, mudanzas alicante, renting furgonetas, alquiler camiones alicante" />
-    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+    <meta name="robots" content={noindex ? "noindex, follow" : "index, follow, max-snippet:-1, max-image-preview:large"} />
     <meta name="generator" content={Astro.generator} />
     
     <!-- Canonical URL -->
@@ -50,29 +55,39 @@ const currentUrl = `${siteUrl}${Astro.url.pathname}`;
     <meta property="og:url" content={currentUrl} />
     <meta property="og:site_name" content="Alquiler Furgonetas Alicante" />
     <meta property="og:locale" content="es_ES" />
-    {ogImage && <meta property="og:image" content={ogImage} />}
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:width" content="600" />
+    <meta property="og:image:height" content="400" />
+    <meta property="og:image:alt" content={title} />
     
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    {ogImage && <meta name="twitter:image" content={ogImage} />}
+    <meta name="twitter:image" content={ogImageUrl} />
+    <meta name="twitter:image:alt" content={title} />
     
-    <!-- Structured Data - LocalBusiness -->
+    <!-- Structured Data - AutoRental -->
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
-      "@type": "LocalBusiness",
+      "@type": "AutoRental",
       "name": "Alquiler Furgonetas Alicante",
-      "description": "Alquiler de furgonetas en Alicante. Precios desde 35€/día.",
+      "description": "Alquiler de furgonetas en Alicante para mudanzas y profesionales. Reserva rápida por WhatsApp, sin esperas y con precios transparentes. Furgonetas por horas o días.",
       "url": siteUrl,
       "telephone": "+34 645 81 89 44",
       "email": "alquilerfurgonetasalicante@proton.me",
       "priceRange": "€€",
       "image": `${siteUrl}/favicon.svg`,
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Alicante",
+        "addressRegion": "Comunidad Valenciana",
+        "addressCountry": "ES"
+      },
       "areaServed": {
         "@type": "City",
-        "name": "Alicante",
-      },
+        "name": "Alicante"
+      }
     })} />
     
     <!-- Structured Data - Product -->
@@ -136,6 +151,7 @@ const currentUrl = `${siteUrl}${Astro.url.pathname}`;
           <div class="footer-links">
             <a href="/">Inicio</a>
             <a href="/#flota">Furgonetas</a>
+            <a href="/blog/">Blog</a>
             <a href="/#contacto">Contacto</a>
             <span class="footer-area">Área de servicio: Alicante y alrededores</span>
           </div>

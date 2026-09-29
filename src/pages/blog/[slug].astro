@@ -13,25 +13,61 @@ export function getStaticPaths() {
 }
 
 const { article } = Astro.props;
+
+const articleUrl = `${siteUrl}/blog/${article.slug}/`;
+const ogImage = `${siteUrl}/images/furgonetas/grande-hero.webp`;
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": article.title,
+  "description": article.excerpt,
+  "datePublished": article.date,
+  "dateModified": article.date,
+  "inLanguage": "es-ES",
+  "articleSection": article.category,
+  "image": [ogImage],
+  "author": {
+    "@type": "Organization",
+    "name": "Alquiler Furgonetas Alicante",
+    "url": siteUrl,
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Alquiler Furgonetas Alicante",
+    "logo": {
+      "@type": "ImageObject",
+      "url": `${siteUrl}/favicon.svg`,
+    },
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": articleUrl,
+  },
+};
 ---
 
 <Layout
   title={`${article.title} | ${shortName}`}
   description={article.excerpt}
-  canonical={`${siteUrl}/blog/${article.slug}/`}
+  ogImage={ogImage}
+  canonical={articleUrl}
   breadcrumb={[
     { name: 'Inicio', url: siteUrl },
     { name: 'Blog', url: `${siteUrl}/blog/` },
-    { name: article.title, url: `${siteUrl}/blog/${article.slug}/` },
+    { name: article.title, url: articleUrl },
   ]}
 >
+
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+
 
   <article class="blog-post">
     <div class="container">
       <nav class="breadcrumb">
         <a href="/">Inicio</a>
         <span>/</span>
-        <span>Blog</span>
+        <a href="/blog/">Blog</a>
         <span>/</span>
         <span>{article.category}</span>
       </nav>
@@ -43,13 +79,17 @@ const { article } = Astro.props;
       </header>
 
       <div class="post-content" set:html={article.content} />
+
+      <nav class="post-nav">
+        <a href="/blog/">← Volver al blog</a>
+      </nav>
     </div>
   </article>
 
   <section class="post-cta">
     <div class="container">
-      <h2>¿Necesitás una furgoneta en Alicante?</h2>
-      <p>Solicitá tu presupuesto sin compromiso. Te respondemos en menos de 1 hora.</p>
+      <h2>¿Necesitas una furgoneta en Alicante?</h2>
+      <p>Solicita tu presupuesto sin compromiso. Te respondemos en menos de 1 hora.</p>
       <a href="/#contacto" class="btn btn-primary btn-lg">Solicitar presupuesto</a>
     </div>
   </section>
@@ -75,6 +115,8 @@ const { article } = Astro.props;
   .post-content :global(p) { margin-bottom: 1.25rem; color: var(--color-fg); }
   .post-content :global(ul) { margin-bottom: 1.25rem; padding-left: 1.25rem; }
   .post-content :global(li) { margin-bottom: 0.5rem; }
+  .post-nav { max-width: 720px; margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--color-border); }
+  .post-nav a { font-weight: 600; }
   .post-cta { padding: var(--section-py-compact) 0; background: var(--color-warm-bg); text-align: center; }
   .post-cta h2 { margin-top: 0; margin-bottom: 0.5rem; }
   .post-cta p { color: var(--color-fg-muted); margin-bottom: 1.5rem; }

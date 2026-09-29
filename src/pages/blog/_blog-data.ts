@@ -53,7 +53,7 @@ export const blogArticles = [
 <p>200 km diarios incluidos en el precio base. Si necesitas más, ofrecemos paquetes adicionales: 100 km extra desde 10€, o tarifa plana sin límite de kilómetros para alquileres de larga duración. La mayoría de mudanzas dentro de Alicante y provincia no superan los 150 km diarios.</p>
 
 <h2>Consejos para ahorrar en tu alquiler</h2>
-<p>Reserva entre semana (lunes a jueves), los precios son más bajos y hay más disponibilidad. Si puedes, evita los fines de semana de verano (junio-septiembre), que es temporada alta de mudanzas. Alquilá por días completos en vez de por horas si la mudanza va a llevar más de 4 horas: el precio por día es más económico proporcionalmente.</p>
+<p>Reserva entre semana (lunes a jueves), los precios son más bajos y hay más disponibilidad. Si puedes, evita los fines de semana de verano (junio-septiembre), que es temporada alta de mudanzas. Alquila por días completos en vez de por horas si la mudanza va a llevar más de 4 horas: el precio por día es más económico proporcionalmente.</p>
 
 <h2>¿Puedo alquilar por horas?</h2>
 <p>Sí, alquiler mínimo de 4 horas. Ideal para traslados puntuales, recoger muebles de tienda o llevar material a la obra. El precio por hora es proporcional al precio diario más un pequeño suplemento. Consúltanos para presupuesto personalizado.</p>`,
