@@ -1,0 +1,532 @@
+---
+import Layout from '../layouts/Layout.astro';
+import VehicleCard from '../components/VehicleCard.astro';
+import FAQ from '../components/common/FAQ.astro';
+import ContactForm from '../components/ContactForm.astro';
+
+const vehicles = [
+  {
+    group: "Grupo AM",
+    name: "Furgoneta Pequeña",
+    slug: "furgoneta-pequeña-alicante",
+    capacity: "3-4m³",
+    dimensions: "1.82 x 1.55 x 1.24 m",
+    maxLoad: "600 kg",
+    price: "35€",
+    seats: "2-3 plazas",
+    description: "Ágil y versátil para recados, compras y traslados urbanos",
+    image: "/images/furgonetas/pequena-card.webp"
+  },
+  {
+    group: "Grupo B",
+    name: "Furgoneta Mediana",
+    slug: "furgoneta-mediana-alicante",
+    capacity: "6-7m³",
+    dimensions: "2.60 x 1.65 x 1.40 m",
+    maxLoad: "850 kg",
+    price: "45€",
+    seats: "2-3 plazas",
+    description: "El equilibrio perfecto entre capacidad y maniobrabilidad",
+    image: "/images/furgonetas/mediana-card.webp"
+  },
+  {
+    group: "Grupo C",
+    name: "Furgoneta Grande",
+    slug: "furgoneta-grande-alicante",
+    capacity: "8-10m³",
+    dimensions: "3.00 x 1.70 x 1.70 m",
+    maxLoad: "1000 kg",
+    price: "55€",
+    seats: "3 plazas",
+    description: "Espaciosa y versátil para cargas voluminosas",
+    image: "/images/furgonetas/grande-card.webp"
+  },
+  {
+    group: "Grupo D",
+    name: "Furgoneta Extra Grande",
+    slug: "furgoneta-extra-grande-alicante",
+    capacity: "12-15m³",
+    dimensions: "3.70 x 1.76 x 1.85 m",
+    maxLoad: "1300 kg",
+    price: "65€",
+    seats: "3 plazas",
+    description: "La máxima capacidad para mudanzas grandes",
+    image: "/images/furgonetas/extragrande-card.webp"
+  }
+];
+
+const steps = [
+  {
+    title: "Cuéntanos qué necesitas",
+    text: "Dinos el día, cuántas horas y para qué vas a usar la furgoneta. Te respondemos en menos de 1 hora."
+  },
+  {
+    title: "Te confirmamos disponibilidad",
+    text: "Comprobamos qué furgoneta encaja con tu carga y te pasamos el precio por horas, cerrado y sin sorpresas."
+  },
+  {
+    title: "Recoges la furgoneta",
+    text: "Coordinamos la recogida en Alicante según tu horario. Solo necesitas el carnet B; el seguro va incluido."
+  },
+  {
+    title: "La devuelves y listo",
+    text: "Devuelves el vehículo en el punto acordado. Solo pagas las horas que has contratado."
+  }
+];
+
+const useCases = [
+  {
+    icon: "🛋️",
+    title: "Recados y compras",
+    text: "Ve al IKEA, recoge un mueble o un pedido grande sin depender de una empresa de transporte."
+  },
+  {
+    icon: "🧊",
+    title: "Electrodomésticos",
+    text: "Una lavadora, un frigorífico o un televisor: la furgoneta adecuada durante un par de horas."
+  },
+  {
+    icon: "📦",
+    title: "Vaciar un trastero",
+    text: "Despeja el trastero en una sola tarde sin pagar el día completo."
+  },
+  {
+    icon: "🏠",
+    title: "Mudanzas puntuales",
+    text: "Mueve unos pocos muebles de un piso a otro con el vehículo que necesitas en cada momento."
+  },
+  {
+    icon: "🔧",
+    title: "Material y herramienta",
+    text: "Transporta material de obra o herramienta pesada para un trabajo concreto."
+  },
+  {
+    icon: "🚚",
+    title: "Reparto y entregas",
+    text: "Refuerza tu reparto habitual o haz una entrega puntual en Alicante y su provincia."
+  }
+];
+
+const faqs = [
+  {
+    question: "¿Cuál es el mínimo de horas para alquilar una furgoneta?",
+    answer: "El alquiler por horas empieza desde 4 horas. Por debajo de ese tiempo no compensa el traslado, pero para un recado, una compra o un porte puntual es la opción más económica frente a pagar un día completo."
+  },
+  {
+    question: "¿Puedo alquilar una furgoneta por horas sin conductor?",
+    answer: "Sí. Todas nuestras furgonetas son sin conductor y se conducen con el carnet B estándar, ya que ninguna supera los 3.500 kg de MMA. No necesitas ningún permiso especial."
+  },
+  {
+    question: "¿Qué documentación necesito para el alquiler por horas?",
+    answer: "Solo tu permiso de conducir B, un documento de identidad o pasaporte y una tarjeta bancaria a tu nombre para la fianza. El carnet debe tener al menos 2 años de antigüedad."
+  },
+  {
+    question: "¿El seguro está incluido cuando alquilo por horas?",
+    answer: "Sí. Todos los alquileres, también los de corta duración, incluyen seguro a todo riesgo con franquicia y asistencia en carretera. Puedes reducir la franquicia contratando una cobertura adicional."
+  },
+  {
+    question: "¿Cómo reservo una furgoneta por horas en Alicante?",
+    answer: "Rellena el formulario, llámanos al 645 81 89 44 o escríbenos por WhatsApp con el día, las horas y lo que necesitas transportar. Te confirmamos disponibilidad y precio en menos de 1 hora."
+  },
+  {
+    question: "¿Puedo ampliar las horas el mismo día?",
+    answer: "Si la furgoneta no está reservada después, puedes ampliar el tiempo avisándonos con antelación. Te confirmamos la disponibilidad al momento para que no te quedes tirado."
+  }
+];
+---
+
+<Layout
+  title="Alquiler de Furgonetas por Horas en Alicante"
+  description="Alquiler de furgonetas por horas en Alicante desde 4 horas. Sin conductor, con carnet B y seguro incluido. Ideales para mudanzas puntuales y recados."
+  breadcrumb={[
+    { name: "Inicio", url: "/" },
+    { name: "Alquiler por horas", url: "/alquiler-furgonetas-por-horas-alicante/" }
+  ]}
+>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Migas de pan">
+        <a href="/">Inicio</a>
+        <span>/</span>
+        <span>Alquiler por horas</span>
+      </nav>
+
+      <span class="eyebrow">— Alquiler por horas en Alicante</span>
+      <h1>Alquiler de furgonetas por horas en Alicante</h1>
+      <p class="hero-subtitle">Paga solo las horas que necesitas. Sin conductor, con carnet B y seguro incluido.</p>
+
+      <div class="hero-features">
+        <div class="feature">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <span>Desde 4 horas</span>
+        </div>
+        <div class="feature">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <span>Seguro incluido</span>
+        </div>
+        <div class="feature">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <span>Carnet B</span>
+        </div>
+      </div>
+
+      <a href="#contacto" class="btn btn-lg">Pedir precio por horas</a>
+    </div>
+  </section>
+
+  <!-- Intro -->
+  <section class="intro">
+    <div class="container">
+      <h2>¿Cuánto cuesta alquilar una furgoneta por horas?</h2>
+      <p>
+        Cuando solo necesitas mover unas cajas, recoger un electrodoméstico o hacer un recado puntual, pagar una
+        jornada completa no tiene sentido. Con nuestro <strong>alquiler de furgonetas por horas en Alicante</strong>
+        pagas únicamente el tiempo que usas el vehículo, con el mínimo desde 4 horas.
+      </p>
+      <p>
+        El precio depende del tamaño de la furgoneta y de las horas contratadas. Tenemos desde la
+        <a href="/furgoneta-pequeña-alicante">furgoneta pequeña de 3-4m³</a>, perfecta para el centro y parkings,
+        hasta la <a href="/furgoneta-extra-grande-alicante">extra grande de 12-15m³</a> para volumen.
+        Cuéntanos qué necesitas y te pasamos un precio cerrado en menos de 1 hora, sin compromiso.
+      </p>
+    </div>
+  </section>
+
+  <!-- Cómo funciona -->
+  <section class="how">
+    <div class="container">
+      <h2>Cómo funciona el alquiler por horas</h2>
+      <p class="section-subtitle">Reservar tu furgoneta en Alicante es cuestión de minutos</p>
+
+      <div class="steps-grid">
+        {steps.map((step, i) => (
+          <div class="step-card">
+            <span class="step-number">{i + 1}</span>
+            <h3>{step.title}</h3>
+            <p>{step.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Para qué sirve -->
+  <section class="use-cases">
+    <div class="container">
+      <h2>¿Para qué te sirve alquilar por horas?</h2>
+      <p class="section-subtitle">Los usos más habituales de nuestros clientes en Alicante</p>
+
+      <div class="use-grid">
+        {useCases.map((use) => (
+          <div class="use-card">
+            <div class="use-icon" aria-hidden="true">{use.icon}</div>
+            <h3>{use.title}</h3>
+            <p>{use.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Vehículos -->
+  <section class="vehicles">
+    <div class="container">
+      <h2>Elige la furgoneta para tus horas</h2>
+      <p class="section-subtitle">Todas se conducen con el carnet B y llevan seguro incluido</p>
+
+      <div class="vehicles-grid">
+        {vehicles.map((vehicle) => (
+          <VehicleCard {...vehicle} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Tarifas -->
+  <section class="rates">
+    <div class="container">
+      <div class="rates-box">
+        <h2>Tarifas por horas: claras y sin sorpresas</h2>
+        <ul class="rates-list">
+          <li>Alquiler por horas <strong>desde 4 horas</strong>.</li>
+          <li>El precio depende del <strong>tipo de furgoneta</strong> y las horas contratadas.</li>
+          <li><strong>Seguro a todo riesgo incluido</strong> y asistencia en carretera 24h.</li>
+          <li>Sin conductor: se conduce con el <strong>carnet B</strong>.</li>
+          <li>Recogida y devolución coordinadas en Alicante según tu horario.</li>
+        </ul>
+        <p class="rates-note">
+          ¿Necesitas una cifra exacta? Dinos el día y las horas y te enviamos tu presupuesto personalizado en menos de 1 hora.
+        </p>
+        <a href="#contacto" class="btn btn-lg">Pedir presupuesto</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Zonas -->
+  <section class="areas">
+    <div class="container">
+      <h2>¿Dónde damos el servicio de alquiler por horas?</h2>
+      <p>
+        Damos servicio de alquiler de furgonetas por horas en <strong>Alicante capital</strong> y su área
+        metropolitana: San Vicente del Raspeig, San Juan de Alicante, El Campello, Sant Joan y las principales
+        zonas de la provincia. Si tienes dudas sobre tu zona, pregúntanos y te lo confirmamos al momento.
+      </p>
+      <p>
+        ¿Buscas una guía por barrios? Consulta nuestra
+        <a href="/blog/mudanzas-alicante-guia-barrios/">guía de mudanzas en Alicante por barrios</a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq">
+    <div class="container">
+      <h2>Preguntas frecuentes sobre el alquiler por horas</h2>
+      <FAQ questions={faqs} />
+    </div>
+  </section>
+
+  <ContactForm />
+
+</Layout>
+
+<style>
+  .hero {
+    background: var(--color-dark-bg);
+    color: var(--color-dark-fg);
+    padding: 4rem 0 6rem;
+    text-align: center;
+    clip-path: ellipse(120% 100% at 50% 100%);
+  }
+
+  .breadcrumb {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--color-dark-fg-muted);
+    margin-bottom: 1.5rem;
+  }
+
+  .breadcrumb a {
+    color: var(--color-dark-fg-muted);
+  }
+
+  .hero h1 {
+    color: var(--color-dark-fg);
+    margin-bottom: 1rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+    color: var(--color-dark-fg-muted);
+  }
+
+  .hero-features {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .feature {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-dark-fg);
+  }
+
+  .feature svg {
+    color: var(--color-primary);
+  }
+
+  .btn-lg {
+    padding: 16px 32px;
+    font-size: 1.1rem;
+  }
+
+  .intro,
+  .vehicles,
+  .areas {
+    padding: var(--section-py-compact) 0;
+    background: var(--color-bg-white);
+  }
+
+  .intro p,
+  .areas p {
+    max-width: 780px;
+    margin: 0 auto 1rem;
+    color: var(--color-fg);
+    line-height: var(--leading-body);
+  }
+
+  .intro h2,
+  .areas h2 {
+    text-align: center;
+  }
+
+  .how,
+  .use-cases,
+  .faq {
+    padding: var(--section-py-compact) 0;
+    background: var(--color-warm-bg);
+  }
+
+  .how h2,
+  .use-cases h2,
+  .vehicles h2,
+  .faq h2 {
+    text-align: center;
+    margin-top: 0;
+  }
+
+  .section-subtitle {
+    text-align: center;
+    color: var(--color-fg-muted);
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+  }
+
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .step-card {
+    background: var(--color-bg-white);
+    border-radius: var(--radius-2xl);
+    padding: 1.75rem;
+    box-shadow: var(--shadow-card);
+  }
+
+  .step-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-full);
+    background: var(--color-primary);
+    color: var(--color-primary-fg);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .step-card h3 {
+    font-size: 1.15rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .step-card p {
+    color: var(--color-fg-muted);
+    margin: 0;
+  }
+
+  .use-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .use-card {
+    background: var(--color-bg-white);
+    border-radius: var(--radius-2xl);
+    padding: 1.75rem;
+    text-align: center;
+    box-shadow: var(--shadow-card);
+  }
+
+  .use-icon {
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .use-card h3 {
+    font-size: 1.15rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .use-card p {
+    color: var(--color-fg-muted);
+    margin: 0;
+  }
+
+  .vehicles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .rates {
+    padding: var(--section-py-compact) 0;
+    background: var(--color-bg-white);
+  }
+
+  .rates-box {
+    max-width: 720px;
+    margin: 0 auto;
+    background: var(--color-warm-bg);
+    border-radius: var(--radius-3xl);
+    padding: 2.5rem;
+    text-align: center;
+  }
+
+  .rates-box h2 {
+    margin-top: 0;
+  }
+
+  .rates-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto 1.5rem;
+    max-width: 560px;
+    text-align: left;
+  }
+
+  .rates-list li {
+    padding: 0.6rem 0 0.6rem 1.75rem;
+    position: relative;
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-fg);
+  }
+
+  .rates-list li:last-child {
+    border-bottom: none;
+  }
+
+  .rates-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--color-primary);
+    font-weight: 700;
+  }
+
+  .rates-note {
+    color: var(--color-fg-muted);
+    margin-bottom: 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      padding: 3rem 0 4.5rem;
+    }
+
+    .hero-features {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .rates-box {
+      padding: 1.75rem;
+    }
+  }
+</style>
