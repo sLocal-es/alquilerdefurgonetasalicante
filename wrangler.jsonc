@@ -9,6 +9,7 @@
 		"binding": "ASSETS",
 		"not_found_handling": "404-page"
 	},
+	"preview_urls": true,
 	"observability": {
 		"enabled": true
 	}
