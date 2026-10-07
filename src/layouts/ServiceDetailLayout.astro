@@ -135,7 +135,7 @@ const {
   <!-- Specs -->
   <section class="specs">
     <div class="container">
-      <h2>Especificaciones técnicas</h2>
+      <h2>Especificaciones técnicas de la {breadcrumbLabel.toLowerCase()}</h2>
 
       <div class="specs-grid">
         <div class="spec-card">
@@ -191,7 +191,7 @@ const {
       </div>
 
       <div class="dimensions">
-        <h3>Dimensiones</h3>
+        <h3>Dimensiones de la {breadcrumbLabel.toLowerCase()}</h3>
         <div class="dimensions-grid">
           <div class="dimension">
             <span class="dim-label">Exterior</span>
@@ -231,7 +231,7 @@ const {
   <!-- Includes -->
   <section class="includes">
     <div class="container">
-      <h2>¿Qué incluye el alquiler?</h2>
+      <h2>¿Qué incluye el alquiler de la {breadcrumbLabel.toLowerCase()}?</h2>
       <div class="includes-grid">
         {includes.map((item) => (
           <div class="include-item">
@@ -249,7 +249,7 @@ const {
   <!-- Related Vehicles -->
   <section class="related">
     <div class="container">
-      <h2>También te puede interesar</h2>
+      <h2>Otras furgonetas de alquiler en Alicante</h2>
       <div class="related-grid">
         {related.map((item) => (
           <a href={`/${item.slug}/`} class="related-card">
@@ -266,7 +266,7 @@ const {
   <!-- FAQ -->
   <section class="faq">
     <div class="container">
-      <h2>Preguntas frecuentes</h2>
+      <h2>Preguntas frecuentes sobre la {breadcrumbLabel.toLowerCase()}</h2>
       <FAQ vehicleType={vehicleType} />
     </div>
   </section>
