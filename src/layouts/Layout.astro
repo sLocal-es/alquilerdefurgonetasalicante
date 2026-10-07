@@ -136,6 +136,14 @@ const ogImageUrl = ogImagePath.startsWith("http") ? ogImagePath : `${siteUrl}${o
     </noscript>
     
     <title>{title}</title>
+
+    <!-- Cloudflare Web Analytics (token público, sin cookies) -->
+    <script
+      is:inline
+      type="module"
+      src="https://static.cloudflareinsights.com/beacon.min.js"
+      data-cf-beacon='{"token": "018d814aac234624a12a3ae7137090d7"}'
+    ></script>
   </head>
   <body>
     <slot />
