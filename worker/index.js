@@ -93,19 +93,6 @@ Fecha:  ${new Date().toLocaleString("es-ES", { timeZone: "Europe/Madrid" })}
       }
     }
 
-    const response = await env.ASSETS.fetch(request);
-
-    // Los assets de Astro llevan hash en el nombre: cache inmutable de 1 año.
-    if (url.pathname.startsWith("/_astro/")) {
-      const headers = new Headers(response.headers);
-      headers.set("Cache-Control", "public, max-age=31536000, immutable");
-      return new Response(response.body, {
-        status: response.status,
-        statusText: response.statusText,
-        headers,
-      });
-    }
-
-    return response;
+    return env.ASSETS.fetch(request);
   },
 };
