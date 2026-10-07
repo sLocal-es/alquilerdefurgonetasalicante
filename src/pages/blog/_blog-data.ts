@@ -2,28 +2,98 @@ export const blogArticles = [
   {
     slug: 'mudanzas-alicante-guia-barrios',
     title: 'Guía de mudanzas en Alicante por barrios',
-    excerpt: 'Descubre qué furgoneta necesitas según el barrio de Alicante donde te mudes.',
+    excerpt: 'Qué furgoneta necesitas según tu barrio de Alicante, los permisos municipales que casi nadie conoce y trucos para cargar y aparcar sin sustos.',
     category: 'mudanzas',
     date: '2026-07-20',
-    content: `<p>Alicante tiene barrios muy diversos, y cada uno presenta desafíos distintos a la hora de hacer una mudanza. Desde las calles estrechas del casco antiguo hasta las amplias avenidas de Playa San Juan, elegir la furgoneta correcta según tu zona puede ahorrarte horas de estrés.</p>
+    content: `<p>Alicante no es una ciudad homogénea: un piso en el Casco Antiguo no se muda igual que un chalet en el Cabo de las Huertas. Calles estrechas, zonas peatonales, cuestas y urbanizaciones con normas propias cambian por completo la logística. Esta guía te ayuda a elegir la furgoneta adecuada, a planificar tu mudanza barrio por barrio y a evitar los trámites municipales que casi nadie te cuenta.</p>
 
-<h2>Centro y Casco Antiguo</h2>
-<p>El centro de Alicante es la zona más compleja para mudanzas. Calles estrechas, muchas peatonales, zonas de carga y descarga limitadas y parkings con altura restringida. <strong>Nuestra recomendación: furgoneta pequeña (3-4m³)</strong>. Con 4.40m de largo, es la única que maniobra con soltura por calles como Castaños, San Francisco o el Barrio. Consejo: coordina la recogida a primera hora (8:00) cuando hay menos tráfico y las zonas de carga están libres.</p>
+<h2>Lo primero: qué furgoneta necesitas</h2>
+<p>Antes de mirar el barrio, mira el volumen. Como regla rápida:</p>
+<ul>
+<li><strong>Furgoneta pequeña (3-4 m³ · 35 €/día)</strong>: estudios, habitaciones sueltas, traslados puntuales.</li>
+<li><strong>Furgoneta mediana (6-7 m³ · 45 €/día)</strong>: pisos de 2-3 habitaciones. La más pedida.</li>
+<li><strong>Furgoneta grande (8-10 m³ · 55 €/día)</strong>: pisos grandes (3-4 habitaciones), cargas voluminosas.</li>
+<li><strong>Furgoneta extra grande (12-15 m³ · 65 €/día)</strong>: chalets, trasteros completos, uso profesional.</li>
+</ul>
+<p>Todas se conducen con <strong>carnet B</strong>: son vehículos de menos de 3.500 kg, así que no necesitas ningún permiso especial. Si tienes dudas de medidas o capacidad, mira las fichas de <a href="/furgoneta-pequeña-alicante/">furgoneta pequeña</a>, <a href="/furgoneta-mediana-alicante/">mediana</a>, <a href="/furgoneta-grande-alicante/">grande</a> y <a href="/furgoneta-extra-grande-alicante/">extra grande</a>.</p>
 
-<h2>Benalúa y Ensanche</h2>
-<p>Barrios con avenidas anchas y edificios de 4-6 plantas. La mayoría de portales tienen zona de carga cerca y los parkings suelen tener altura estándar. <strong>Recomendación: furgoneta mediana (6-7m³)</strong>. Perfecta para pisos de 2-3 habitaciones típicos de la zona. El interior de 2.60m permite cargar sofás, neveras y muebles sin problema.</p>
+<h2>Los barrios de Alicante, uno a uno</h2>
 
-<h2>Playa San Juan y Cabo Huertas</h2>
-<p>Urbanizaciones con accesos amplios, garajes comunitarios y zonas de carga generosas. Muchas son segundas residencias, así que las mudanzas suelen ser de menor volumen pero con muebles de terraza y enseres playeros. <strong>Recomendación: furgoneta mediana o grande según el volumen</strong>. Si es primera residencia con muebles completos, la grande (8-10m³) te ahorra viajes.</p>
+<h3>Casco Antiguo y Santa Cruz</h3>
+<p>Es la zona más complicada de la ciudad: calles peatonales, escalonadas y muy estrechas, donde un vehículo grande directamente no entra. Además, el Casco Antiguo es el <strong>Anillo I de la Zona de Bajas Emisiones (ZBE)</strong> y tiene <strong>acceso restringido</strong> a residentes y vehículos autorizados. <strong>Recomendación: furgoneta pequeña</strong>, y cuenta con llevar los muebles a mano desde el punto más cercano. Abajo te explico cómo gestionar el acceso.</p>
 
-<h2>San Blas y Polígonos</h2>
-<p>Zona industrial y residencial con calles anchas y fácil acceso desde la A-70. Mucho traslado de mercancía y mudanzas de nave a nave. <strong>Recomendación: furgoneta grande o extra grande</strong>. Si manejas mercancía pesada o palés, la extra grande con 1.300 kg de carga útil es tu opción.</p>
+<h3>Centro y Ensanche</h3>
+<p>Avenidas amplias (Maisonnave, Alfonso X el Sabio) pero con mucho tráfico y con trámites de estacionamiento. La mayoría de portales tienen carga y descarga cerca, aunque caer en hora punta es una trampa. <strong>Recomendación: furgoneta mediana</strong> para pisos de 2-3 habitaciones. <strong>Consejo:</strong> evita la primera hora de la mañana y la primera de la tarde.</p>
 
-<h2>Zona norte: Virgen del Remedio, Juan XXIII</h2>
-<p>Barrios con cuestas y calles con pendiente pronunciada. Atención al aparcar en pendiente durante la carga. <strong>Recomendación: furgoneta pequeña o mediana</strong>. Evita la extra grande en estas zonas salvo que la calle sea llana y tenga espacio de sobra.</p>
+<h3>Benalúa y Carolinas</h3>
+<p>Barrios residenciales con calles de ancho medio y edificios de varias plantas. En Carolinas y la zona norte hay cuestas suaves y bastante coche aparcado, así que reserva hueco o madruga. <strong>Recomendación: mediana</strong>; si el piso es grande, la <a href="/furgoneta-grande-alicante/">grande</a>.</p>
+
+<h3>Babel, La Florida y San Blas</h3>
+<p>Zona residencial e industrial con calles amplias y acceso cómodo desde la A-70 y la V-31. Aquí maniobrar con un vehículo grande no es problema. <strong>Recomendación: grande o extra grande</strong>, sobre todo si mueves mercancía, palés o un trastero completo.</p>
+
+<h3>Playa de San Juan y PAU 5</h3>
+<p>La zona más agradecida para una mudanza: avenidas anchas, garajes comunitarios y ascensores modernos. Ojo con una cosa: muchas comunidades tienen <strong>normas internas</strong> (horarios permitidos, reserva de ascensor, protección de zonas comunes). Avisa a la comunidad antes. <strong>Recomendación: mediana o grande</strong> según el volumen.</p>
+
+<h3>Cabo de las Huertas</h3>
+<p>Viviendas amplias y de alto valor, con accesos correctos pero volúmenes grandes de mobiliario. Aquí importa más proteger bien los muebles que el tamaño del vehículo. <strong>Recomendación: grande o extra grande</strong>, con especial cuidado en el embalaje.</p>
+
+<h3>Zona norte: Virgen del Remedio, Juan XXIII, Garbinet</h3>
+<p>Calles con pendiente y tráfico denso. Ojo al cargar en cuesta: calza las ruedas y reparte bien el peso. <strong>Recomendación: pequeña o mediana</strong>; evita la extra grande salvo que la calle sea llana y amplia.</p>
+
+<h2>Aparcar y cargar: la parte que casi nadie te cuenta</h2>
+<p>Aquí está la mayor parte de los disgustos. En Alicante, <strong>ocupar la vía pública para una mudanza requiere autorización municipal</strong>. Según el Ayuntamiento de Alicante, los plazos para pedirla son:</p>
+<ul>
+<li><strong>5 días hábiles</strong> si ocupas una zona de estacionamiento, ORA o carga y descarga.</li>
+<li><strong>10 días hábiles</strong> si afectas una zona peatonal.</li>
+</ul>
+<p>Las señales de "prohibido estacionar" se colocan <strong>48 horas antes</strong> y una ocupación por mudanza no puede superar las <strong>48 horas</strong>. El trámite se pide online, con certificado digital o Cl@ve. Y el día de la mudanza:</p>
+<ul>
+<li>En las <strong>plazas de carga y descarga</strong>, el tiempo máximo es de <strong>30 minutos</strong>. Se saca un <strong>tique gratuito</strong> en el parquímetro y solo pueden usarlas vehículos de mercancías, comerciales, de mudanzas y similares.</li>
+<li>Las mercancías <strong>no se dejan en el suelo</strong>: se trasladan directamente del inmueble al vehículo y viceversa.</li>
+<li>En <strong>zonas peatonales</strong>, los vehículos de mercancías autorizados son de categoría <strong>N1, hasta 3.500 kg</strong> — justo el tipo de furgoneta que alquilamos.</li>
+</ul>
+
+<h2>Casco Antiguo: cómo hacerlo sin sustos</h2>
+<p>El Casco Antiguo está en una <strong>zona de acceso restringido</strong> para residentes y vehículos autorizados. Si no eres residente, puedes solicitar un <strong>acceso puntual</strong> para cargar y descargar, pero conviene gestionarlo con antelación. El resto de la ciudad —el Anillo II (Centro Tradicional) y el Anillo III (Gran Vía)— <strong>no tiene restricciones de acceso</strong> en la fase actual de la ZBE. <strong>Plan realista:</strong> furgo pequeña, aparcar lo más cerca que te dejen y hacer el último tramo a mano o con ayuda.</p>
+
+<h2>Checklist del día de la mudanza</h2>
+<ul>
+<li>Reserva la furgoneta con margen (y el permiso municipal, si lo necesitas).</li>
+<li>Avisa a la comunidad y reserva el ascensor si lo vas a usar.</li>
+<li>Mide sofá, nevera y armarios antes de cerrarlos: que pasen por puertas y escaleras.</li>
+<li>Etiqueta las cajas por estancias y marca las frágiles.</li>
+<li>Lleva material: mantas, cinta, cuerdas y guantes.</li>
+<li>Comprueba neumáticos y combustible antes de salir.</li>
+</ul>
+
+<h2>Cómo cargar la furgoneta sin romper nada</h2>
+<ul>
+<li><strong>Peso abajo, ligero arriba</strong>: lo más pesado pegado al suelo y bien repartido.</li>
+<li><strong>Nada suelto</strong>: todo amarrado o encajado, para que no golpee en una frenada.</li>
+<li><strong>Protege lo frágil</strong>: entre mantas y cajas, nunca pegado a la chapa.</li>
+<li>Deja hueco al fondo para lo que descargues primero.</li>
+</ul>
+
+<h2>Errores comunes</h2>
+<ul>
+<li>Subestimar el número de viajes: mide el volumen, no improvises.</li>
+<li>No reservar hueco para la furgoneta y perder media mañana aparcando.</li>
+<li>Mudarse durante las <strong>Hogueras de San Juan (20-24 de junio)</strong>: el centro se corta y la movilidad es casi nula.</li>
+<li>Ignorar la humedad del litoral: si guardas cosas, usa materiales transpirables.</li>
+</ul>
+
+<h2>Preguntas frecuentes</h2>
+<h3>¿Necesito permiso del Ayuntamiento para una mudanza?</h3>
+<p>Solo si vas a ocupar la vía pública (reservar aparcamiento, cortar un carril o usar una zona peatonal). Si aparcas en un sitio normal y no reservas espacio, no hace falta. Para reservar, la antelación es de 5 días hábiles (zona de aparcamiento) o 10 (peatonal).</p>
+<h3>¿Cuánto tiempo puedo estar en una plaza de carga y descarga?</h3>
+<p>Máximo <strong>30 minutos</strong>, con el tique gratuito del parquímetro.</p>
+<h3>¿Puedo meter una furgoneta grande en el centro?</h3>
+<p>En el Casco Antiguo, no: usa la pequeña. En el resto del centro y el Ensanche, una mediana o grande circula sin problema, aunque aparcar puede costar.</p>
+<h3>¿Qué furgoneta necesito para una mudanza?</h3>
+<p>Estudio o habitación: pequeña. Piso de 2-3 habitaciones: mediana. Piso grande o trastero: grande. Chalet: extra grande. Si dudas, <a href="/blog/alquiler-furgonetas-alicante-guia-completa/">aquí tienes la guía completa de alquiler</a>.</p>
 
 <h2>Consejo final</h2>
-<p>Independientemente del barrio, todos nuestros alquileres incluyen seguro a todo riesgo, asistencia 24h en toda la provincia y 200 km diarios. Si tienes dudas sobre qué furgoneta elegir para tu zona, consúltanos sin compromiso. Conocemos cada rincón de Alicante y te asesoramos.</p>`,
+<p>Elige barrio, mide el volumen y reserva hueco: con esas tres cosas, una mudanza en Alicante deja de ser un problema. Todos nuestros alquileres incluyen seguro a todo riesgo, asistencia 24h y 200 km diarios, con opción de <a href="/alquiler-furgonetas-por-horas-alicante/">alquiler por horas</a> para traslados cortos. Si no sabes qué furgoneta encaja con tu zona, pregúntanos: conocemos cada rincón de Alicante.</p>`,
   },
   {
     slug: 'alquiler-furgonetas-alicante-guia-completa',
