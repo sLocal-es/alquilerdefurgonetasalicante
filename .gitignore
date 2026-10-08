@@ -28,3 +28,6 @@ pnpm-debug.log*
 
 # Windows artifacts
 *.Zone.Identifier
+
+# Indice de skills que genera la herramienta de agentes
+.atl/
