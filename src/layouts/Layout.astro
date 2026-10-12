@@ -117,11 +117,13 @@ const ogImageUrl = ogImagePath.startsWith("http") ? ogImagePath : `${siteUrl}${o
       <script type="application/ld+json" set:html={JSON.stringify({
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
+        // Google requires an absolute URL in itemListElement.item, so relative
+        // breadcrumb URLs are resolved against siteUrl before emitting.
         "itemListElement": breadcrumb.map((b, i) => ({
           "@type": "ListItem",
           "position": i + 1,
           "name": b.name,
-          "item": b.url,
+          "item": b.url.startsWith("http") ? b.url : `${siteUrl}${b.url}`,
         })),
       })} />
     )}
