@@ -37,7 +37,7 @@ const ogImageUrl = ogImagePath.startsWith("http") ? ogImagePath : `${siteUrl}${o
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
-    <meta name="keywords" content="alquiler furgonetas Alicante, alquiler furgonetas, furgonetas alicante, alquiler coche, mudanzas alicante, renting furgonetas, alquiler camiones alicante" />
+    <meta name="keywords" content="alquiler furgonetas Alicante, alquiler furgonetas, furgonetas alicante, mudanzas alicante, renting furgonetas, alquiler por horas alicante" />
     <meta name="robots" content={noindex ? "noindex, follow" : "index, follow, max-snippet:-1, max-image-preview:large"} />
     <meta name="generator" content={Astro.generator} />
     
@@ -77,17 +77,23 @@ const ogImageUrl = ogImagePath.startsWith("http") ? ogImagePath : `${siteUrl}${o
       "telephone": "+34 645 81 89 44",
       "email": "alquilerfurgonetasalicante@proton.me",
       "priceRange": "€€",
-      "image": `${siteUrl}/favicon.svg`,
+      "image": `${siteUrl}/images/furgonetas/grande-hero.webp`,
+      "logo": `${siteUrl}/favicon.svg`,
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Alicante",
         "addressRegion": "Comunidad Valenciana",
         "addressCountry": "ES"
       },
-      "areaServed": {
-        "@type": "City",
-        "name": "Alicante"
-      }
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 38.3452,
+        "longitude": -0.4810
+      },
+      "areaServed": [
+        { "@type": "City", "name": "Alicante" },
+        { "@type": "AdministrativeArea", "name": "Provincia de Alicante" }
+      ]
     })} />
     
     <!-- Structured Data - Product -->
