@@ -56,6 +56,11 @@ const {
   description={metaDescription}
   ogImage={image}
   product={product}
+  breadcrumb={[
+    { name: 'Inicio', url: 'https://alquilerdefurgonetasalicante.es' },
+    { name: 'Furgonetas', url: 'https://alquilerdefurgonetasalicante.es/#flota' },
+    { name: breadcrumbLabel, url: `https://alquilerdefurgonetasalicante.es${Astro.url.pathname}` },
+  ]}
 >
 
   <!-- Hero -->
