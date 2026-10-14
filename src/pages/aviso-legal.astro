@@ -1,0 +1,83 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const siteUrl = "https://alquilerdefurgonetasalicante.es";
+---
+
+<Layout
+  title="Aviso legal | Alquiler Furgonetas Alicante"
+  description="Aviso legal e información sobre el titular de alquilerdefurgonetasalicante.es."
+  canonical={`${siteUrl}/aviso-legal/`}
+  breadcrumb={[
+    { name: 'Inicio', url: siteUrl },
+    { name: 'Aviso legal', url: `${siteUrl}/aviso-legal/` },
+  ]}
+>
+  <section class="legal">
+    <div class="container">
+      <nav class="breadcrumb">
+        <a href="/">Inicio</a>
+        <span>/</span>
+        <span>Aviso legal</span>
+      </nav>
+      <h1>Aviso legal</h1>
+
+      <article class="legal-content">
+        <p>
+          Este sitio web, <strong>alquilerdefurgonetasalicante.es</strong>, pertenece a
+          <strong>Alquiler Furgonetas Alicante</strong>, proyecto dedicado a intermediación de
+          solicitudes de alquiler de vehículos sin conductor.
+        </p>
+
+        <h2>Datos del titular</h2>
+        <ul>
+          <li><strong>Denominación:</strong> Alquiler Furgonetas Alicante (en constitución/obtención del alta final; se actualiza a medida que se formalice la actividad).</li>
+          <li><strong>Email de contacto:</strong> <a href="mailto:alquilerfurgonetasalicante@proton.me">alquilerfurgonetasalicante@proton.me</a></li>
+          <li><strong>Teléfono:</strong> <a href="tel:+34645818944">645 81 89 44</a></li>
+          <li><strong>Ámbito:</strong> provincia de Alicante (España).</li>
+        </ul>
+
+        <h2>Uso del sitio web</h2>
+        <p>
+          Los contenidos de este sitio tienen finalidad informativa y comercial. El usuario se compromete a
+          hacer un uso lícito del mismo. El titular se reserva el derecho de modificar contenidos y condiciones
+          sin previo aviso.
+        </p>
+
+        <h2>Propiedad intelectual</h2>
+        <p>
+          Textos, diseños, logotipos y elementos gráficos pertenecen a su titular o están usados con licencia.
+          Queda prohibida su reproducción total o parcial sin autorización previa.
+        </p>
+
+        <h2>Responsabilidad y descargo</h2>
+        <p>
+          La información ofertada (precios, disponibilidad, especificaciones) es orientativa y se confirma
+          siempre por escrito en el presupuesto de reserva. El titular no se responsabiliza de los daños derivados
+          del uso incorrecto de la información o del uso del sitio por parte del usuario.
+        </p>
+
+        <h2>Legislación aplicable</h2>
+        <p>
+          Las relaciones legales derivadas del uso de este sitio se rigen por la legislación española, con
+          sometimiento a los juzgados y tribunales de Alicante.
+        </p>
+      </article>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .legal { padding: var(--section-py-compact) 0; background: var(--color-bg-white); }
+  .legal .breadcrumb { font-size: 0.9rem; margin-bottom: 1.5rem; color: var(--color-fg-muted); }
+  .legal .breadcrumb a { color: var(--color-fg-muted); }
+  .legal .breadcrumb span { margin: 0 0.5rem; }
+  .legal h1 { margin-top: 0; margin-bottom: 1rem; }
+  .legal-content { max-width: 800px; line-height: var(--leading-body); }
+  .legal-content section { margin-top: 1.5rem; }
+  .legal-content h2 { margin: 2rem 0 0.75rem; font-size: 1.25rem; }
+  .legal-content p { color: var(--color-fg); margin-bottom: 1rem; }
+  .legal-content ul { padding-left: 1.25rem; margin-bottom: 1rem; }
+  .legal-content li { margin-bottom: 0.5rem; }
+  @media (max-width: 768px) { .legal { padding: 2rem 0; } }
+</style>

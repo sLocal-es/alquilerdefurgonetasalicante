@@ -1,0 +1,78 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const siteUrl = "https://alquilerdefurgonetasalicante.es";
+---
+
+<Layout
+  title="Política de cookies | Alquiler Furgonetas Alicante"
+  description="Información sobre cookies y tecnologías similares usadas en alquilerdefurgonetasalicante.es."
+  canonical={`${siteUrl}/politica-de-cookies/`}
+  breadcrumb={[
+    { name: 'Inicio', url: siteUrl },
+    { name: 'Política de cookies', url: `${siteUrl}/politica-de-cookies/` },
+  ]}
+>
+  <section class="legal">
+    <div class="container">
+      <nav class="breadcrumb">
+        <a href="/">Inicio</a>
+        <span>/</span>
+        <span>Política de cookies</span>
+      </nav>
+      <h1>Política de cookies</h1>
+
+      <article class="legal-content">
+        <p>
+          Las cookies son pequeños archivos que se guardan en tu dispositivo. En esta web distinguimos entre
+          cookies propias y de terceros y su finalidad.
+        </p>
+
+        <h2>Nuestras cookies</h2>
+        <p>
+          Este sitio es estático y actualmente no usa cookies propias de analítica persistente, de personalización
+          ni de marketing.
+        </p>
+
+        <h2>Servicios de terceros</h2>
+        <ul>
+          <li><strong>Cloudflare Web Analytics:</strong> usamos su beacon para contar visitas y medir rendimiento de forma agregada, sin cookies de seguimiento y sin recoger datos personales identificables de forma directa.</li>
+          <li><strong>Google Fonts:</strong> para servir tipografías se realiza una petición a los servidores de Google; ello puede exponer tu dirección IP a ese proveedor.</li>
+        </ul>
+
+        <h2>Formularios</h2>
+        <p>
+          Cuando envías el formulario, los datos viajan a nuestro endpoint y se procesan con un encargado del
+          tratamiento (Resend). Ese proceso no instala cookies en tu navegador.
+        </p>
+
+        <h2>Gestión y bloqueo</h2>
+        <p>
+          Puedes bloquear las cookies desde la configuración del navegador. Algunas funciones del sitio pueden
+          dejar de funcionar correctamente si bloqueas por completo las peticiones a los servicios indicados. No
+          es necesario un banner de consentimiento para ninguna cookie propia en este momento.
+        </p>
+
+        <h2>Actualizaciones</h2>
+        <p>
+          Si en el futuro incorporamos cookies de personalización, marketing o analítica persistente, actualizaremos
+          esta política y, si es necesario, instalaremos un mecanismo de consentimiento previo.
+        </p>
+      </article>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .legal { padding: var(--section-py-compact) 0; background: var(--color-bg-white); }
+  .legal .breadcrumb { font-size: 0.9rem; margin-bottom: 1.5rem; color: var(--color-fg-muted); }
+  .legal .breadcrumb a { color: var(--color-fg-muted); }
+  .legal .breadcrumb span { margin: 0 0.5rem; }
+  .legal h1 { margin-top: 0; margin-bottom: 1rem; }
+  .legal-content { max-width: 800px; line-height: var(--leading-body); }
+  .legal-content h2 { margin: 2rem 0 0.75rem; font-size: 1.25rem; }
+  .legal-content p { color: var(--color-fg); margin-bottom: 1rem; }
+  .legal-content ul { padding-left: 1.25rem; margin-bottom: 1rem; }
+  .legal-content li { margin-bottom: 0.5rem; }
+  @media (max-width: 768px) { .legal { padding: 2rem 0; } }
+</style>

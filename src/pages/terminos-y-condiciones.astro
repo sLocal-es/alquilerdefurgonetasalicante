@@ -1,0 +1,80 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const siteUrl = "https://alquilerdefurgonetasalicante.es";
+---
+
+<Layout
+  title="Términos y condiciones | Alquiler Furgonetas Alicante"
+  description="Términos y condiciones de los presupuestos y gestiones de alquiler ofrecidos por alquilerdefurgonetasalicante.es."
+  canonical={`${siteUrl}/terminos-y-condiciones/`}
+  breadcrumb={[
+    { name: 'Inicio', url: siteUrl },
+    { name: 'Términos y condiciones', url: `${siteUrl}/terminos-y-condiciones/` },
+  ]}
+>
+  <section class="legal">
+    <div class="container">
+      <nav class="breadcrumb">
+        <a href="/">Inicio</a>
+        <span>/</span>
+        <span>Términos y condiciones</span>
+      </nav>
+      <h1>Términos y condiciones</h1>
+
+      <article class="legal-content">
+        <p>
+          Estas condiciones regulan el envío de solicitudes y la relación comercial posterior entre el usuario y el
+          servicio de alquiler de furgonetas promovido a través de este sitio.
+        </p>
+
+        <h2>Solicitud y presupuesto</h2>
+        <ul>
+          <li>El envío del formulario no constituye un contrato; es una solicitud de presupuesto.</li>
+          <li>El presupuesto final se confirma por escrito y su aceptación (mail o WhatsApp) cierra la reserva.</li>
+          <li>Precios, disponibilidad y especificaciones se confirman antes del alquiler; la web es orientativa.</li>
+        </ul>
+
+        <h2>Requisitos del conductor</h2>
+        <ul>
+          <li>Carnet B válido y con la antigüedad indicada por el operador.</li>
+          <li>DNI o pasaporte y tarjeta bancaria a nombre del titular.</li>
+          <li>Uso del vehículo conforme a las normas de tráfico y al contrato de alquiler.</li>
+        </ul>
+
+        <h2>Seguros, fianzas y responsabilidad</h2>
+        <p>
+          Los seguros, franquicias, depósitos y responsabilidad por daños se rigen por las condiciones del
+          operador de flota que realice la entrega. El usuario debe revisar el contrato de alquiler antes de
+          conducir.
+        </p>
+
+        <h2>Cancelaciones y modificaciones</h2>
+        <p>
+          Salvo que se pacte otra cosa por escrito, las cancelaciones y cambios deben solicitarse con la
+          antelación indicada en el presupuesto; el operador puede aplicar cargos por cancelación tardía.
+        </p>
+
+        <h2>Limitación de responsabilidad</h2>
+        <p>
+          El titular de este sitio actúa como intermediario/informador. La prestación efectiva del servicio de
+          alquiler (entrega, vehículo, seguros, carburante, daños) es responsabilidad del operador de flota.
+        </p>
+      </article>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .legal { padding: var(--section-py-compact) 0; background: var(--color-bg-white); }
+  .legal .breadcrumb { font-size: 0.9rem; margin-bottom: 1.5rem; color: var(--color-fg-muted); }
+  .legal .breadcrumb a { color: var(--color-fg-muted); }
+  .legal .breadcrumb span { margin: 0 0.5rem; }
+  .legal h1 { margin-top: 0; margin-bottom: 1rem; }
+  .legal-content { max-width: 800px; line-height: var(--leading-body); }
+  .legal-content h2 { margin: 2rem 0 0.75rem; font-size: 1.25rem; }
+  .legal-content p { color: var(--color-fg); margin-bottom: 1rem; }
+  .legal-content ul { padding-left: 1.25rem; margin-bottom: 1rem; }
+  .legal-content li { margin-bottom: 0.5rem; }
+  @media (max-width: 768px) { .legal { padding: 2rem 0; } }
+</style>
