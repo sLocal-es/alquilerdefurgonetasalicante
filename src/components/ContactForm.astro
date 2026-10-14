@@ -88,19 +88,18 @@ const { vehicleType } = Astro.props;
       <div class="form-row">
         <div class="form-group">
           <label for="name">Nombre completo *</label>
-          <input type="text" id="name" name="name" required placeholder="Tu nombre" />
+          <input type="text" id="name" name="name" required autocomplete="name" placeholder="Tu nombre" />
         </div>
         
         <div class="form-group">
           <label for="phone">Teléfono *</label>
-          <input type="tel" id="phone" name="phone" required placeholder="600 123 456" />
+          <input type="tel" id="phone" name="phone" required autocomplete="tel" inputmode="tel" pattern="[0-9+\-\s]{9,}" placeholder="600 123 456" title="Introduce un teléfono válido" />
         </div>
       </div>
       
       <div class="form-group">
         <label for="email">Email *</label>
-        <input type="email" id="email" name="email" required placeholder="tu@email.com" />
-      </div>
+        <input type="email" id="email" name="email" required autocomplete="email" placeholder="tu@email.com" />      </div>
       
       <div class="form-row">
         <div class="form-group">
@@ -125,6 +124,8 @@ const { vehicleType } = Astro.props;
         <textarea id="message" name="message" rows="3" placeholder="¿Qué necesitas transportar? ¿De dónde a dónde? Cuantos más detalles, mejor presupuesto te haremos."></textarea>
       </div>
       
+      <div id="formStatus" class="form-status" role="status" aria-live="polite"></div>
+
       <div class="form-group form-consent">
         <label class="consent-label">
           <input type="checkbox" name="consent" required />
@@ -149,10 +150,14 @@ const { vehicleType } = Astro.props;
 
       const submitBtn = form.querySelector('.btn-block');
       const formData = new FormData(form);
+      const formStatus = document.getElementById('formStatus');
 
       if (submitBtn) {
         submitBtn.disabled = true;
         submitBtn.textContent = 'Enviando...';
+      }
+      if (formStatus) {
+        formStatus.textContent = '';
       }
 
       try {
@@ -190,14 +195,20 @@ const { vehicleType } = Astro.props;
             submitBtn.disabled = false;
             submitBtn.textContent = 'Enviar solicitud';
           }
-          alert(data.error || 'Error al enviar. Intenta de nuevo o llámanos al 645 81 89 44.');
+          if (formStatus) {
+            formStatus.textContent = data.error || 'Error al enviar. Intenta de nuevo o llámanos al 645 81 89 44.';
+            formStatus.setAttribute('role', 'alert');
+          }
         }
       } catch {
         if (submitBtn) {
           submitBtn.disabled = false;
           submitBtn.textContent = 'Enviar solicitud';
         }
-        alert('Error de conexión. Intenta de nuevo o llámanos al 645 81 89 44.');
+        if (formStatus) {
+          formStatus.textContent = 'Error de conexión. Intenta de nuevo o llámanos al 645 81 89 44.';
+          formStatus.setAttribute('role', 'alert');
+        }
       }
     });
   }
@@ -363,6 +374,20 @@ const { vehicleType } = Astro.props;
 
   .form-consent {
     margin-top: 0.5rem;
+  }
+
+  .form-status {
+    margin-bottom: 1rem;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-lg);
+    color: var(--color-destructive);
+    font-family: var(--font-heading);
+    font-weight: 500;
+    min-height: 0;
+  }
+
+  .form-status:empty {
+    display: none;
   }
 
   .consent-label {

@@ -154,7 +154,10 @@ const ogImageUrl = ogImagePath.startsWith("http") ? ogImagePath : `${siteUrl}${o
     ></script>
   </head>
   <body>
-    <slot />
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+    <main id="main-content">
+      <slot />
+    </main>
 
     <!-- Footer -->
     <footer class="site-footer">
@@ -545,6 +548,30 @@ const ogImageUrl = ogImagePath.startsWith("http") ? ogImagePath : `${siteUrl}${o
     50% {
       transform: translateY(-6px);
     }
+  }
+
+  .skip-link {
+    position: absolute;
+    top: -100%;
+    left: 0;
+    padding: 0.75rem 1rem;
+    background: var(--color-primary);
+    color: var(--color-primary-fg);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    border-radius: var(--radius-md);
+    z-index: 10000;
+    transition: top var(--duration-default) var(--ease-card-hover);
+  }
+
+  .skip-link:focus {
+    top: 0.75rem;
+    left: 0.75rem;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-ring);
+    outline-offset: 2px;
   }
 
   @media (prefers-reduced-motion: reduce) {
