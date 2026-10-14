@@ -1,0 +1,103 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const siteUrl = "https://alquilerdefurgonetasalicante.es";
+---
+
+<Layout
+  title="Política de privacidad | Alquiler Furgonetas Alicante"
+  description="Cómo tratamos los datos personales recogidos en alquilerdefurgonetasalicante.es."
+  canonical={`${siteUrl}/politica-de-privacidad/`}
+  breadcrumb={[
+    { name: 'Inicio', url: siteUrl },
+    { name: 'Política de privacidad', url: `${siteUrl}/politica-de-privacidad/` },
+  ]}
+>
+  <section class="legal">
+    <div class="container">
+      <nav class="breadcrumb">
+        <a href="/">Inicio</a>
+        <span>/</span>
+        <span>Política de privacidad</span>
+      </nav>
+      <h1>Política de privacidad</h1>
+
+      <article class="legal-content">
+        <p>
+          Esta política describe cómo y por qué tratamos los datos personales aportados en el sitio web
+          <strong>alquilerdefurgonetasalicante.es</strong>.
+        </p>
+
+        <h2>Responsable</h2>
+        <p>
+          Alquiler Furgonetas Alicante · contacto:
+          <a href="mailto:alquilerfurgonetasalicante@proton.me">alquilerfurgonetasalicante@proton.me</a>
+          (se sustituirá por el correo propio una vez configurado el dominio).
+        </p>
+
+        <h2>Datos que recogemos</h2>
+        <ul>
+          <li>Identificativos y de contacto: nombre, teléfono, email.</li>
+          <li>Solicitud de servicio: tipo de servicio, tipo y tamaño de furgoneta, fechas, duración y mensaje.</li>
+          <li>Datos técnicos básicos: IP y metadatos del navegador para proteger el servicio y analizar incidencias.</li>
+        </ul>
+
+        <h2>Finalidad y base legal</h2>
+        <ul>
+          <li>Responder a tu solicitud y enviar un presupuesto personalizado (base: tu consentimiento al enviar el formulario).</li>
+          <li>Gestionar la reserva y la comunicación operativa (base: medidas precontractuales).</li>
+          <li>Mejorar el sitio (base: interés legítimo del responsable).</li>
+        </ul>
+
+        <h2>Encargados y destinatarios</h2>
+        <p>
+          El correo se envía mediante <strong>Resend</strong> (encargado del tratamiento). El sitio se aloja en
+          infraestructura de <strong>Cloudflare</strong>. Cloudflare Web Analytics se utiliza sin cookies para
+          analizar el tráfico. No vendemos ni cedemos tus datos a terceros con fines comerciales.
+        </p>
+
+        <h2>Conservación</h2>
+        <p>
+          Los datos de leads y consultas se conservan un máximo de 24 meses, salvo obligación legal o relación
+          contractual que exija un plazo mayor.
+        </p>
+
+        <h2>Derechos</h2>
+        <p>
+          Puedes solicitar acceso, rectificación, supresión, limitación, portabilidad y oposición enviando un
+          email a <a href="mailto:alquilerfurgonetasalicante@proton.me">alquilerfurgonetasalicante@proton.me</a>.
+          También tienes derecho a reclamar ante la Agencia Española de Protección de Datos (AEPD).
+        </p>
+
+        <h2>Transferencias internacionales</h2>
+        <p>
+          Algunos proveedores (Resend/Cloudflare) pueden tratar datos fuera del EEE. Se aplican sus respectivas
+          garantías y políticas de privacidad.
+        </p>
+
+        <h2>Menores</h2>
+        <p>
+          El sitio no está dirigido a menores de 14 años. Si detectas tratamiento de datos de un menor sin
+          consentimiento, contacta para su eliminación.
+        </p>
+
+        <h2>Actualizaciones</h2>
+        <p>Esta política puede actualizarse; la versión vigente es la publicada en esta página.</p>
+      </article>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .legal { padding: var(--section-py-compact) 0; background: var(--color-bg-white); }
+  .legal .breadcrumb { font-size: 0.9rem; margin-bottom: 1.5rem; color: var(--color-fg-muted); }
+  .legal .breadcrumb a { color: var(--color-fg-muted); }
+  .legal .breadcrumb span { margin: 0 0.5rem; }
+  .legal h1 { margin-top: 0; margin-bottom: 1rem; }
+  .legal-content { max-width: 800px; line-height: var(--leading-body); }
+  .legal-content h2 { margin: 2rem 0 0.75rem; font-size: 1.25rem; }
+  .legal-content p { color: var(--color-fg); margin-bottom: 1rem; }
+  .legal-content ul { padding-left: 1.25rem; margin-bottom: 1rem; }
+  .legal-content li { margin-bottom: 0.5rem; }
+  @media (max-width: 768px) { .legal { padding: 2rem 0; } }
+</style>

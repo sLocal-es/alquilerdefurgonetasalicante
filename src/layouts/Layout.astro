@@ -170,6 +170,12 @@ const ogImageUrl = ogImagePath.startsWith("http") ? ogImagePath : `${siteUrl}${o
             <a href="/alquiler-furgonetas-por-horas-alicante/">Alquiler por horas</a>
             <a href="/blog/">Blog</a>
             <a href="/#contacto">Contacto</a>
+          </div>
+          <div class="footer-legal">
+            <a href="/aviso-legal/">Aviso legal</a>
+            <a href="/politica-de-privacidad/">Privacidad</a>
+            <a href="/politica-de-cookies/">Cookies</a>
+            <a href="/terminos-y-condiciones/">Términos</a>
             <span class="footer-area">Área de servicio: Alicante y alrededores</span>
           </div>
         </div>
@@ -474,6 +480,25 @@ const ogImageUrl = ogImagePath.startsWith("http") ? ogImagePath : `${siteUrl}${o
     color: var(--color-dark-fg-muted);
     font-size: 0.85rem;
     opacity: 0.7;
+  }
+
+  .footer-legal {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .footer-legal a {
+    color: var(--color-dark-fg-muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color var(--duration-default) var(--ease-card-hover);
+  }
+
+  .footer-legal a:hover {
+    color: var(--color-dark-fg);
+    text-decoration: none;
   }
 
   .footer-bottom {
