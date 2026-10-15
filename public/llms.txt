@@ -43,6 +43,7 @@ Precios orientativos; pueden actualizarse en la web.
 ## Páginas principales
 
 - https://alquilerdefurgonetasalicante.es/ - Home
+- https://alquilerdefurgonetasalicante.es/alquiler-furgonetas-san-vicente/ - Alquiler en San Vicente del Raspeig (estudiantes/cambios de piso)
 - https://alquilerdefurgonetasalicante.es/alquiler-furgonetas-por-horas-alicante/ - Alquiler por horas en Alicante
 - https://alquilerdefurgonetasalicante.es/furgoneta-peque%C3%B1a-alicante/
 - https://alquilerdefurgonetasalicante.es/furgoneta-mediana-alicante/
