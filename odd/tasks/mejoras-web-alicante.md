@@ -37,6 +37,7 @@ Aplicar solo los cambios autorizados por el dueño del sitio, evitando páginas 
 - [x] T2: Ajustar naming de tarjetas en `src/components/VehicleCard.astro` cuando se use en contextos SEO, manteniendo el componente reutilizable.
 - [x] T3: Sustituir todos los enlaces `#contacto` detectados por enlace directo de WhatsApp con mensaje preconfigurado o página de contacto/reserva.
 - [x] T4: Ejecutar `npm run build` y smoke local; documentar resultado.
+- Evidence: commit `ca69a33` on branch `feat/pr1-conversion-h2-whatsapp` (`npm run build` OK, 15 páginas).
 - Acceptance: sin enlaces `#contacto` en CTA comerciales; H2 incluyen ciudad; build en verde.
 
 ### PR 2 — Archivos para rastreadores de IA
