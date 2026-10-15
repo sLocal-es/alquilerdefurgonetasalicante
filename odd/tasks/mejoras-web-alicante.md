@@ -70,6 +70,7 @@ Aplicar solo los cambios autorizados por el dueño del sitio, evitando páginas 
 - [x] T16: Crear `src/pages/furgonetas-reformas-construccion-alicante.astro` (obra/materiales): vehículos de carga, accesos a polígonos, requisitos.
 - [x] T17: Mejorar `src/pages/alquiler-furgonetas-por-horas-alicante.astro` reutilizando contenido y evitando duplicación.
 - [x] T18: Enlazar landings entre sí y desde home de forma no spammy.
+- Evidence: commit `111b8e1` on branch `feat/pr5-nano-niches` (`npm run build` OK; 18 páginas incluidas nuevas landings).
 - Acceptance: cada página aporta intención de búsqueda diferenciada; no thin content.
 
 ### PR 6 — Verificación final y limpieza
