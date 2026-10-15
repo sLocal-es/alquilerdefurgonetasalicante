@@ -42,9 +42,10 @@ Aplicar solo los cambios autorizados por el dueño del sitio, evitando páginas 
 
 ### PR 2 — Archivos para rastreadores de IA
 
-- [ ] T5: Crear `/public/llms.txt` con resumen técnico: flota, precios base vigentes, zonas de cobertura, condiciones básicas y contacto.
-- [ ] T6: Crear `/public/llms-full.txt` ampliado con preguntas frecuentes, flota detallada, políticas y URLs principales.
-- [ ] T7: Verificar que los archivos se sirven en raíz y no rompen headers/robots.
+- [x] T5: Crear `/public/llms.txt` con resumen técnico: flota, precios base vigentes, zonas de cobertura, condiciones básicas y contacto.
+- [x] T6: Crear `/public/llms-full.txt` ampliado con preguntas frecuentes, flota detallada, políticas y URLs principales.
+- [x] T7: Verificar que los archivos se sirven en raíz y no rompen headers/robots.
+- Evidence: commit `068f16e` on branch `feat/pr2-llms-txt` (`npm run build` OK; `/llms.txt` y `/llms-full.txt` presentes en dist).
 - Acceptance: archivos accesibles en preview/producción; no datos inconsistentes con la web.
 
 ### PR 3 — Transparencia total (depende de T1 precios)

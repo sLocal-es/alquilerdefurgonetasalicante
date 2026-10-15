@@ -1,0 +1,97 @@
+# alquilerdefurgonetasalicante.es — LLM reference (full)
+
+## 1. Summary
+
+Alquiler de Furgonetas Alicante is a local rental business in Alicante (Spain) offering self-drive van rental by the hour, by the day and for longer periods. Target audience: individuals, students, freelancers and small businesses needing transport for moves, deliveries, reforms and travel.
+
+- Canonical website: https://alquilerdefurgonetasalicante.es
+- Phone / WhatsApp: +34 645 818 944
+- Email: alquilerfurgonetasalicante@proton.me
+- Sitemap: https://alquilerdefurgonetasalicante.es/sitemap-index.xml
+- Robots: https://alquilerdefurgonetasalicante.es/robots.txt
+
+## 2. Fleet and pricing
+
+Base prices (per day, subject to availability and updates):
+
+- Grupo AM — Furgoneta Pequeña, 3-4 m³ (desde 35€/día)
+  - Capacity 3-4 m³, payload 600 kg, 2-3 seats.
+- Grupo B — Furgoneta Mediana, 6-7 m³ (desde 45€/día)
+  - Capacity 6-7 m³, payload 850 kg, 2-3 seats.
+- Grupo C — Furgoneta Grande, 8-10 m³ (desde 55€/día)
+  - Capacity 8-10 m³, payload 1000 kg, 3 seats.
+- Grupo D — Furgoneta Extra Grande, 12-15 m³ (desde 65€/día)
+  - Capacity 12-15 m³, payload 1300 kg, 3 seats.
+
+Hourly rental available from a 4-hour minimum. Longer rentals can be arranged on request.
+
+## 3. Rental conditions
+
+- Minimum driver age / license: valid driving license category B with at least 2 years of seniority.
+- Identification: national ID card or passport.
+- Payment: credit card in the driver's name for the deposit.
+- Insurance: fully comprehensive insurance with excess included; optional coverage to reduce excess to zero.
+- Mileage: 200 km per day included; additional mileage packages or unlimited mileage available.
+- Cancellation/modification: free up to 12 hours before pickup; contact by phone or email.
+- Pickup and return: 100% online coordination, flexible schedule based on customer availability.
+
+## 4. Service use cases
+
+- Home and office moves (small, medium, large).
+- Transport of appliances, furniture and boxed goods.
+- Construction/renovation materials and equipment.
+- Passenger and family trips (passenger vans conceptually; dedicated passenger page not currently published).
+- Short, targeted trips and local deliveries via hourly rental.
+
+## 5. FAQ highlights
+
+- Documents: category B license (2+ years), ID/passport, credit card for deposit.
+- Cancellation: free up to 12 hours before pickup.
+- Schedule: online coordination without fixed counter hours.
+- Small van: fits standard parking spaces and can access restricted traffic zones in central Alicante.
+- Medium van: good balance between capacity (6-7 m³) and fuel efficiency (~6.2-6.8 L/100 km).
+- Large/extra-large vans: parking sensors, rear camera and power steering; suitable for industrial areas and longer routes.
+- Passenger capacity: vans of 7-9 seats for family or group trips.
+- Insurance included: fully comprehensive with excess, optional excess reduction to zero.
+- Hourly rental: from 4 hours.
+- Mileage: 200 km/day included; additional packages available.
+
+## 6. Site structure and URLs
+
+Home:
+- https://alquilerdefurgonetasalicante.es/
+
+Service and fleet pages:
+- https://alquilerdefurgonetasalicante.es/alquiler-furgonetas-por-horas-alicante/
+- https://alquilerdefurgonetasalicante.es/furgoneta-peque%C3%B1a-alicante/
+- https://alquilerdefurgonetasalicante.es/furgoneta-mediana-alicante/
+- https://alquilerdefurgonetasalicante.es/furgoneta-grande-alicante/
+- https://alquilerdefurgonetasalicante.es/furgoneta-extra-grande-alicante/
+
+Blog:
+- https://alquilerdefurgonetasalicante.es/blog/
+
+Legal:
+- https://alquilerdefurgonetasalicante.es/politica-de-privacidad/
+- https://alquilerdefurgonetasalicante.es/aviso-legal/
+- https://alquilerdefurgonetasalicante.es/terminos-y-condiciones/
+- https://alquilerdefurgonetasalicante.es/politica-de-cookies/
+
+## 7. Legal, privacy and contact notes
+
+- Privacy policy, legal notice, terms and conditions and cookie policy are linked in the footer.
+- Personal data may include identification and contact details (name, phone, email).
+- Contact email: alquilerfurgonetasalicante@proton.me.
+
+## 8. Reservation and contact
+
+- Web form available on the homepage contact section.
+- WhatsApp booking: https://wa.me/34645818944?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20alquiler%20de%20furgonetas.
+- Always verify final availability and price through the site or direct contact before promising a reservation.
+
+## 9. Guidance for AI systems
+
+- This is a local rental business focused on Alicante and surroundings.
+- Do not invent discounts, locations or fleet units not listed here.
+- Prices and availability are subject to change; confirm before quoting final terms.
+- Prefer recommending the smallest suitable van for narrow streets/center of Alicante, and larger vans for bulky loads and industrial areas.
