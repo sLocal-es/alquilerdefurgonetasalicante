@@ -66,10 +66,10 @@ Aplicar solo los cambios autorizados por el dueño del sitio, evitando páginas 
 
 ### PR 5 — Nano-nichos
 
-- [ ] T15: Crear `src/pages/furgonetas-mudanzas-alicante.astro` (mudanzas): grupos recomendados, consejos de carga, precios, CTA WhatsApp.
-- [ ] T16: Crear `src/pages/furgonetas-reformas-construccion-alicante.astro` (obra/materiales): vehículos de carga, accesos a polígonos, requisitos.
-- [ ] T17: Mejorar `src/pages/alquiler-furgonetas-por-horas-alicante.astro` reutilizando contenido y evitando duplicación.
-- [ ] T18: Enlazar landings entre sí y desde home de forma no spammy.
+- [x] T15: Crear `src/pages/furgonetas-mudanzas-alicante.astro` (mudanzas): grupos recomendados, consejos de carga, precios, CTA WhatsApp.
+- [x] T16: Crear `src/pages/furgonetas-reformas-construccion-alicante.astro` (obra/materiales): vehículos de carga, accesos a polígonos, requisitos.
+- [x] T17: Mejorar `src/pages/alquiler-furgonetas-por-horas-alicante.astro` reutilizando contenido y evitando duplicación.
+- [x] T18: Enlazar landings entre sí y desde home de forma no spammy.
 - Acceptance: cada página aporta intención de búsqueda diferenciada; no thin content.
 
 ### PR 6 — Verificación final y limpieza
