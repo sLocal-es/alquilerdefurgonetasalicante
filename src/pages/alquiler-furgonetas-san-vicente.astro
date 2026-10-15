@@ -1,0 +1,231 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const vehicles = [
+  {
+    group: "Grupo AM",
+    name: "Furgoneta Pequeña",
+    slug: "furgoneta-pequeña-alicante",
+    capacity: "3-4m³",
+    price: "35€",
+  },
+  {
+    group: "Grupo B",
+    name: "Furgoneta Mediana",
+    slug: "furgoneta-mediana-alicante",
+    capacity: "6-7m³",
+    price: "45€",
+  },
+  {
+    group: "Grupo C",
+    name: "Furgoneta Grande",
+    slug: "furgoneta-grande-alicante",
+    capacity: "8-10m³",
+    price: "55€",
+  },
+  {
+    group: "Grupo D",
+    name: "Furgoneta Extra Grande",
+    slug: "furgoneta-extra-grande-alicante",
+    capacity: "12-15m³",
+    price: "65€",
+  },
+];
+
+const localFaq = [
+  {
+    question: "¿Dónde puedo aparcar o cargar la furgoneta en San Vicente del Raspeig?",
+    answer:
+      "San Vicente combina zonas residenciales con aparcamiento en superficie y tramos de mayor densidad cerca del campus. Para recogidas y cargas voluminosas recomendamos organizar el acceso por las vías principales y evitar las horas de mayor flujo universitario. Si necesitas carga en residencia o trastero, indícalo al reservar y te orientamos.",
+  },
+  {
+    question: "¿Cuánto se tarda desde San Vicente del Raspeig hasta el punto de recogida principal?",
+    answer:
+      "El tiempo depende del horario y del tramo de la A-70 o la Vía Parque, pero para la mayor parte de la zona residencial y del campus suele ser un traslado corto. Al abrir reserva te confirmamos ventanas de entrega realistas según tu dirección.",
+  },
+  {
+    question: "¿Qué furgoneta conviene para un cambio de habitación o piso sin ascensor en San Vicente?",
+    answer:
+      "Para una habitación o un estudio suele bastar una Pequeña (Grupo AM). Para un piso compartido con varios estudiantes y muebles compactos, la Mediana (Grupo B). Si hay que bajar mucha carga por escaleras, coordinar hojas de carga y elegir tamaño según el volumen real ahorra viajes.",
+  },
+];
+---
+
+<Layout
+  title="Alquiler de Furgonetas en San Vicente del Raspeig (Alicante)"
+  description="Alquiler de furgonetas sin conductor en San Vicente del Raspeig. Grupos AM a D, por horas desde 4h, para mudanzas de estudiantes y traslados."
+>
+  <section class="hero">
+    <div class="container">
+      <span class="eyebrow">— Alquiler de Furgonetas en San Vicente del Raspeig</span>
+      <h1>Alquiler de furgonetas en San Vicente del Raspeig</h1>
+      <p class="hero-subtitle">
+        Mudanzas de estudiantes, pisos compartidos, residencias y traslados entre San
+        Vicente del Raspeig y Alicante. Furgonetas por horas, por días y sin conductor.
+      </p>
+      <div class="hero-features">
+        <div class="feature">
+          <span>Desde 35€/día</span>
+        </div>
+        <div class="feature">
+          <span>Mínimo 4 horas</span>
+        </div>
+        <div class="feature">
+          <span>Carnet B suficiente</span>
+        </div>
+      </div>
+      <a href="https://wa.me/34645818944?text=Hola%2C%20quiero%20reservar%20una%20furgoneta%20en%20San%20Vicente%20del%20Raspeig." class="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">
+        Reservar por WhatsApp
+      </a>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="container">
+      <h2>Por qué alquilar una furgoneta en San Vicente del Raspeig</h2>
+      <p>
+        San Vicente del Raspeig es un municipio residencial al norte de Alicante, con una fuerte
+        presencia universitaria y zonas de pisos compartidos. En fechas de inicio y cierre de
+        curso, o de cambio de piso, la demanda de transporte puntual crece, pero no siempre hace
+        falta un servicio de mudanzas profesional completo: a menudo basta una furgoneta bien
+        elegida durante unas horas.
+      </p>
+      <p>
+        Si te mudas entre San Vicente y Alicante, necesitas llevar material a un trastero o
+        recolocar muebles en un piso sin ascensor, esta página te ayuda a decidir tamaño y
+        reserva. Nosotros coordinamos la entrega y la devolución según tu disponibilidad.
+      </p>
+    </div>
+  </section>
+
+  <section class="local-context">
+    <div class="container">
+      <h2>Contexto local: campus, residencias y accesos</h2>
+      <ul>
+        <li>
+          <strong>Campus universitario:</strong> San Vicente concentra residencias, colivers y
+          pisos de estudiantes; para mudanzas de habitación suele bastar una Pequeña (Grupo AM).
+        </li>
+        <li>
+          <strong>Zonas residenciales:</strong> en calles más amplias y parkings de superficie se
+          puede maniobrar con Mediana o Grande sin grandes complicaciones.
+        </li>
+        <li>
+          <strong>Polígono Torregrosa y actividades de obra:</strong> para carga voluminosa o
+          material de construcción/renovación, la Grande (Grupo C) o Extra Grande (Grupo D) son
+          la opción natural.
+        </li>
+        <li>
+          <strong>Accesos:</strong> la zona se conecta con Alicante por las vías rápidas habituales
+          (A-70 y Vía Parque). Planifica la recogida previendo el tráfico en horas punta.
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="van-rules">
+    <div class="container">
+      <h2>Qué furgoneta elegir según tu mudanza</h2>
+      <div class="rules-grid">
+        <div class="rule-card">
+          <h3>Habitación o estudio (1 viaje)</h3>
+          <p>Pequeña (Grupo AM, 3-4 m³) si la carga es moderada y hay aparcamiento cercano.</p>
+        </div>
+        <div class="rule-card">
+          <h3>Piso compartido con cajas y muebles</h3>
+          <p>Mediana (Grupo B, 6-7 m³) para equilibrar capacidad y maniobrabilidad.</p>
+        </div>
+        <div class="rule-card">
+          <h3>Mudanza completa o material pesado</h3>
+          <p>Grande (Grupo C, 8-10 m³) o Extra Grande (Grupo D, 12-15 m³) si el volumen lo justifica.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pricing">
+    <div class="container">
+      <h2>Precios base de alquiler de furgonetas (Alicante y San Vicente)</h2>
+      <p class="section-subtitle">Precios por día. Sujeto a disponibilidad y fecha.</p>
+      <div class="vehicle-grid">
+        {vehicles.map((vehicle) => (
+          <article class="vehicle-card">
+            <span class="vehicle-group">{vehicle.group}</span>
+            <h3>{vehicle.name}</h3>
+            <p class="vehicle-capacity">{vehicle.capacity}</p>
+            <p class="vehicle-price">
+              <span class="price-from">Desde</span>
+              <span class="price-amount">{vehicle.price}</span>
+              <span class="price-period">/día</span>
+            </p>
+            <a href={`/${vehicle.slug}`} class="btn btn-outline">Ver detalles</a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="faq-section">
+    <div class="container">
+      <h2>Preguntas frecuentes en San Vicente del Raspeig</h2>
+      <ul class="faq-list">
+        {localFaq.map((item) => (
+          <li class="faq-item">
+            <details open>
+              <summary class="faq-question">{item.question}</summary>
+              <p class="faq-answer">{item.answer}</p>
+            </details>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="bottom-cta">
+    <div class="container">
+      <h2>Reserva tu furgoneta por WhatsApp</h2>
+      <p>Indica fecha, horas y dirección de carga; te confirmamos disponibilidad y precio.</p>
+      <a href="https://wa.me/34645818944?text=Hola%2C%20quiero%20reservar%20furgoneta%20en%20San%20Vicente%20del%20Raspeig." class="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">
+        Hablar por WhatsApp
+      </a>
+      <p class="also-link">
+        También puedes ver <a href="/">alquiler de furgonetas en Alicante</a> o
+        <a href="/alquiler-furgonetas-por-horas-alicante/">alquiler por horas en Alicante</a>.
+      </p>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1.25rem;
+  }
+  .hero { padding: 4rem 0 2rem; text-align: center; }
+  .eyebrow { font-weight: 600; color: var(--color-primary); display: block; margin-bottom: 0.5rem; }
+  h1 { font-size: clamp(1.9rem, 4vw, 2.6rem); line-height: 1.15; margin: 0 0 1rem; }
+  .hero-subtitle { color: var(--color-fg-muted); max-width: 720px; margin: 0 auto 1.5rem; }
+  .hero-features { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .feature { background: var(--color-warm-bg); padding: 0.5rem 1rem; border-radius: 9999px; font-weight: 600; }
+  .content-section, .local-context, .van-rules, .pricing, .faq-section, .bottom-cta { padding: 3rem 0; }
+  h2 { font-size: 1.6rem; margin-bottom: 1rem; }
+  ul { display: grid; gap: 0.75rem; padding-left: 1.25rem; }
+  .rules-grid, .vehicle-grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+  .rule-card, .vehicle-card { border: 1px solid var(--color-border); border-radius: var(--radius-lg, 12px); padding: 1rem; background: var(--color-bg-white); }
+  .vehicle-group { display: inline-block; background: rgba(var(--color-primary-rgb, 59,130,246),0.12); color: var(--color-primary); padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.85rem; font-weight: 600; }
+  .price-from, .price-period { color: var(--color-fg-muted); font-size: 0.85rem; }
+  .price-amount { font-size: 1.5rem; font-weight: 700; color: var(--color-primary); margin: 0 0.35rem; }
+  .btn { display: inline-block; padding: 0.75rem 1.25rem; border-radius: 9999px; font-weight: 600; text-decoration: none; }
+  .btn-primary { background: var(--color-primary); color: var(--color-primary-fg, #fff); }
+  .btn-outline { border: 2px solid var(--color-primary); color: var(--color-primary); }
+  .btn-lg { padding: 0.9rem 1.6rem; }
+  .also-link a { color: var(--color-primary); text-decoration: underline; }
+  .faq-list { display: grid; gap: 1rem; padding-left: 0; list-style: none; }
+  .faq-item details { border: 1px solid var(--color-border); border-radius: 12px; padding: 1rem 1.25rem; background: var(--color-bg-white); }
+  .faq-question { font-weight: 600; cursor: pointer; }
+  .faq-answer { color: var(--color-fg-muted); margin-top: 0.5rem; }
+  @media (max-width: 640px) {
+    .hero-features { flex-direction: column; align-items: center; }
+  }
+</style>

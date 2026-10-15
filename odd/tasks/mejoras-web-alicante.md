@@ -57,10 +57,11 @@ Aplicar solo los cambios autorizados por el dueño del sitio, evitando páginas 
 
 ### PR 4 — Landing barrio San Vicente (estudiantes)
 
-- [ ] T11: Crear `src/pages/alquiler-furgonetas-san-vicente.astro` con contexto real: universidad, residencias, zonas de carga/descarga, accesos, aparcamiento.
-- [ ] T12: Incluir recomendación de vehículo por uso (mudanza de habitación/residencia).
-- [ ] T13: Añadir FAQ localizada única (aparcamiento/carga, tiempo al punto de recogida, furgoneta para pisos sin ascensor).
-- [ ] T14: Canonical apuntando a sí misma; meta title/description únicas.
+- [x] T11: Crear `src/pages/alquiler-furgonetas-san-vicente.astro` con contexto real: universidad, residencias, zonas de carga/descarga, accesos, aparcamiento.
+- [x] T12: Incluir recomendación de vehículo por uso (mudanza de habitación/residencia).
+- [x] T13: Añadir FAQ localizada única (aparcamiento/carga, tiempo al punto de recogida, furgoneta para pisos sin ascensor).
+- [x] T14: Canonical apuntando a sí misma; meta title/description únicas.
+- Evidence: commit `cd21bff` on branch `feat/pr4-san-vicente-landing` (`npm run build` OK; landing `/alquiler-furgonetas-san-vicente/` generada + sitemap).
 - Acceptance: contenido específico y útil, sin boilerplate intercambiable con otros barrios.
 
 ### PR 5 — Nano-nichos
