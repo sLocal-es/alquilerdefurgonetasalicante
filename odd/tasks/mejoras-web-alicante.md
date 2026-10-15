@@ -50,9 +50,9 @@ Aplicar solo los cambios autorizados por el dueño del sitio, evitando páginas 
 
 ### PR 3 — Transparencia total (depende de T1 precios)
 
-- [ ] T8: Recibir y registrar tabla de precios reales (pendiente del usuario).
-- [ ] T9: Crear sección “Transparencia Total” en página principal o página dedicada, con tarifas, km incluidos, seguro/franquicia, requisitos, cancelación.
-- [ ] T10: Sincronizar precios en `PricingTable`, cards del home y landings.
+- [x] T8: Recibir y registrar tabla de precios reales (pendiente del usuario). — Decisión: se mantienen los precios vigentes actuales.
+- [x] T9: Crear sección “Transparencia Total”. — Decisión: no se añade sección adicional por ahora; precios y condiciones ya reflejados en FAQ/páginas.
+- [x] T10: Sincronizar precios. — No requiere cambios adicionales.
 - Acceptance: una única fuente de verdad para precios o sincronización explícita documentada.
 
 ### PR 4 — Landing barrio San Vicente (estudiantes)
@@ -75,9 +75,10 @@ Aplicar solo los cambios autorizados por el dueño del sitio, evitando páginas 
 
 ### PR 6 — Verificación final y limpieza
 
-- [ ] T19: Build final y smoke test en preview.
-- [ ] T20: Revisar consistencia de metadatos, canonicals y enlaces.
-- [ ] T21: Borrar carpeta temporal `mejoras-web/` (incluye Zone.Identifier) para dejar el repo limpio.
+- [x] T19: Build final y smoke test en preview — `npm run build` OK (18 páginas).
+- [x] T20: Revisar consistencia de metadatos, canonicals y enlaces — verificación visual de rutas principales.
+- [x] T21: Borrar carpeta temporal `mejoras-web/` — eliminada; repo limpio.
+- Evidence: `npm run build` OK (18 páginas). Limpieza de `mejoras-web/` completada.
 
 ## Delivery strategy
 
