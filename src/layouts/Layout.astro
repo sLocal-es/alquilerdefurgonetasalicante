@@ -1,5 +1,6 @@
 ---
 import WhatsAppButton from '../components/common/WhatsAppButton.astro';
+import Header from '../components/Header.astro';
 
 interface ProductSchema {
   name: string;
@@ -155,6 +156,7 @@ const ogImageUrl = ogImagePath.startsWith("http") ? ogImagePath : `${siteUrl}${o
   </head>
   <body>
     <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+    <Header />
     <main id="main-content">
       <slot />
     </main>
@@ -169,8 +171,11 @@ const ogImageUrl = ogImagePath.startsWith("http") ? ogImagePath : `${siteUrl}${o
           </div>
           <div class="footer-links">
             <a href="/">Inicio</a>
-            <a href="/#flota">Furgonetas</a>
+            <a href="/#flota">Flota</a>
             <a href="/alquiler-furgonetas-por-horas-alicante/">Alquiler por horas</a>
+            <a href="/furgonetas-mudanzas-alicante/">Mudanzas</a>
+            <a href="/furgonetas-reformas-construccion-alicante/">Reformas</a>
+            <a href="/alquiler-furgonetas-san-vicente/">San Vicente</a>
             <a href="/blog/">Blog</a>
             <a href="/#contacto">Contacto</a>
           </div>
