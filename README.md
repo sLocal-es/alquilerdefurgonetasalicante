@@ -13,6 +13,7 @@ Sitio web profesional para el alquiler de furgonetas en Alicante. Optimizado par
 
 - Landing page optimizada para SEO
 - Páginas individuales por tipo de furgoneta
+- Tabla de precios por horas con diseño responsive
 - Formulario de captación de leads
 - Structured Data (Schema.org)
 - Responsive design
@@ -50,10 +51,15 @@ npm run preview
 ## Páginas
 
 - `/` - Landing page principal
+- `/alquiler-furgonetas-por-horas-alicante/` - Alquiler por horas
 - `/furgoneta-pequeña-alicante/` - Furgoneta pequeña (3-4m³)
 - `/furgoneta-mediana-alicante/` - Furgoneta mediana (6-7m³)
 - `/furgoneta-grande-alicante/` - Furgoneta grande (8-10m³)
 - `/furgoneta-extra-grande-alicante/` - Furgoneta extra grande (12-15m³)
+- `/furgonetas-mudanzas-alicante/` - Furgonetas para mudanzas
+- `/furgonetas-reformas-construccion-alicante/` - Furgonetas para reformas y construcción
+- `/alquiler-furgonetas-san-vicente/` - Alquiler en San Vicente del Raspeig
+- `/blog/` - Blog con guías y consejos
 
 ## Deploy
 
