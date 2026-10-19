@@ -1,0 +1,315 @@
+---
+interface HourlyRate {
+  duration: string;
+  shortLabel: string;
+  medium: { price: number; km: number };
+  large: { price: number; km: number };
+}
+
+const rates: HourlyRate[] = [
+  {
+    duration: "2 horas",
+    shortLabel: "2h",
+    medium: { price: 23, km: 60 },
+    large: { price: 35, km: 60 },
+  },
+  {
+    duration: "4 horas",
+    shortLabel: "4h",
+    medium: { price: 28, km: 100 },
+    large: { price: 42, km: 100 },
+  },
+  {
+    duration: "6 horas",
+    shortLabel: "6h",
+    medium: { price: 34, km: 140 },
+    large: { price: 50, km: 140 },
+  },
+  {
+    duration: "24 horas",
+    shortLabel: "24h",
+    medium: { price: 44, km: 200 },
+    large: { price: 61, km: 200 },
+  },
+  {
+    duration: "48 horas",
+    shortLabel: "48h",
+    medium: { price: 82, km: 400 },
+    large: { price: 112, km: 400 },
+  },
+];
+
+const extras = [
+  { label: "Kilómetro extra", value: "0,24 €/km" },
+  { label: "Fianza básica", value: "400 €" },
+  { label: "Reducir fianza", value: "+10 €/día" },
+];
+---
+
+<div class="hourly-pricing">
+  <div class="pricing-table-wrapper">
+    <table class="hourly-table">
+      <thead>
+        <tr>
+          <th scope="col" class="vehicle-col">Vehículo</th>
+          {rates.map((rate) => (
+            <th scope="col" class="duration-col">{rate.shortLabel}</th>
+          ))}
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="vehicle-row">
+          <th scope="row" class="vehicle-name">
+            <span class="vehicle-tag">Mediana</span>
+            <span class="vehicle-model">Renault Trafic L1H1</span>
+          </th>
+          {rates.map((rate) => (
+            <td class="price-cell">
+              <span class="price-amount">{rate.medium.price}€</span>
+              <span class="price-km">{rate.medium.km} km</span>
+            </td>
+          ))}
+        </tr>
+        <tr class="vehicle-row">
+          <th scope="row" class="vehicle-name">
+            <span class="vehicle-tag">Grande</span>
+            <span class="vehicle-model">Opel Movano L2H2</span>
+          </th>
+          {rates.map((rate) => (
+            <td class="price-cell">
+              <span class="price-amount">{rate.large.price}€</span>
+              <span class="price-km">{rate.large.km} km</span>
+            </td>
+          ))}
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Mobile cards (visible only on small screens) -->
+    <div class="hourly-cards-mobile">
+      {rates.map((rate) => (
+        <div class="mobile-rate-card">
+          <h3 class="mobile-duration">{rate.duration}</h3>
+          <div class="mobile-vehicle">
+            <span class="vehicle-tag">Mediana</span>
+            <span class="mobile-price">{rate.medium.price}€</span>
+            <span class="mobile-km">{rate.medium.km} km incluidos</span>
+          </div>
+          <div class="mobile-vehicle">
+            <span class="vehicle-tag">Grande</span>
+            <span class="mobile-price">{rate.large.price}€</span>
+            <span class="mobile-km">{rate.large.km} km incluidos</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <div class="extras-row">
+    {extras.map((extra) => (
+      <div class="extra-item">
+        <span class="extra-label">{extra.label}</span>
+        <span class="extra-value">{extra.value}</span>
+      </div>
+    ))}
+  </div>
+
+  <p class="pricing-note">
+    Todos los precios incluyen <strong>seguro a todo riesgo</strong> y asistencia en carretera 24h.
+    Se requiere carnet B con al menos 2 años de antigüedad.
+  </p>
+</div>
+
+<style>
+  .hourly-pricing {
+    max-width: 820px;
+    margin: 0 auto;
+  }
+
+  /* ── Desktop table ── */
+  .hourly-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--color-bg-white);
+    border-radius: var(--radius-2xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+  }
+
+  .hourly-table thead {
+    background: var(--color-dark-bg);
+    color: var(--color-dark-fg);
+  }
+
+  .hourly-table th {
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-eyebrow);
+    padding: 1rem 0.75rem;
+    text-align: center;
+  }
+
+  .vehicle-col {
+    text-align: left !important;
+    width: 160px;
+  }
+
+  .duration-col {
+    min-width: 80px;
+  }
+
+  .hourly-table td {
+    padding: 1rem 0.75rem;
+    text-align: center;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .vehicle-row:hover {
+    background: rgba(var(--color-primary-rgb), 0.04);
+  }
+
+  .vehicle-name {
+    text-align: left !important;
+    font-family: var(--font-heading);
+    font-weight: 600;
+  }
+
+  .vehicle-tag {
+    display: inline-block;
+    background: rgba(var(--color-primary-rgb), 0.12);
+    color: var(--color-primary);
+    padding: 2px 10px;
+    border-radius: var(--radius-full);
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+  }
+
+  .vehicle-model {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: var(--color-fg-muted);
+    margin-top: 0.25rem;
+  }
+
+  .price-cell {
+    display: table-cell;
+    vertical-align: middle;
+  }
+
+  .price-amount {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-primary);
+  }
+
+  .price-km {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--color-fg-muted);
+    margin-top: 0.15rem;
+  }
+
+  /* ── Extras row ── */
+  .extras-row {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+    padding: 1.25rem 1.5rem;
+    background: var(--color-warm-bg);
+    border-radius: var(--radius-xl);
+  }
+
+  .extra-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .extra-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-eyebrow);
+    color: var(--color-fg-muted);
+  }
+
+  .extra-value {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-fg);
+  }
+
+  /* ── Note ── */
+  .pricing-note {
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--color-fg-muted);
+    margin-top: 1.25rem;
+    line-height: var(--leading-body);
+  }
+
+  /* ── Mobile cards (hidden on desktop) ── */
+  .hourly-cards-mobile {
+    display: none;
+  }
+
+  @media (max-width: 640px) {
+    .hourly-table {
+      display: none;
+    }
+
+    .hourly-cards-mobile {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .mobile-rate-card {
+      background: var(--color-bg-white);
+      border-radius: var(--radius-2xl);
+      padding: 1.25rem;
+      box-shadow: var(--shadow-card);
+    }
+
+    .mobile-duration {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .mobile-vehicle {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.5rem 0;
+    }
+
+    .mobile-price {
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--color-primary);
+    }
+
+    .mobile-km {
+      font-size: 0.8rem;
+      color: var(--color-fg-muted);
+      margin-left: auto;
+    }
+
+    .extras-row {
+      gap: 1rem;
+    }
+  }
+</style>

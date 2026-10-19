@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import VehicleCard from '../components/VehicleCard.astro';
+import HourlyPricingTable from '../components/HourlyPricingTable.astro';
 import FAQ from '../components/common/FAQ.astro';
 import ContactForm from '../components/ContactForm.astro';
 
@@ -244,23 +245,12 @@ const faqs = [
     </div>
   </section>
 
-  <!-- Tarifas -->
+  <!-- Tarifas por horas -->
   <section class="rates">
     <div class="container">
-      <div class="rates-box">
-        <h2>Tarifas por horas: claras y sin sorpresas</h2>
-        <ul class="rates-list">
-          <li>Alquiler por horas <strong>desde 4 horas</strong>.</li>
-          <li>El precio depende del <strong>tipo de furgoneta</strong> y las horas contratadas.</li>
-          <li><strong>Seguro a todo riesgo incluido</strong> y asistencia en carretera 24h.</li>
-          <li>Sin conductor: se conduce con el <strong>carnet B</strong>.</li>
-          <li>Recogida y devolución coordinadas en Alicante según tu horario.</li>
-        </ul>
-        <p class="rates-note">
-          ¿Necesitas una cifra exacta? Dinos el día y las horas y te enviamos tu presupuesto personalizado en menos de 1 hora.
-        </p>
-        <a href="https://wa.me/34645818944?text=Hola%2C%20quiero%20presupuesto%20para%20alquiler%20de%20furgoneta%20en%20Alicante." class="btn btn-lg" target="_blank" rel="noopener noreferrer">Pedir presupuesto</a>
-      </div>
+      <h2>Tarifas de alquiler por horas en Alicante</h2>
+      <p class="section-subtitle">Precios claros con kilometraje incluido según duración</p>
+      <HourlyPricingTable />
     </div>
   </section>
 

@@ -19,6 +19,7 @@ Añadir solo lo que añada valor; evitar inflar el número de archivos.
 - Canonical apuntando a sí misma.
 - CTAs comerciales directos (WhatsApp con mensaje preconfigurado o página de reserva), no solo `#contacto`.
 - Enlaces internos relevantes entre landings y páginas de servicio, sin spam.
+- **Precios reales visibles**: tablas de precios con tarifas, límites de kilometraje, fianza y extras. Nunca dejar precios como "consultar" o "desde X€" sin desglose.
 
 ## Archivos para crawlers de IA
 
