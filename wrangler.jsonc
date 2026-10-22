@@ -10,6 +10,19 @@
 		"not_found_handling": "404-page"
 	},
 	"preview_urls": true,
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "alquilerdefurgonetasalicante-leads",
+			"database_id": "ebd5687a-0c99-4b48-8025-09361b9e5b68"
+		}
+	],
+	"vars": {
+		"BRAND_NAME": "Alquiler Furgonetas Alicante",
+		"DOMAIN": "alquilerdefurgonetasalicante.es",
+		"TO_EMAIL": "alquilerfurgonetasalicante@proton.me",
+		"PHONE_DISPLAY": "645 81 89 44"
+	},
 	"observability": {
 		"enabled": true
 	}
