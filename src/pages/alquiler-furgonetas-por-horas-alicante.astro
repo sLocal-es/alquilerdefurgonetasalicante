@@ -3,7 +3,22 @@ import Layout from '../layouts/Layout.astro';
 import VehicleCard from '../components/VehicleCard.astro';
 import HourlyPricingTable from '../components/HourlyPricingTable.astro';
 import FAQ from '../components/common/FAQ.astro';
-import ContactForm from '../components/ContactForm.astro';
+import QuoteForm from '../components/landing/QuoteForm.astro';
+
+// Zonas de recogida del formulario de dos pasos. El ContactForm viejo no
+// tenía zona; es la lista canónica del nicho (config del motor).
+const zonas = [
+  'Alicante capital',
+  'Elche',
+  'Torrevieja',
+  'Benidorm',
+  'Orihuela',
+  'Elda',
+  'San Vicente de Raspeig',
+  'Alcoy',
+  'Villajoyosa',
+  'Santa Pola',
+];
 
 const vehicles = [
   {
@@ -284,7 +299,7 @@ const faqs = [
     </div>
   </section>
 
-  <ContactForm />
+  <QuoteForm services={vehicles} zones={zonas} />
 
 </Layout>
 

@@ -1,0 +1,306 @@
+/* ── Formulario de presupuesto (QuoteForm, dos pasos) ──────────────────
+   Port del bloque del formulario de slocal-engine/src/styles/landing.css.
+   Solo añade clases y tokens nuevos (prefijo --ld-, sin uso previo en el
+   sitio): no pisa el CSS existente. Los tokens --ld- se resuelven con la
+   paleta de Alicante (variables del layout) para que el formulario lleve
+   la marca del dominio en vez del verde de muestra del motor. */
+
+:root {
+  --ld-card: var(--color-bg-white);
+  --ld-secondary: var(--color-warm-bg);
+  --ld-foreground: var(--color-fg);
+  --ld-muted-foreground: var(--color-fg-muted);
+  --ld-border: var(--color-border);
+  --ld-input: var(--color-input);
+  --ld-primary: var(--color-primary);
+  --ld-primary-foreground: var(--color-primary-fg);
+  --ld-link: var(--color-primary);
+  --ld-destructive: var(--color-destructive);
+  --ld-success: var(--color-success);
+  --ld-shadow-form: 0 12px 40px color-mix(in oklab, var(--color-fg) 7%, transparent);
+}
+
+/* Reset de [hidden] del motor: sin él, las clases con `display` ganan al
+   [hidden] por defecto del navegador y el botón "Atrás" del formulario se
+   vería en el paso 1. Efecto secundario (observado con build previo):
+   también arregla el menú móvil del header, que hoy queda abierto al
+   cargar por el mismo motivo (.mobile-nav display:flex vence al atributo). */
+[hidden]:where(:not([hidden='until-found'])) {
+  display: none !important;
+}
+
+/* El motor hereda la tipografía en los controles; sin esto, inputs y
+   selects del formulario salen con la fuente por defecto del navegador. */
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+/* Los botones del formulario usan el .btn global de Alicante, pero
+   centrados en flex como en la plantilla. El resto de botones del sitio
+   no se toca (reglas limitadas a .quote-card). */
+.quote-card .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-align: center;
+}
+
+.quote-card .btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Botón "Atrás": Alicante no define .btn-outline global (los existentes
+   son estilos scoped de PricingTable, Header y San Vicente), así que la
+   variante outline va limitada al formulario. */
+.quote-card .btn-outline {
+  border-color: var(--ld-border);
+  background: transparent;
+  color: var(--ld-foreground);
+}
+
+.quote-card .btn-outline:hover {
+  background: var(--ld-secondary);
+  box-shadow: none;
+  text-decoration: none;
+}
+
+/* ── Bloque del formulario (verbatim del motor) ─────────────────────── */
+
+.quote-card {
+  background: var(--ld-card);
+  border: 1px solid var(--ld-border);
+  border-radius: 20px;
+  box-shadow: var(--ld-shadow-form);
+  padding: 22px 18px;
+}
+
+.form-top {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 10px;
+}
+
+.form-top h2 {
+  font-size: 25px;
+  margin: 0 0 7px;
+}
+
+.form-top p {
+  font-size: 14px;
+  color: var(--ld-muted-foreground);
+  margin: 0;
+}
+
+.form-top > svg {
+  width: 24px;
+  height: 24px;
+  color: var(--ld-link);
+  margin-top: 4px;
+}
+
+.step-bars {
+  display: flex;
+  gap: 7px;
+  margin: 22px 0 12px;
+}
+
+.step-bar {
+  height: 5px;
+  background: var(--ld-secondary);
+  flex: 1;
+  border-radius: 6px;
+}
+
+.step-bar.active {
+  background: var(--ld-primary);
+}
+
+.step-label {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0 0 20px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 15px;
+}
+
+.field {
+  min-width: 0;
+}
+
+.field label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.45;
+  margin-bottom: 7px;
+}
+
+.field label span {
+  color: var(--ld-muted-foreground);
+  font-weight: 400;
+}
+
+.field input,
+.field select,
+.field textarea {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  min-height: 50px;
+  border: 1px solid var(--ld-input);
+  background: var(--ld-card);
+  color: var(--ld-foreground);
+  border-radius: 10px;
+  padding: 11px 12px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.field select {
+  padding-right: 24px;
+}
+
+.field textarea {
+  resize: vertical;
+  height: 100px;
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color: var(--ld-muted-foreground);
+  opacity: 1;
+}
+
+.field [aria-invalid='true'] {
+  border-color: var(--ld-destructive);
+}
+
+.field-error {
+  font-size: 14px;
+  color: var(--ld-destructive);
+  line-height: 1.5;
+  margin: 6px 0 0;
+}
+
+.form-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.submit-button {
+  flex: 1;
+  min-width: 0;
+}
+
+.form-bottom {
+  font-size: 14px;
+  color: var(--ld-muted-foreground);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 14px;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.form-bottom svg {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+}
+
+.consent-label {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 14px;
+  line-height: 1.6;
+  min-height: 48px;
+  padding: 12px 0;
+  cursor: pointer;
+}
+
+.consent-label input {
+  width: 22px;
+  height: 22px;
+  margin-top: 3px;
+  flex-shrink: 0;
+  accent-color: var(--ld-link);
+}
+
+.consent-label a {
+  color: var(--ld-link);
+  text-decoration: underline;
+}
+
+.honeypot {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.success-panel {
+  padding: 40px 0;
+}
+
+.success-panel > svg {
+  width: 48px;
+  height: 48px;
+  color: var(--ld-success);
+}
+
+/* El h2 del sitio es clamp(30px, 5vw, 60px); el peso visual de la
+   plantilla para el título de la tarjeta es 25px (igual que .form-top). */
+.success-panel h2 {
+  font-size: 25px;
+  margin: 20px 0 12px;
+}
+
+.success-panel p {
+  color: var(--ld-muted-foreground);
+  margin-bottom: 24px;
+}
+
+/* ── Responsive del formulario (mismos breakpoints que el motor) ────── */
+
+@media (min-width: 540px) {
+  .form-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .field-full {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (min-width: 768px) {
+  .quote-card {
+    padding: 28px;
+  }
+
+  .form-top h2 {
+    font-size: 28px;
+  }
+}
+
+/* La sección que contenía el ContactForm viejo (fondo cálido y ancho del
+   contenedor); el ancla #contacto del footer sigue funcionando. */
+.contact-section {
+  background: var(--color-warm-bg);
+  padding: var(--section-py-compact) 0;
+}

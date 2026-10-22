@@ -1,7 +1,7 @@
 ---
 import Layout from './Layout.astro';
 import FAQ from '../components/FAQ.astro';
-import ContactForm from '../components/ContactForm.astro';
+import QuoteForm from '../components/landing/QuoteForm.astro';
 
 interface ServiceSpecs {
   capacity: string;
@@ -49,6 +49,48 @@ const {
   specs, idealFor, includes, related,
   metaTitle, metaDescription, product
 } = Astro.props;
+
+// Datos del nicho para el formulario de dos pasos: mismas listas que la home
+// (zona y flota completas, no solo la furgoneta de esta página).
+const zonas = [
+  'Alicante capital',
+  'Elche',
+  'Torrevieja',
+  'Benidorm',
+  'Orihuela',
+  'Elda',
+  'San Vicente de Raspeig',
+  'Alcoy',
+  'Villajoyosa',
+  'Santa Pola',
+];
+
+const vehicles = [
+  {
+    name: "Furgoneta Pequeña",
+    slug: "furgoneta-pequeña-alicante",
+    capacity: "3-4m³",
+    price: "35€",
+  },
+  {
+    name: "Furgoneta Mediana",
+    slug: "furgoneta-mediana-alicante",
+    capacity: "6-7m³",
+    price: "45€",
+  },
+  {
+    name: "Furgoneta Grande",
+    slug: "furgoneta-grande-alicante",
+    capacity: "8-10m³",
+    price: "55€",
+  },
+  {
+    name: "Furgoneta Extra Grande",
+    slug: "furgoneta-extra-grande-alicante",
+    capacity: "12-15m³",
+    price: "65€",
+  }
+];
 ---
 
 <Layout
@@ -277,7 +319,7 @@ const {
   </section>
 
   <!-- Contact -->
-  <ContactForm vehicleType={vehicleType} />
+  <QuoteForm services={vehicles} zones={zonas} preselectVehicle={vehicleType} />
 
 </Layout>
 
