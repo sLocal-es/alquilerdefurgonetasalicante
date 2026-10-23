@@ -43,9 +43,15 @@ jobs:
       - name: Upload preview version
         id: upload
         run: |
-          OUTPUT=$(npx wrangler versions upload 2>&1)
+          # El `|| true` deja ver el error del wrangler en el log: el
+          # script muere silenciosamente si el capture del output falla.
+          OUTPUT=$(npx wrangler versions upload 2>&1) || true
           echo "$OUTPUT"
           URL=$(echo "$OUTPUT" | grep -oE 'https://[A-Za-z0-9._-]+\.workers\.dev' | head -1 || true)
+          if [ -z "$URL" ]; then
+            echo "##[error]El upload de la version preview no devolvio URL — revisa el output de arriba"
+            exit 1
+          fi
           echo "url=$URL" >> "$GITHUB_OUTPUT"
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}

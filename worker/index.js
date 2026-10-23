@@ -120,11 +120,11 @@ function readLeadFields(source) {
     telefono: sanitizeText(source.telefono ?? source.phone, MAX_PHONE),
     email: sanitizeText(source.email, MAX_EMAIL).toLowerCase(),
     tipo: sanitizeText(source.tipo ?? source.vehicle, 120),
-    zona: sanitizeText(source.zona, 120),
-    servicio: sanitizeText(source.servicio, 60),
-    fecha: sanitizeText(source.fecha, 10),
+    zona: sanitizeText(source.zona ?? source.zone, 120),
+    servicio: sanitizeText(source.servicio ?? source.service, 60),
+    fecha: sanitizeText(source.fecha ?? source.date, 10),
     franja: sanitizeText(source.franja, 60),
-    duracion: sanitizeText(source.duracion, 60),
+    duracion: sanitizeText(source.duracion ?? source.duration, 60),
     carnet: sanitizeText(source.carnet, 4),
     detalles: sanitizeText(source.detalles ?? source.message, MAX_DETAILS),
     pagina: sanitizeText(source.pagina, 2048),
@@ -181,8 +181,18 @@ export function validateLead(body) {
   // Honeypot: un bot rellena el campo oculto. Se responde 200 sin enviar nada.
   if (sanitizeText(source.web, 500)) return { ok: true, value: emptyLead(true) };
 
+  // La deteccion del dialecto va con el payload ORIGINAL: un form viejo que
+  // manda el consent en ingles sigue siendo legacy aunque lo normalicemos.
+  const legacy = isLegacyPayload(source);
+
+  // El checkbox de los formularios viejos manda "consent: on" cuando esta
+  // marcado y no aparece cuando no; se normaliza a consentimiento booleano.
+  if (source.consentimiento === undefined && source.consent !== undefined) {
+    source.consentimiento = source.consent === true || source.consent === "on";
+  }
+
   const fields = readLeadFields(source);
-  const error = firstLeadError(source, fields, isLegacyPayload(source));
+  const error = firstLeadError(source, fields, legacy);
   if (error) return { ok: false, error };
 
   return {
@@ -234,6 +244,23 @@ function checkRateLimit(request, bucket, limit, windowMs) {
   if (entry.count >= limit) return false;
   entry.count += 1;
   return true;
+}
+
+/**
+ * ¿Este request ya no puede pasar? Delega en el limitador global de
+ * Cloudflare (garantizado entre isolates y datacenters) cuando el binding
+ * `RATE_LIMITER` esta configurado. El Map en memoria queda para el dev
+ * local y como red de seguridad si el binding falta.
+ */
+async function isRateLimited(request, env, bucket, limit, windowMs) {
+  const limiter = env?.RATE_LIMITER;
+  if (limiter && typeof limiter.limit === "function") {
+    // Los binding ratelimit solo aceptan simple rate limits: el limite y el
+    // periodo viven en el config del binding y el call manda solo la key.
+    const result = await limiter.limit({ key: `${bucket}:${getClientIp(request)}` });
+    return !result.success;
+  }
+  return !checkRateLimit(request, bucket, limit, windowMs);
 }
 
 function getAllowedOrigins(request) {
@@ -521,29 +548,6 @@ function httpsRedirect(url) {
   return Response.redirect(secure.toString(), 301);
 }
 
-/**
- * Redirect canónico de los hosts del dominio (SEO).
- * El subhosting de assets sirve las páginas sin invocar al worker, así que
- * con `run_worker_first: true` en wrangler.jsonc este redirect se aplica
- * también a las páginas estáticas. Regla: el sitio solo se sirve en
- * `https://<DOMAIN>`; hosts que no son el apex ni su www (previews,
- * workers.dev, localhost) no se tocan. Responde un solo 301, sin encadenar.
- *
- * @returns {Response | null} Response 301 o null si la request ya es canónica.
- */
-export function canonicalRedirect(url, env = {}) {
-  const domain = typeof env.DOMAIN === "string" ? env.DOMAIN.trim() : "";
-  if (!domain) return null;
-
-  const host = url.hostname;
-  const isApex = host === domain;
-  const isWww = host === `www.${domain}`;
-  if ((!isApex && !isWww) || (url.protocol !== "http:" && isApex)) return null;
-
-  const target = `https://${domain}${url.pathname}${url.search}`;
-  return Response.redirect(target, 301);
-}
-
 function handleAdminPage(request, env) {
   if (!hasAdminAccess(request, env)) return forbidden();
   return withHeaders(
@@ -562,7 +566,7 @@ async function handleLeadStats(request, env, cors) {
 async function handleContact(request, env, url, ctx, cors) {
   if (request.method === "OPTIONS") return preflightResponse(cors);
   if (request.method !== "POST") return jsonResponse({ error: "Method not allowed" }, 405, cors);
-  if (!checkRateLimit(request, "contact", CONTACT_RATE_LIMIT, CONTACT_RATE_WINDOW_MS)) {
+  if (await isRateLimited(request, env, "contact", CONTACT_RATE_LIMIT, CONTACT_RATE_WINDOW_MS)) {
     return jsonResponse({ error: "Demasiadas solicitudes. Intenta más tarde." }, 429, cors);
   }
 
@@ -639,8 +643,6 @@ export default {
   async fetch(request, env = {}, ctx) {
     const url = new URL(request.url);
 
-    const canonic = canonicalRedirect(url, env);
-    if (canonic) return canonic;
     if (isInsecureRemote(url)) return httpsRedirect(url);
     if (!isOriginAllowed(request)) return jsonResponse({ error: "Origin not allowed" }, 403);
 
