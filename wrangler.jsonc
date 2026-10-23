@@ -32,7 +32,9 @@
 			{
 				"name": "RATE_LIMITER",
 				"type": "ratelimit",
-				"namespace_id": "1001"
+				"namespace_id": "1001",
+				"limit": 5,
+				"period": 60
 			}
 		]
 	},

@@ -303,8 +303,10 @@ describe('Worker contact API', () => {
       if (i <= 5) expect(last.status, `envío ${i}`).toBe(200);
       else expect(last.status, `envío ${i}`).toBe(429);
     }
-    // El worker delega en el binding global, no en el Map local.
+    // El worker delega en el binding global, no en el Map local, y el call
+    // es simple: solo la key. El limite y el periodo viven en el binding.
     expect(limiter.limit).toHaveBeenCalledTimes(6);
+    expect(limiter.limit).toHaveBeenCalledWith({ key: expect.stringContaining('contact:') });
   });
 
   it('falls back to the in-memory Map when the RATE_LIMITER binding is absent', async () => {

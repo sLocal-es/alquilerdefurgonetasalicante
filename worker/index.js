@@ -255,10 +255,9 @@ function checkRateLimit(request, bucket, limit, windowMs) {
 async function isRateLimited(request, env, bucket, limit, windowMs) {
   const limiter = env?.RATE_LIMITER;
   if (limiter && typeof limiter.limit === "function") {
-    const result = await limiter.limit({
-      key: `${bucket}:${getClientIp(request)}`,
-      period: Math.ceil(windowMs / 1000),
-    });
+    // Los binding ratelimit solo aceptan simple rate limits: el limite y el
+    // periodo viven en el config del binding y el call manda solo la key.
+    const result = await limiter.limit({ key: `${bucket}:${getClientIp(request)}` });
     return !result.success;
   }
   return !checkRateLimit(request, bucket, limit, windowMs);
