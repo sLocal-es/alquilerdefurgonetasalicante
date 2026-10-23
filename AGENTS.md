@@ -38,13 +38,16 @@ El objetivo es simple: **que ningún error llegue a la web en producción**.
    gh pr create --fill
    ```
 
-   El PR dispara automáticamente dos cosas: un **check de build** y una **URL de vista previa**
-   (que se comenta sola en el PR).
+   El PR dispara automáticamente el **check de la suite** (`npm test`: build + tests),
+   que no usa ningún secret del repo: el código que ejecuta un PR no puede tocar
+   credenciales (contrato de CI del engine, sLocal-toolbox @121a573).
 
-4. **Revisar la vista previa.** Es una versión de prueba: **no afecta a la web en producción**.
+4. **Revisar el check del PR y la vista previa local.** La vista visual se hace en
+   local (`npm run dev`); el check del PR garantiza build + tests en verde.
+   **No afecta a la web en producción.**
 
-5. **Mergear el PR** solo cuando el check esté en verde y la preview se vea bien.
-   El merge a `main` dispara el **deploy a producción** y el smoke test automático.
+5. **Mergear el PR** solo cuando el check esté en verde.
+   El merge a `main` dispara el **deploy a producción** (suite → credenciales → build → deploy → smoke).
 
 ## Convención de commits
 
@@ -55,11 +58,11 @@ No añadir atribución de IA ni `Co-Authored-By`.
 
 | Flujo | Workflow | Qué hace |
 | --- | --- | --- |
-| Producción (merge a `main`) | `.github/workflows/deploy.yml` | `npm run build` + `wrangler deploy` + smoke test |
-| Preview de PR | `.github/workflows/preview.yml` | `wrangler versions upload` → Version URL (no toca producción) |
+| Producción (merge a `main`) | `.github/workflows/deploy.yml` | suite (`npm test`) → `wrangler whoami` → build → `wrangler deploy` → smoke test |
+| Check de PR | `.github/workflows/preview.yml` | suite (`npm test`) sin ningún secret — no toca producción |
 
 ## Notas para agentes de IA
 
 - Trabajar **siempre** en una rama; nunca commitear ni pushear directo a `main`.
-- Antes de proponer un merge: verificar el check de build en verde y que la preview se vea bien.
+- Antes de proponer un merge: verificar el check del PR en verde y la vista previa en local (`npm run dev`).
 - No hacer merge a `main` sin confirmación explícita del dueño.
