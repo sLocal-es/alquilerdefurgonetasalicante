@@ -270,3 +270,65 @@ describe('Lead validation', () => {
     expect(result.ok).toBe(true);
   });
 });
+
+describe('Canonical host redirects (SEO)', () => {
+  const assetsFetch = vi.fn(async () =>
+    new Response('asset page', { status: 200, headers: { 'Content-Type': 'text/html' } })
+  );
+  // El env de producción incluye DOMAIN (vars de wrangler) y el binding ASSETS.
+  const prodEnv = { ...env, ASSETS: { fetch: assetsFetch } } as any;
+
+  beforeEach(() => {
+    resetRateLimits();
+    assetsFetch.mockClear();
+  });
+
+  it('redirects 301 https://www to the apex keeping the path', async () => {
+    const res = await worker.fetch(new Request('https://www.test.es/blog/'), prodEnv);
+    expect(res.status).toBe(301);
+    expect(res.headers.get('location')).toBe('https://test.es/blog/');
+  });
+
+  it('redirects 301 http://www to https://apex in a single hop', async () => {
+    const res = await worker.fetch(
+      new Request('http://www.test.es/furgoneta-grande-alicante/?x=1'),
+      prodEnv
+    );
+    expect(res.status).toBe(301);
+    expect(res.headers.get('location')).toBe('https://test.es/furgoneta-grande-alicante/?x=1');
+  });
+
+  it('redirects 301 http://apex to https://apex keeping the query string', async () => {
+    const res = await worker.fetch(
+      new Request('http://test.es/alquiler-furgonetas-por-horas-alicante/?utm_source=test'),
+      prodEnv
+    );
+    expect(res.status).toBe(301);
+    const location = new URL(res.headers.get('location') ?? '');
+    expect(location.protocol).toBe('https:');
+    expect(location.hostname).toBe('test.es');
+    expect(location.search).toBe('?utm_source=test');
+  });
+
+  it('serves assets untouched on the canonical https apex', async () => {
+    const res = await worker.fetch(new Request('https://test.es/'), prodEnv);
+    expect(res.status).toBe(200);
+    expect(await res.text()).toContain('asset page');
+    expect(assetsFetch).toHaveBeenCalledOnce();
+  });
+
+  it('does not redirect non-domain hosts (workers.dev, previews, local)', async () => {
+    const res = await worker.fetch(
+      new Request('https://alquilerfurgonetasalicante.algo.workers.dev/'),
+      prodEnv
+    );
+    expect(res.status).toBe(200);
+    expect(assetsFetch).toHaveBeenCalledOnce();
+  });
+
+  it('keeps serving the contact API when DOMAIN is set', async () => {
+    const res = await worker.fetch(contactRequest({ ...validLead, nombre: '' }), prodEnv);
+    expect(res.status).toBe(400);
+    expect(res.headers.get('content-type')).toContain('application/json');
+  });
+});
