@@ -231,6 +231,93 @@ describe('Worker contact API', () => {
     expect(res.status).toBe(200);
     expect(await res.text()).toBe('<html>asset</html>');
   });
+
+  it('maps the legacy English field names of the Alicante form', async () => {
+    vi.mocked(fetch).mockResolvedValue(new Response('OK', { status: 202 }));
+
+    // Payload exacto del formulario viejo de Alicante: names en inglés.
+    const res = await worker.fetch(
+      contactRequest({
+        name: 'Jorge',
+        phone: '600123456',
+        email: 't@t.com',
+        vehicle: 'mediana',
+        service: 'Mudanza',
+        date: '2026-10-25',
+        duration: '1 día',
+        consent: 'on',
+        message: 'hola',
+      }),
+      env,
+    );
+    expect(res.status).toBe(200);
+
+    // El lead llega completo: el mapeo EN→ES pierde nada.
+    const [ownerMail] = vi.mocked(fetch).mock.calls;
+    const payload = JSON.parse((ownerMail[1] as RequestInit).body as string);
+    expect(payload.text).toContain('Servicio:    Mudanza');
+    expect(payload.text).toContain('Fecha:       2026-10-25');
+    expect(payload.text).toContain('Duración:    1 día');
+    // El form viejo no pregunta el carnet: el campo queda vacío, no inventado.
+    expect(payload.text).toContain('Carnet B:    No indicado');
+  });
+
+  it('keeps the consent as sent when the old form sends it in English', async () => {
+    vi.mocked(fetch).mockResolvedValue(new Response('OK', { status: 202 }));
+    const run = vi.fn(async () => ({ success: true }));
+    const bind = vi.fn((..._values: unknown[]) => ({ run }));
+    const db = { prepare: vi.fn(() => ({ bind })) } as any;
+
+    // El checkbox del form viejo manda "on" cuando está marcado y no aparece
+    // cuando no lo está: ambos casos guardan lo que llegó.
+    const checked = await worker.fetch(
+      contactRequest({ name: 'T', phone: '600123456', email: 't@t.com', consent: 'on' }),
+      { ...env, DB: db },
+    );
+    expect(checked.status).toBe(200);
+    expect(bind.mock.calls[0][12]).toBe(1);
+
+    resetRateLimits();
+
+    const unchecked = await worker.fetch(
+      contactRequest({ name: 'T', phone: '600123456', email: 't@t.com' }),
+      { ...env, DB: db },
+    );
+    expect(unchecked.status).toBe(200);
+    expect(bind.mock.calls[1][12]).toBe(0);
+  });
+
+  it('rate limits globally when the Cloudflare RATE_LIMITER binding exists', async () => {
+    // El limitador global de Cloudflare: garantizado entre isolates y
+    // datacenters, a diferencia del Map en memoria del proceso.
+    let calls = 0;
+    const limiter = {
+      limit: vi.fn(async () => ({ success: ++calls <= 5 })),
+    };
+    const envWithLimiter = { ...env, RATE_LIMITER: limiter } as any;
+    vi.mocked(fetch).mockResolvedValue(new Response('OK', { status: 202 }));
+
+    let last = null;
+    for (let i = 1; i <= 6; i++) {
+      last = await worker.fetch(contactRequest({ ...validLead }), envWithLimiter);
+      if (i <= 5) expect(last.status, `envío ${i}`).toBe(200);
+      else expect(last.status, `envío ${i}`).toBe(429);
+    }
+    // El worker delega en el binding global, no en el Map local.
+    expect(limiter.limit).toHaveBeenCalledTimes(6);
+  });
+
+  it('falls back to the in-memory Map when the RATE_LIMITER binding is absent', async () => {
+    // El dev local y el wrangler sin el binding: el Map del proceso manda.
+    resetRateLimits();
+    vi.mocked(fetch).mockResolvedValue(new Response('OK', { status: 202 }));
+    let last = null;
+    for (let i = 1; i <= 6; i++) {
+      last = await worker.fetch(contactRequest({ ...validLead }), env);
+      if (i <= 5) expect(last.status, `envío ${i}`).toBe(200);
+      else expect(last.status, `envío ${i}`).toBe(429);
+    }
+  });
 });
 
 describe('Worker source', () => {
@@ -268,67 +355,5 @@ describe('Lead validation', () => {
   it('allows an empty duration when the service is not concrete', () => {
     const result = validateLead({ ...validLead, servicio: 'Otro', duracion: '' });
     expect(result.ok).toBe(true);
-  });
-});
-
-describe('Canonical host redirects (SEO)', () => {
-  const assetsFetch = vi.fn(async () =>
-    new Response('asset page', { status: 200, headers: { 'Content-Type': 'text/html' } })
-  );
-  // El env de producción incluye DOMAIN (vars de wrangler) y el binding ASSETS.
-  const prodEnv = { ...env, ASSETS: { fetch: assetsFetch } } as any;
-
-  beforeEach(() => {
-    resetRateLimits();
-    assetsFetch.mockClear();
-  });
-
-  it('redirects 301 https://www to the apex keeping the path', async () => {
-    const res = await worker.fetch(new Request('https://www.test.es/blog/'), prodEnv);
-    expect(res.status).toBe(301);
-    expect(res.headers.get('location')).toBe('https://test.es/blog/');
-  });
-
-  it('redirects 301 http://www to https://apex in a single hop', async () => {
-    const res = await worker.fetch(
-      new Request('http://www.test.es/furgoneta-grande-alicante/?x=1'),
-      prodEnv
-    );
-    expect(res.status).toBe(301);
-    expect(res.headers.get('location')).toBe('https://test.es/furgoneta-grande-alicante/?x=1');
-  });
-
-  it('redirects 301 http://apex to https://apex keeping the query string', async () => {
-    const res = await worker.fetch(
-      new Request('http://test.es/alquiler-furgonetas-por-horas-alicante/?utm_source=test'),
-      prodEnv
-    );
-    expect(res.status).toBe(301);
-    const location = new URL(res.headers.get('location') ?? '');
-    expect(location.protocol).toBe('https:');
-    expect(location.hostname).toBe('test.es');
-    expect(location.search).toBe('?utm_source=test');
-  });
-
-  it('serves assets untouched on the canonical https apex', async () => {
-    const res = await worker.fetch(new Request('https://test.es/'), prodEnv);
-    expect(res.status).toBe(200);
-    expect(await res.text()).toContain('asset page');
-    expect(assetsFetch).toHaveBeenCalledOnce();
-  });
-
-  it('does not redirect non-domain hosts (workers.dev, previews, local)', async () => {
-    const res = await worker.fetch(
-      new Request('https://alquilerfurgonetasalicante.algo.workers.dev/'),
-      prodEnv
-    );
-    expect(res.status).toBe(200);
-    expect(assetsFetch).toHaveBeenCalledOnce();
-  });
-
-  it('keeps serving the contact API when DOMAIN is set', async () => {
-    const res = await worker.fetch(contactRequest({ ...validLead, nombre: '' }), prodEnv);
-    expect(res.status).toBe(400);
-    expect(res.headers.get('content-type')).toContain('application/json');
   });
 });

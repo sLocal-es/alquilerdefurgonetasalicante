@@ -27,6 +27,15 @@
 		"TO_EMAIL": "alquilerfurgonetasalicante@proton.me",
 		"PHONE_DISPLAY": "645 81 89 44"
 	},
+	"unsafe": {
+		"bindings": [
+			{
+				"name": "RATE_LIMITER",
+				"type": "ratelimit",
+				"namespace_id": "1001"
+			}
+		]
+	},
 	"observability": {
 		"enabled": true
 	}
