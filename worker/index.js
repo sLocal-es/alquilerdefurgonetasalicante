@@ -521,6 +521,29 @@ function httpsRedirect(url) {
   return Response.redirect(secure.toString(), 301);
 }
 
+/**
+ * Redirect canónico de los hosts del dominio (SEO).
+ * El subhosting de assets sirve las páginas sin invocar al worker, así que
+ * con `run_worker_first: true` en wrangler.jsonc este redirect se aplica
+ * también a las páginas estáticas. Regla: el sitio solo se sirve en
+ * `https://<DOMAIN>`; hosts que no son el apex ni su www (previews,
+ * workers.dev, localhost) no se tocan. Responde un solo 301, sin encadenar.
+ *
+ * @returns {Response | null} Response 301 o null si la request ya es canónica.
+ */
+export function canonicalRedirect(url, env = {}) {
+  const domain = typeof env.DOMAIN === "string" ? env.DOMAIN.trim() : "";
+  if (!domain) return null;
+
+  const host = url.hostname;
+  const isApex = host === domain;
+  const isWww = host === `www.${domain}`;
+  if ((!isApex && !isWww) || (url.protocol !== "http:" && isApex)) return null;
+
+  const target = `https://${domain}${url.pathname}${url.search}`;
+  return Response.redirect(target, 301);
+}
+
 function handleAdminPage(request, env) {
   if (!hasAdminAccess(request, env)) return forbidden();
   return withHeaders(
@@ -616,6 +639,8 @@ export default {
   async fetch(request, env = {}, ctx) {
     const url = new URL(request.url);
 
+    const canonic = canonicalRedirect(url, env);
+    if (canonic) return canonic;
     if (isInsecureRemote(url)) return httpsRedirect(url);
     if (!isOriginAllowed(request)) return jsonResponse({ error: "Origin not allowed" }, 403);
 
