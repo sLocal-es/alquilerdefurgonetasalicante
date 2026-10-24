@@ -440,16 +440,23 @@ const preselected =
 
         if (successTemplate) {
           formElement.hidden = true;
-          root.querySelector('[data-step-label]')?.remove();
-          root.querySelector('.step-bars')?.remove();
-          root.querySelector('.form-top')?.remove();
+          const stepLabelEl = root.querySelector<HTMLElement>('[data-step-label]');
+          const stepBarsEl = root.querySelector<HTMLElement>('.step-bars');
+          const formTopEl = root.querySelector<HTMLElement>('.form-top');
+          if (stepLabelEl) stepLabelEl.hidden = true;
+          if (stepBarsEl) stepBarsEl.hidden = true;
+          if (formTopEl) formTopEl.hidden = true;
           root.append(successTemplate.content.cloneNode(true));
           const panel = root.querySelector<HTMLElement>('.success-panel');
           panel?.focus();
           panel?.querySelector<HTMLButtonElement>('[data-restart]')?.addEventListener('click', () => {
             formElement.reset();
             formElement.hidden = false;
+            if (stepLabelEl) stepLabelEl.hidden = false;
+            if (stepBarsEl) stepBarsEl.hidden = false;
+            if (formTopEl) formTopEl.hidden = false;
             root.querySelector('.success-panel')?.remove();
+            if (submitButton) submitButton.disabled = false;
             setStep(1);
             root.querySelector<HTMLElement>('[name="servicio"]')?.focus();
           });
