@@ -4,6 +4,10 @@ Log de cambios de metadatos por fecha. Estrategia base:
 `sLocal/docs/planning/estrategia-canibalizacion-metadatos.md`.
 Evidencia GSC: `sLocal/research/GSC/furgonetasalicante/` (últimos 3 meses).
 
+## 2026-10-27 — Higiene: card falsa "De pasajeros" fuera del home
+
+Rama: `fix/home-card-pasajeros-falsa` — el home prometía vans 7-9 plazas que la flota no tiene (form: solo 4 de carga, 2-3/3 plazas); ~59 imp de queries "9 plazas" a pos 61-72 con 0 clicks. Reemplazada por card "Por horas" (oferta real, mejores posiciones GSC del sitio) con anchor a `/alquiler-furgonetas-por-horas-alicante/`. Confirmado por el dueño: flota solo carga.
+
 ## 2026-10-27 — Higiene: legales fuera del sitemap y con `noindex`
 
 Rama: `fix/noindex-legales-sitemap` — molde del engine (`NOINDEX_PATHS` + filtro) y prop `noindex` en las 4 legales. Motivo: 0 impresiones en GSC (3 meses), alineado al molde del motor. Test de contrato en `scripts/build-seo.test.ts` (sitemap sin legales + meta robots + controles positivos). Sin cambios de URL.
