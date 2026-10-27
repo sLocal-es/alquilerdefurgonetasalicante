@@ -4,6 +4,10 @@ Log de cambios de metadatos por fecha. Estrategia base:
 `sLocal/docs/planning/estrategia-canibalizacion-metadatos.md`.
 Evidencia GSC: `sLocal/research/GSC/furgonetasalicante/` (últimos 3 meses).
 
+## 2026-10-27 — Higiene: legales fuera del sitemap y con `noindex`
+
+Rama: `fix/noindex-legales-sitemap` — molde del engine (`NOINDEX_PATHS` + filtro) y prop `noindex` en las 4 legales. Motivo: 0 impresiones en GSC (3 meses), alineado al molde del motor. Test de contrato en `scripts/build-seo.test.ts` (sitemap sin legales + meta robots + controles positivos). Sin cambios de URL.
+
 ## 2026-10-27 — Anti-canibalización (metadatos, sin cambios de URL)
 
 Rama: `feat/canibalizacion-metadata-alicante`
