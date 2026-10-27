@@ -1,7 +1,7 @@
 export const blogArticles = [
   {
     slug: 'mudanzas-alicante-guia-barrios',
-    title: 'Guía de mudanzas en Alicante por barrios',
+    title: 'Cómo organizar una mudanza en Alicante por barrios',
     excerpt: 'Qué furgoneta necesitas según tu barrio de Alicante, los permisos municipales que casi nadie conoce y trucos para cargar y aparcar sin sustos.',
     category: 'mudanzas',
     date: '2026-07-20',
@@ -97,7 +97,7 @@ export const blogArticles = [
   },
   {
     slug: 'alquiler-furgonetas-alicante-guia-completa',
-    title: 'Alquiler de furgonetas en Alicante: guía completa 2026',
+    title: 'Cómo alquilar una furgoneta en Alicante: guía 2026',
     excerpt: 'Todo lo que necesitas saber antes de alquilar una furgoneta en Alicante. Documentación, precios, seguros y consejos prácticos.',
     category: 'guia',
     date: '2026-07-10',
