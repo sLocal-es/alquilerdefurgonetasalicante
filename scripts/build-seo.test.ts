@@ -38,4 +38,49 @@ describe('SEO output of the build', () => {
     const home = read('index.html');
     expect(home).toContain('content="index, follow, max-snippet:-1, max-image-preview:large"');
   });
+
+  it('gives every JSON-LD Product an Offer, Review or an aggregateRating', () => {
+    // GSC product snippet critical rule ("Debe especificarse \"offers\",
+    // \"review\" o \"aggregateRating\""): Google evaluates every Product node
+    // on its own, even when it sits inside offer wraps like
+    // OfferCatalog.itemOffered, so each one needs its own anchor.
+    const walk = (dir: string): string[] =>
+      fs
+        .readdirSync(dir, { withFileTypes: true })
+        .flatMap((entry) => {
+          const entryPath = path.join(dir, entry.name);
+          return entry.isDirectory() ? walk(entryPath) : entry.name.endsWith('.html') ? [entryPath] : [];
+        });
+
+    const offenders: string[] = [];
+    const findProducts = (node: unknown, file: string): void => {
+      if (Array.isArray(node)) {
+        node.forEach((child) => findProducts(child, file));
+        return;
+      }
+      if (typeof node !== 'object' || node === null) return;
+      const record = node as Record<string, unknown>;
+      if (record['@type'] === 'Product') {
+        const hasAnchor = ['offers', 'review', 'aggregateRating'].some((k) => record[k] != null);
+        if (!hasAnchor) offenders.push(`${file}: ${String(record.name)}`);
+      }
+      Object.values(record).forEach((child) => findProducts(child, file));
+    };
+
+    for (const htmlPath of walk(dist)) {
+      const html = fs.readFileSync(htmlPath, 'utf8');
+      const blocks = html.match(/<script type="application\/ld\+json">[\s\S]*?<\/script>/g) ?? [];
+      for (const block of blocks) {
+        let data: unknown;
+        try {
+          data = JSON.parse(block.replace(/<\/?script[^>]*>/g, ''));
+        } catch {
+          continue;
+        }
+        findProducts(data, path.relative(dist, htmlPath));
+      }
+    }
+
+    expect(offenders).toEqual([]);
+  });
 });
