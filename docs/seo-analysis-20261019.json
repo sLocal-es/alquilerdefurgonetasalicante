@@ -1,0 +1,18 @@
+{
+  "domain": "alquilerdefurgonetasalicante.es",
+  "analysis_date": "2026-10-19",
+  "domain_metrics": {
+    "free_probes": {
+      "indexed_pages_estimate": "Check manually: site:alquilerdefurgonetasalicante.es",
+      "similarweb_accessible": false
+    },
+    "note": "Limited data without Apify. Set APIFY_API_TOKEN for full analysis."
+  },
+  "backlink_profile": {},
+  "keyword_rankings": [],
+  "top_pages": [],
+  "competitors": [],
+  "data_sources": [
+    "free-probes"
+  ]
+}
