@@ -39,7 +39,7 @@ describe('SEO output of the build', () => {
     expect(home).toContain('content="index, follow, max-snippet:-1, max-image-preview:large"');
   });
 
-  it('gives every JSON-LD Product an Offer, Review or an aggregateRating', () => {
+  it('gives every JSON-LD Product an Offer (or Review/aggregateRating) and a real image', () => {
     // GSC product snippet critical rule ("Debe especificarse \"offers\",
     // \"review\" o \"aggregateRating\""): Google evaluates every Product node
     // on its own, even when it sits inside offer wraps like
@@ -63,6 +63,16 @@ describe('SEO output of the build', () => {
       if (record['@type'] === 'Product') {
         const hasAnchor = ['offers', 'review', 'aggregateRating'].some((k) => record[k] != null);
         if (!hasAnchor) offenders.push(`${file}: ${String(record.name)}`);
+        // GSC "Fichas de comerciantes": un Product con offers exige "image"
+        // (error critico). Imagen raster real, no el favicon SVG.
+        const image = typeof record.image === 'string' ? record.image : '';
+        if (!/^https:\/\/alquilerdefurgonetasalicante\.es\/images\/.+\.(webp|jpe?g|png)$/.test(image)) {
+          offenders.push(`${file}: ${String(record.name)} sin image valida (${image || 'ninguna'})`);
+        }
+        if (typeof record.image === 'string' && record.image.startsWith('https://alquilerdefurgonetasalicante.es/images/')) {
+          const local = path.join(dist, decodeURI(new URL(record.image).pathname));
+          if (!fs.existsSync(local)) offenders.push(`${file}: ${String(record.name)} image inexistente ${record.image}`);
+        }
       }
       Object.values(record).forEach((child) => findProducts(child, file));
     };

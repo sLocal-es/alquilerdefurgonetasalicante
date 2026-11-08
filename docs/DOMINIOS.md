@@ -4,6 +4,10 @@ Log de cambios de metadatos por fecha. Estrategia base:
 `sLocal/docs/planning/estrategia-canibalizacion-metadatos.md`.
 Evidencia GSC: `sLocal/research/GSC/furgonetasalicante/` (últimos 3 meses).
 
+## 2026-11-08 — Schema: imagen en los productos del catálogo
+
+Rama: `fix/schema-imagen-catalogo` — GSC (inspección 5 nov, por horas y reformas): "Fichas de comerciantes: falta el campo image" (error) en los 4 Product del OfferCatalog que imprime `Layout.astro` en todas las páginas; apareció al añadir `offers` (PR #37). Se añade `image` (card webp) y `url` (ficha) a cada uno, y el Product de cada ficha usa su imagen hero en vez del favicon SVG. Test en `scripts/build-seo.test.ts`: todo Product con imagen raster existente. Sin cambios de URL, títulos, descriptions ni H1 (foto de paridad intacta). Tras deploy: GSC → Fichas de comerciantes → Validar corrección.
+
 ## 2026-11-08 — Contrato SEO y foto de paridad (sin cambios en la web)
 
 Rama: `test/contrato-seo-paridad` — solo tests. `scripts/seo-contract.test.ts` comprueba en cada build: canonical/og:url propios, 0 enlaces internos rotos, 1 H1 por página y que las 13 URLs indexables mantienen título, description y H1 de `scripts/seo-baseline.json` (foto de producción). Motivo: el port de Getafe al engine v2 llegó a producción con canonical a `/service/…` (404) en las fichas; Alicante es el sitio con más tráfico. La foto es además la guardia de paridad para un futuro port. Cambio intencionado de metadatos → `UPDATE_SEO_BASELINE=1 npm test` y revisar el diff en el PR.
