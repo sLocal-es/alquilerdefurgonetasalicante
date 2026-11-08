@@ -120,6 +120,8 @@ const ogImageUrl = ogImagePath.startsWith("http") ? ogImagePath : `${siteUrl}${o
             "itemOffered": {
               "@type": "Product",
               "name": "Furgoneta Pequeña",
+              "image": `${siteUrl}/images/furgonetas/pequena-card.webp`,
+              "url": `${siteUrl}/furgoneta-peque%C3%B1a-alicante/`,
               "description": "Furgoneta pequeña 3-4m³, ideal para mudanzas pequeñas",
               "offers": {
                 "@type": "Offer",
@@ -137,6 +139,8 @@ const ogImageUrl = ogImagePath.startsWith("http") ? ogImagePath : `${siteUrl}${o
             "itemOffered": {
               "@type": "Product",
               "name": "Furgoneta Mediana",
+              "image": `${siteUrl}/images/furgonetas/mediana-card.webp`,
+              "url": `${siteUrl}/furgoneta-mediana-alicante/`,
               "description": "Furgoneta mediana 6-7m³, perfecta para mudanzas de 2-3 habitaciones",
               "offers": {
                 "@type": "Offer",
@@ -154,6 +158,8 @@ const ogImageUrl = ogImagePath.startsWith("http") ? ogImagePath : `${siteUrl}${o
             "itemOffered": {
               "@type": "Product",
               "name": "Furgoneta Grande",
+              "image": `${siteUrl}/images/furgonetas/grande-card.webp`,
+              "url": `${siteUrl}/furgoneta-grande-alicante/`,
               "description": "Furgoneta grande 8-10m³, ideal para mudanzas grandes",
               "offers": {
                 "@type": "Offer",
@@ -171,6 +177,8 @@ const ogImageUrl = ogImagePath.startsWith("http") ? ogImagePath : `${siteUrl}${o
             "itemOffered": {
               "@type": "Product",
               "name": "Furgoneta Extra Grande",
+              "image": `${siteUrl}/images/furgonetas/extragrande-card.webp`,
+              "url": `${siteUrl}/furgoneta-extra-grande-alicante/`,
               "description": "Furgoneta extra grande 12-15m³, para mudanzas muy grandes",
               "offers": {
                 "@type": "Offer",
@@ -195,7 +203,7 @@ const ogImageUrl = ogImagePath.startsWith("http") ? ogImagePath : `${siteUrl}${o
         "name": product.name,
         "description": product.description,
         "url": currentUrl,
-        "image": product.image || `${siteUrl}/favicon.svg`,
+        "image": product.image ? (product.image.startsWith("http") ? product.image : `${siteUrl}${product.image}`) : ogImageUrl,
         "offers": {
           "@type": "Offer",
           "price": product.price,
