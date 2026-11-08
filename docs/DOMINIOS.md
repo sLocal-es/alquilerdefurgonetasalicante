@@ -4,6 +4,12 @@ Log de cambios de metadatos por fecha. Estrategia base:
 `sLocal/docs/planning/estrategia-canibalizacion-metadatos.md`.
 Evidencia GSC: `sLocal/research/GSC/furgonetasalicante/` (últimos 3 meses).
 
+## 2026-11-08 — Contrato SEO y foto de paridad (sin cambios en la web)
+
+Rama: `test/contrato-seo-paridad` — solo tests. `scripts/seo-contract.test.ts` comprueba en cada build: canonical/og:url propios, 0 enlaces internos rotos, 1 H1 por página y que las 13 URLs indexables mantienen título, description y H1 de `scripts/seo-baseline.json` (foto de producción). Motivo: el port de Getafe al engine v2 llegó a producción con canonical a `/service/…` (404) en las fichas; Alicante es el sitio con más tráfico. La foto es además la guardia de paridad para un futuro port. Cambio intencionado de metadatos → `UPDATE_SEO_BASELINE=1 npm test` y revisar el diff en el PR.
+
+Auditoría técnica del build actual (18 páginas): canonicals, sitemap, noindex de legales, JSON-LD válido, títulos/descriptions únicos y enlaces internos — sin incidencias.
+
 ## 2026-10-27 — Higiene: card falsa "De pasajeros" fuera del home
 
 Rama: `fix/home-card-pasajeros-falsa` — el home prometía vans 7-9 plazas que la flota no tiene (form: solo 4 de carga, 2-3/3 plazas); ~59 imp de queries "9 plazas" a pos 61-72 con 0 clicks. Reemplazada por card "Por horas" (oferta real, mejores posiciones GSC del sitio) con anchor a `/alquiler-furgonetas-por-horas-alicante/`. Confirmado por el dueño: flota solo carga.
