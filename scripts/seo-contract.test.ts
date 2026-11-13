@@ -9,6 +9,7 @@ import path from 'node:path';
  * 2. Ningún enlace interno apunta a una ruta que no existe.
  * 3. Paridad congelada: URLs indexables, <title>, meta description y H1 deben
  *    coincidir con `seo-baseline.json` (foto de producción, 2026-11-08).
+ * 4. Toda página indexable con sección de FAQ emite schema FAQPage JSON-LD.
  *
  * Motivo: en el port de Getafe al engine v2 las fichas salieron con canonical
  * a /service/<slug>/ (404) y 10 enlaces internos rotos, y pasaron el CI.
@@ -99,6 +100,16 @@ describe('Contrato SEO del build', () => {
     const offenders = pages
       .map((file) => [pagePath(file), (fs.readFileSync(file, 'utf8').match(/<h1\b/g) ?? []).length] as const)
       .filter(([, n]) => n !== 1);
+    expect(offenders).toEqual([]);
+  });
+
+  it('cada página indexable con sección de FAQ emite FAQPage JSON-LD', () => {
+    const offenders: string[] = [];
+    for (const file of pages) {
+      const html = fs.readFileSync(file, 'utf8');
+      if (!isIndexable(html) || !/class="faq-section"/.test(html)) continue;
+      if (!/"@type":\s*"FAQPage"/.test(html)) offenders.push(pagePath(file));
+    }
     expect(offenders).toEqual([]);
   });
 
