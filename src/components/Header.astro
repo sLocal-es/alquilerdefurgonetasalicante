@@ -224,6 +224,12 @@ const currentPath = Astro.url.pathname;
     background: var(--color-bg-white);
   }
 
+  /* Sin esta regla, el display:flex anterior vence al atributo hidden del HTML
+     y el menú móvil aparece abierto al cargar la página. */
+  .mobile-nav[hidden] {
+    display: none;
+  }
+
   .mobile-nav a {
     display: block;
     padding: 0.875rem 1.5rem;

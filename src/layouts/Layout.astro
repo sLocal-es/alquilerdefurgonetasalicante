@@ -261,15 +261,25 @@ const ogImageUrl = ogImagePath.startsWith("http") ? ogImagePath : `${siteUrl}${o
             <strong>Alquiler Furgonetas Alicante</strong>
             <p>Alquiler de furgonetas por horas, días y sin conductor en Alicante.</p>
           </div>
-          <div class="footer-links">
-            <a href="/">Inicio</a>
-            <a href="/#flota">Flota</a>
-            <a href="/alquiler-furgonetas-por-horas-alicante/">Alquiler por horas</a>
-            <a href="/furgonetas-mudanzas-alicante/">Mudanzas</a>
-            <a href="/furgonetas-reformas-construccion-alicante/">Reformas</a>
-            <a href="/alquiler-furgonetas-san-vicente/">San Vicente</a>
-            <a href="/blog/">Blog</a>
-            <a href="/#contacto">Contacto</a>
+          <div class="footer-cols">
+            <div class="footer-col">
+              <span class="footer-col-title">Servicios</span>
+              <a href="/">Inicio</a>
+              <a href="/alquiler-furgonetas-por-horas-alicante/">Alquiler por horas</a>
+              <a href="/furgonetas-mudanzas-alicante/">Mudanzas</a>
+              <a href="/furgonetas-reformas-construccion-alicante/">Reformas</a>
+            </div>
+            <div class="footer-col">
+              <span class="footer-col-title">Zonas</span>
+              <a href="/alquiler-furgonetas-san-juan-alicante/">San Juan (Playa)</a>
+              <a href="/alquiler-furgonetas-san-vicente/">San Vicente</a>
+            </div>
+            <div class="footer-col">
+              <span class="footer-col-title">Recursos</span>
+              <a href="/#flota">Flota</a>
+              <a href="/blog/">Blog</a>
+              <a href="/#contacto">Contacto</a>
+            </div>
           </div>
           <div class="footer-legal">
             <a href="/aviso-legal/">Aviso legal</a>
@@ -470,6 +480,21 @@ const ogImageUrl = ogImagePath.startsWith("http") ? ogImagePath : `${siteUrl}${o
     text-decoration: none;
   }
 
+  /* Botón secundario: sin el fondo del .btn base, con borde y texto naranja.
+     Sin esta regla el .btn-outline hereda el fondo naranja del .btn y su texto
+     queda invisible (texto naranja sobre naranja). */
+  .btn-outline {
+    background: transparent;
+    border: 2px solid var(--color-primary);
+    color: var(--color-primary);
+  }
+
+  .btn-outline:hover {
+    background: rgba(var(--color-primary-rgb), 0.08);
+    box-shadow: none;
+    text-decoration: none;
+  }
+
   .slocal-curve {
     clip-path: ellipse(120% 100% at 50% 100%);
   }
@@ -576,6 +601,40 @@ const ogImageUrl = ogImagePath.startsWith("http") ? ogImagePath : `${siteUrl}${o
     text-decoration: none;
   }
 
+  .footer-cols {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 2rem;
+  }
+
+  .footer-col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .footer-col a {
+    color: var(--color-dark-fg-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color var(--duration-default) var(--ease-card-hover);
+  }
+
+  .footer-col a:hover {
+    color: var(--color-dark-fg);
+    text-decoration: none;
+  }
+
+  .footer-col-title {
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-eyebrow);
+    color: rgba(255, 255, 255, 0.4);
+    margin-bottom: 0.25rem;
+  }
+
   .footer-area {
     color: var(--color-dark-fg-muted);
     font-size: 0.85rem;
@@ -621,9 +680,9 @@ const ogImageUrl = ogImagePath.startsWith("http") ? ogImagePath : `${siteUrl}${o
     .footer-content {
       flex-direction: column;
     }
-    .footer-links {
-      flex-wrap: wrap;
-      gap: 1rem;
+    .footer-cols {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
     }
   }
 

@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import VehicleCard from '../components/VehicleCard.astro';
 
 const vehicles = [
   {
@@ -7,28 +8,48 @@ const vehicles = [
     name: "Furgoneta Pequeña",
     slug: "furgoneta-pequeña-alicante",
     capacity: "3-4m³",
+    dimensions: "1.82 x 1.55 x 1.24 m",
+    maxLoad: "600 kg",
     price: "35€",
+    seats: "2-3 plazas",
+    description: "Pocos muebles, cajas y enseres personales en un solo viaje",
+    image: "/images/furgonetas/pequena-card.webp"
   },
   {
     group: "Grupo B",
     name: "Furgoneta Mediana",
     slug: "furgoneta-mediana-alicante",
     capacity: "6-7m³",
+    dimensions: "2.60 x 1.65 x 1.40 m",
+    maxLoad: "850 kg",
     price: "45€",
+    seats: "2-3 plazas",
+    description: "El equilibrio perfecto entre capacidad y maniobrabilidad",
+    image: "/images/furgonetas/mediana-card.webp"
   },
   {
     group: "Grupo C",
     name: "Furgoneta Grande",
     slug: "furgoneta-grande-alicante",
     capacity: "8-10m³",
+    dimensions: "3.00 x 1.70 x 1.70 m",
+    maxLoad: "1000 kg",
     price: "55€",
+    seats: "3 plazas",
+    description: "Espaciosa para pisos de 2-3 habitaciones",
+    image: "/images/furgonetas/grande-card.webp"
   },
   {
     group: "Grupo D",
     name: "Furgoneta Extra Grande",
     slug: "furgoneta-extra-grande-alicante",
     capacity: "12-15m³",
+    dimensions: "3.70 x 1.76 x 1.85 m",
+    maxLoad: "1300 kg",
     price: "65€",
+    seats: "3 plazas",
+    description: "La máxima capacidad para mudanzas completas",
+    image: "/images/furgonetas/extragrande-card.webp"
   },
 ];
 
@@ -149,17 +170,7 @@ const localFaq = [
       <p class="section-subtitle">Precios por día. Sujeto a disponibilidad y fecha.</p>
       <div class="vehicle-grid">
         {vehicles.map((vehicle) => (
-          <article class="vehicle-card">
-            <span class="vehicle-group">{vehicle.group}</span>
-            <h3>{vehicle.name}</h3>
-            <p class="vehicle-capacity">{vehicle.capacity}</p>
-            <p class="vehicle-price">
-              <span class="price-from">Desde</span>
-              <span class="price-amount">{vehicle.price}</span>
-              <span class="price-period">/día</span>
-            </p>
-            <a href={`/${vehicle.slug}/`} class="btn btn-outline">Ver detalles</a>
-          </article>
+          <VehicleCard {...vehicle} />
         ))}
       </div>
     </div>
@@ -222,19 +233,16 @@ const localFaq = [
   h2 { font-size: 1.6rem; margin-bottom: 1rem; }
   ul { display: grid; gap: 0.75rem; padding-left: 1.25rem; }
   .rules-grid, .vehicle-grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
-  .rule-card, .vehicle-card { border: 1px solid var(--color-border); border-radius: var(--radius-lg, 12px); padding: 1rem; background: var(--color-bg-white); }
-  .vehicle-group { display: inline-block; background: rgba(var(--color-primary-rgb, 59,130,246),0.12); color: var(--color-primary); padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.85rem; font-weight: 600; }
-  .price-from, .price-period { color: var(--color-fg-muted); font-size: 0.85rem; }
-  .price-amount { font-size: 1.5rem; font-weight: 700; color: var(--color-primary); margin: 0 0.35rem; }
+  .rule-card { border: 1px solid var(--color-border); border-radius: var(--radius-lg, 12px); padding: 1rem; background: var(--color-bg-white); }
+  .rule-card h3 { font-size: 1.25rem; }
   .btn { display: inline-block; padding: 0.75rem 1.25rem; border-radius: 9999px; font-weight: 600; text-decoration: none; }
   .btn-primary { background: var(--color-primary); color: var(--color-primary-fg, #fff); }
-  .btn-outline { border: 2px solid var(--color-primary); color: var(--color-primary); }
   .btn-lg { padding: 0.9rem 1.6rem; }
   .also-link a { color: var(--color-primary); text-decoration: underline; }
   .faq-list { display: grid; gap: 1rem; padding-left: 0; list-style: none; }
   .faq-item details { border: 1px solid var(--color-border); border-radius: 12px; padding: 1rem 1.25rem; background: var(--color-bg-white); }
   .faq-question { font-weight: 600; cursor: pointer; }
-  .faq-answer { color: var(--color-fg-muted); margin-top: 0.5rem; }
+  .faq-answer { color: hsl(240, 10%, 38%); margin-top: 0.5rem; }
   @media (max-width: 640px) {
     .hero-features { flex-direction: column; align-items: center; }
   }

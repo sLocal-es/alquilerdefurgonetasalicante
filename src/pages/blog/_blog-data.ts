@@ -32,7 +32,7 @@ export const blogArticles = [
 <p>Zona residencial e industrial con calles amplias y acceso cómodo desde la A-70 y la V-31. Aquí maniobrar con un vehículo grande no es problema. <strong>Recomendación: grande o extra grande</strong>, sobre todo si mueves mercancía, palés o un trastero completo.</p>
 
 <h3>Playa de San Juan y PAU 5</h3>
-<p>La zona más agradecida para una mudanza: avenidas anchas, garajes comunitarios y ascensores modernos. Ojo con una cosa: muchas comunidades tienen <strong>normas internas</strong> (horarios permitidos, reserva de ascensor, protección de zonas comunes). Avisa a la comunidad antes. <strong>Recomendación: mediana o grande</strong> según el volumen.</p>
+<p>La zona más agradecida para una mudanza: avenidas anchas, garajes comunitarios y ascensores modernos. Ojo con una cosa: muchas comunidades tienen <strong>normas internas</strong> (horarios permitidos, reserva de ascensor, protección de zonas comunes). Avisa a la comunidad antes. <strong>Recomendación: mediana o grande</strong> según el volumen. Para esta zona tenemos <a href="/alquiler-furgonetas-san-juan-alicante/">página específica de alquiler de furgonetas en San Juan de Alicante</a>.</p>
 
 <h3>Cabo de las Huertas</h3>
 <p>Viviendas amplias y de alto valor, con accesos correctos pero volúmenes grandes de mobiliario. Aquí importa más proteger bien los muebles que el tamaño del vehículo. <strong>Recomendación: grande o extra grande</strong>, con especial cuidado en el embalaje.</p>
@@ -93,7 +93,7 @@ export const blogArticles = [
 <p>Estudio o habitación: pequeña. Piso de 2-3 habitaciones: mediana. Piso grande o trastero: grande. Chalet: extra grande. Si dudas, <a href="/blog/alquiler-furgonetas-alicante-guia-completa/">aquí tienes la guía completa de alquiler</a>.</p>
 
 <h2>Consejo final</h2>
-<p>Elige barrio, mide el volumen y reserva hueco: con esas tres cosas, una mudanza en Alicante deja de ser un problema. Todos nuestros alquileres incluyen seguro a todo riesgo, asistencia 24h y 200 km diarios, con opción de <a href="/alquiler-furgonetas-por-horas-alicante/">alquiler por horas</a> para traslados cortos. Si no sabes qué furgoneta encaja con tu zona, pregúntanos: conocemos cada rincón de Alicante.</p>`,
+<p>Elige barrio, mide el volumen y reserva hueco: con esas tres cosas, una mudanza en Alicante deja de ser un problema. Todos nuestros alquileres incluyen seguro a todo riesgo, asistencia 24h y 200 km diarios, con opción de <a href="/alquiler-furgonetas-por-horas-alicante/">alquiler por horas</a> para traslados cortos. Si vas a organizar una mudanza completa, en la página de <a href="/furgonetas-mudanzas-alicante/">furgonetas para mudanzas en Alicante</a> tienes la flota entera y el checklist de carga. Si no sabes qué furgoneta encaja con tu zona, pregúntanos: conocemos cada rincón de Alicante.</p>`,
   },
   {
     slug: 'alquiler-furgonetas-alicante-guia-completa',
@@ -137,7 +137,7 @@ export const blogArticles = [
     content: `<p>Nuestro servicio de alquiler de furgonetas cubre toda la provincia de Alicante. Desde la capital hasta las localidades más alejadas de la costa y el interior. Estas son las zonas donde más servicios realizamos cada mes.</p>
 
 <h2>Alicante capital y área metropolitana</h2>
-<p>La zona de mayor demanda. Cubrimos todos los barrios de la capital más las localidades del área metropolitana: <strong>San Vicente del Raspeig, Sant Joan d'Alacant, El Campello y Mutxamel</strong>. La mayoría de servicios son mudanzas de pisos y traslado de muebles, con trayectos cortos de menos de 20 km. La furgoneta pequeña y mediana son las más solicitadas aquí por la facilidad de moverse entre estas localidades conectadas.</p>
+<p>La zona de mayor demanda. Cubrimos todos los barrios de la capital más las localidades del área metropolitana: <strong>San Vicente del Raspeig, Sant Joan d'Alacant, El Campello y Mutxamel</strong>. Para el norte costero tienes las páginas de <a href="/alquiler-furgonetas-san-juan-alicante/">furgonetas en San Juan de Alicante</a> y <a href="/alquiler-furgonetas-san-vicente/">furgonetas en San Vicente del Raspeig</a>. La mayoría de servicios son mudanzas de pisos y traslado de muebles, con trayectos cortos de menos de 20 km. La furgoneta pequeña y mediana son las más solicitadas aquí por la facilidad de moverse entre estas localidades conectadas.</p>
 
 <h2>Elche y comarca del Bajo Vinalopó</h2>
 <p>Segunda zona en volumen de servicios. <strong>Elche, Santa Pola, Crevillent</strong> y alrededores concentran muchas mudanzas de viviendas unifamiliares y traslados comerciales. La furgoneta mediana y grande son las protagonistas aquí. Elche tiene buenos accesos desde la A-70 y la circunvalación, lo que facilita las mudanzas entre pedanías.</p>
