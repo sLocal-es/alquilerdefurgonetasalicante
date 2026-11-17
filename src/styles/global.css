@@ -55,9 +55,9 @@ textarea {
   pointer-events: none;
 }
 
-/* Botón "Atrás": Alicante no define .btn-outline global (los existentes
-   son estilos scoped de PricingTable, Header y San Vicente), así que la
-   variante outline va limitada al formulario. */
+/* Botón "Atrás": la variante outline del motor va limitada al formulario
+   (los tokens --ld-* son de la plantilla). El .btn-outline global de Alicante
+   (naranja) no aplica aquí porque esta regla es más específica. */
 .quote-card .btn-outline {
   border-color: var(--ld-border);
   background: transparent;
@@ -68,6 +68,12 @@ textarea {
   background: var(--ld-secondary);
   box-shadow: none;
   text-decoration: none;
+}
+
+/* Sin esta regla el display del .btn (author CSS) vence al atributo hidden
+   del HTML y el botón "Atrás" se ve en el paso 1, donde no existe todavía. */
+.quote-card [hidden] {
+  display: none;
 }
 
 /* ── Bloque del formulario (verbatim del motor) ─────────────────────── */
