@@ -1,0 +1,247 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const vehicles = [
+  {
+    group: "Grupo AM",
+    name: "Furgoneta Pequeña",
+    slug: "furgoneta-pequeña-alicante",
+    capacity: "3-4m³",
+    price: "35€",
+  },
+  {
+    group: "Grupo B",
+    name: "Furgoneta Mediana",
+    slug: "furgoneta-mediana-alicante",
+    capacity: "6-7m³",
+    price: "45€",
+  },
+  {
+    group: "Grupo C",
+    name: "Furgoneta Grande",
+    slug: "furgoneta-grande-alicante",
+    capacity: "8-10m³",
+    price: "55€",
+  },
+  {
+    group: "Grupo D",
+    name: "Furgoneta Extra Grande",
+    slug: "furgoneta-extra-grande-alicante",
+    capacity: "12-15m³",
+    price: "65€",
+  },
+];
+
+const localFaq = [
+  {
+    question: "¿Dónde se puede cargar y aparcar una furgoneta en Playa de San Juan?",
+    answer:
+      "Las avenidas anchas de Playa de San Juan y los accesos de las manzanas facilitan la carga, pero muchas comunidades de vecinos piden avisar antes y reservar horario o ascensor. Si necesitas reservar hueco en la vía pública dentro de Alicante, la autorización municipal se pide con 5 días hábiles de antelación en zona de aparcamiento y 10 en zona peatonal. Avisa a tu comunidad y planifica el punto de carga con nosotros al reservar.",
+  },
+  {
+    question: "¿Qué furgoneta conviene para un piso en PAU 5 o en Cabo de las Huertas?",
+    answer:
+      "PAU 5 es de los barrios más cómodos para mudar: avenidas amplias, garajes comunitarios y ascensores modernos, así que una Mediana (Grupo B) cubre la mayoría de pisos y una Grande (Grupo C) los de mayor volumen. En Cabo de las Huertas predominan chalets y viviendas amplias con mucho mobiliario: Grande o Extra Grande, cuidando el embalaje. Ten en cuenta la altura de los portales de garaje: la Grande mide 2,40 m y no entra en todos los sótanos.",
+  },
+  {
+    question: "¿Cubrís también Sant Joan d'Alacant, El Campello y Mutxamel?",
+    answer:
+      "Sí, damos servicio en toda el área metropolitana: Sant Joan d'Alacant, El Campello, Mutxamel y el resto de localidades conectadas con Alicante por la Vía Parque y la N-332, con trayectos de menos de 20 km. Al abrir reserva por WhatsApp te confirmamos zona de entrega, horario y precio en menos de 1 hora.",
+  },
+];
+---
+
+<Layout
+  title="Alquiler de Furgonetas en San Juan de Alicante"
+  description="Alquiler de furgonetas sin conductor en San Juan de Alicante: Playa de San Juan, PAU 5 y Sant Joan. Por horas desde 4h, carnet B y presupuesto en menos de 1 hora."
+>
+  <section class="hero">
+    <div class="container">
+      <span class="eyebrow">— Alquiler de Furgonetas en San Juan, Alicante</span>
+      <h1>Alquiler de furgonetas en San Juan de Alicante</h1>
+      <p class="hero-subtitle">
+        Mudanzas y traslados en Playa de San Juan, PAU 5, Cabo de las Huertas y Sant Joan d'Alacant.
+        Furgonetas por horas, por días y sin conductor, con carnet B.
+      </p>
+      <div class="hero-features">
+        <div class="feature">
+          <span>Desde 35€/día</span>
+        </div>
+        <div class="feature">
+          <span>Mínimo 4 horas</span>
+        </div>
+        <div class="feature">
+          <span>Carnet B suficiente</span>
+        </div>
+      </div>
+      <a href="https://wa.me/34645818944?text=Hola%2C%20quiero%20reservar%20una%20furgoneta%20en%20San%20Juan%20de%20Alicante." class="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">
+        Reservar por WhatsApp
+      </a>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="container">
+      <h2>Por qué alquilar una furgoneta en San Juan de Alicante</h2>
+      <p>
+        San Juan concentra el norte costero de Alicante: la playa con sus avenidas anchas, el planeamiento
+        reciente de PAU 5 y las viviendas amplias de Cabo de las Huertas. Es una de las zonas más agradables
+        para mudarse, pero también la que más cambios de inquilino genera entre temporada y temporada, con
+        mudanzas de pisos, traslados de segundas residencias y traslados puntuales de muebles.
+      </p>
+      <p>
+        Para ese tipo de cambio no siempre hace falta un servicio de mudanzas completo: a menudo basta la
+        furgoneta adecuada unas horas. Si te mudas entre San Juan y Alicante capital, coordinamos entrega y
+        devolución según tu horario, y si tu mudanza es mayor, la página de
+        <a href="/furgonetas-mudanzas-alicante/">furgonetas para mudanzas</a> reúne toda la flota con el
+        checklist del día de carga.
+      </p>
+    </div>
+  </section>
+
+  <section class="local-context">
+    <div class="container">
+      <h2>Contexto local: Playa, PAU 5, Cabo y Sant Joan</h2>
+      <ul>
+        <li>
+          <strong>Playa de San Juan:</strong> avenidas anchas, garajes comunitarios y ascensores modernos.
+          Muchas comunidades tienen normas internas de horarios y uso del ascensor: avisa antes de la mudanza.
+        </li>
+        <li>
+          <strong>PAU 5:</strong> manzanas nuevas con accesos cómodos y garaje en la mayoría de edificios.
+          Para un piso estándar, Mediana o Grande según el volumen.
+        </li>
+        <li>
+          <strong>Cabo de las Huertas y Albufereta:</strong> chalets y bloques junto a la costa, con
+          volúmenes grandes de mobiliario. Merece la pena proteger bien los muebles y verificar la altura
+          del portal de garaje antes de decidir el tamaño.
+        </li>
+        <li>
+          <strong>Sant Joan d'Alacant:</strong> municipio colindante con área hospitalaria y comercial.
+          Mudanzas y traslados cortos hacia Alicante por la Vía Parque y la N-332.
+        </li>
+        <li>
+          <strong>Accesos:</strong> el litoral se llena en verano y en horas punta; planifica la recogida
+          fuera del tramo de playa si puedes.
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="van-rules">
+    <div class="container">
+      <h2>Qué furgoneta elegir según tu mudanza</h2>
+      <div class="rules-grid">
+        <div class="rule-card">
+          <h3>Habitación o estudio</h3>
+          <p>Pequeña (Grupo AM, 3-4 m³) para traslados puntuales de enseres y cajas con aparcamiento cercano.</p>
+        </div>
+        <div class="rule-card">
+          <h3>Piso en Playa o PAU 5</h3>
+          <p>Mediana (Grupo B, 6-7 m³) para pisos de 2-3 habitaciones; Grande (Grupo C) si el volumen es mayor.</p>
+        </div>
+        <div class="rule-card">
+          <h3>Chalet en Cabo de las Huertas</h3>
+          <p>Grande o Extra Grande (Grupos C-D) con buen embalaje para mobiliario amplio y trasteros completos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pricing">
+    <div class="container">
+      <h2>Precios base de alquiler de furgonetas (Alicante y San Juan)</h2>
+      <p class="section-subtitle">Precios por día. Sujeto a disponibilidad y fecha.</p>
+      <div class="vehicle-grid">
+        {vehicles.map((vehicle) => (
+          <article class="vehicle-card">
+            <span class="vehicle-group">{vehicle.group}</span>
+            <h3>{vehicle.name}</h3>
+            <p class="vehicle-capacity">{vehicle.capacity}</p>
+            <p class="vehicle-price">
+              <span class="price-from">Desde</span>
+              <span class="price-amount">{vehicle.price}</span>
+              <span class="price-period">/día</span>
+            </p>
+            <a href={`/${vehicle.slug}/`} class="btn btn-outline">Ver detalles</a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="faq-section">
+    <div class="container">
+      <h2>Preguntas frecuentes en San Juan de Alicante</h2>
+      <ul class="faq-list">
+        {localFaq.map((item) => (
+          <li class="faq-item">
+            <details open>
+              <summary class="faq-question">{item.question}</summary>
+              <p class="faq-answer">{item.answer}</p>
+            </details>
+          </li>
+        ))}
+      </ul>
+
+      <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": localFaq.map((item) => ({
+          "@type": "Question",
+          "name": item.question,
+          "acceptedAnswer": { "@type": "Answer", "text": item.answer },
+        })),
+      })} />
+    </div>
+  </section>
+
+  <section class="bottom-cta">
+    <div class="container">
+      <h2>Reserva tu furgoneta por WhatsApp</h2>
+      <p>Indica fecha, zona (Playa, PAU 5, Cabo, Sant Joan…) y dirección de carga; te confirmamos disponibilidad y precio.</p>
+      <a href="https://wa.me/34645818944?text=Hola%2C%20quiero%20reservar%20furgoneta%20en%20San%20Juan%20de%20Alicante." class="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">
+        Hablar por WhatsApp
+      </a>
+      <p class="also-link">
+        También puedes ver <a href="/">alquiler de furgonetas en Alicante</a>, la
+        <a href="/blog/mudanzas-alicante-guia-barrios/">guía de mudanzas por barrios</a> o el
+        <a href="/alquiler-furgonetas-por-horas-alicante/">alquiler por horas</a>.
+      </p>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1.25rem;
+  }
+  .hero { padding: 4rem 0 2rem; text-align: center; }
+  .eyebrow { font-weight: 600; color: var(--color-primary); display: block; margin-bottom: 0.5rem; }
+  h1 { font-size: clamp(1.9rem, 4vw, 2.6rem); line-height: 1.15; margin: 0 0 1rem; }
+  .hero-subtitle { color: var(--color-fg-muted); max-width: 720px; margin: 0 auto 1.5rem; }
+  .hero-features { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .feature { background: var(--color-warm-bg); padding: 0.5rem 1rem; border-radius: 9999px; font-weight: 600; }
+  .content-section, .local-context, .van-rules, .pricing, .faq-section, .bottom-cta { padding: 3rem 0; }
+  h2 { font-size: 1.6rem; margin-bottom: 1rem; }
+  ul { display: grid; gap: 0.75rem; padding-left: 1.25rem; }
+  .rules-grid, .vehicle-grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+  .rule-card, .vehicle-card { border: 1px solid var(--color-border); border-radius: var(--radius-lg, 12px); padding: 1rem; background: var(--color-bg-white); }
+  .vehicle-group { display: inline-block; background: rgba(var(--color-primary-rgb, 59,130,246),0.12); color: var(--color-primary); padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.85rem; font-weight: 600; }
+  .price-from, .price-period { color: var(--color-fg-muted); font-size: 0.85rem; }
+  .price-amount { font-size: 1.5rem; font-weight: 700; color: var(--color-primary); margin: 0 0.35rem; }
+  .btn { display: inline-block; padding: 0.75rem 1.25rem; border-radius: 9999px; font-weight: 600; text-decoration: none; }
+  .btn-primary { background: var(--color-primary); color: var(--color-primary-fg, #fff); }
+  .btn-outline { border: 2px solid var(--color-primary); color: var(--color-primary); }
+  .btn-lg { padding: 0.9rem 1.6rem; }
+  .also-link a { color: var(--color-primary); text-decoration: underline; }
+  .faq-list { display: grid; gap: 1rem; padding-left: 0; list-style: none; }
+  .faq-item details { border: 1px solid var(--color-border); border-radius: 12px; padding: 1rem 1.25rem; background: var(--color-bg-white); }
+  .faq-question { font-weight: 600; cursor: pointer; }
+  .faq-answer { color: var(--color-fg-muted); margin-top: 0.5rem; }
+  @media (max-width: 640px) {
+    .hero-features { flex-direction: column; align-items: center; }
+  }
+</style>
