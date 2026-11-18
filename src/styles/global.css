@@ -14,7 +14,7 @@
   --ld-input: var(--color-input);
   --ld-primary: var(--color-primary);
   --ld-primary-foreground: var(--color-primary-fg);
-  --ld-link: var(--color-primary);
+  --ld-link: var(--color-primary-strong);
   --ld-destructive: var(--color-destructive);
   --ld-success: var(--color-success);
   --ld-shadow-form: 0 12px 40px color-mix(in oklab, var(--color-fg) 7%, transparent);

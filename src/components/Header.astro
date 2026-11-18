@@ -153,12 +153,12 @@ const currentPath = Astro.url.pathname;
   }
 
   .primary-nav a:hover {
-    color: var(--color-primary);
+    color: var(--color-primary-strong);
     text-decoration: none;
   }
 
   .primary-nav a.active {
-    color: var(--color-primary);
+    color: var(--color-primary-strong);
   }
 
   .primary-nav a.active::after {
@@ -192,7 +192,7 @@ const currentPath = Astro.url.pathname;
   }
 
   .cta-call:hover {
-    color: var(--color-primary);
+    color: var(--color-primary-strong);
     text-decoration: none;
   }
 
@@ -244,8 +244,14 @@ const currentPath = Astro.url.pathname;
 
   .mobile-nav a:hover {
     background: var(--color-warm-bg);
-    color: var(--color-primary);
+    color: var(--color-primary-strong);
     text-decoration: none;
+  }
+
+  /* El CTA de WhatsApp del menú móvil es un .btn-primary con fondo naranja: mantiene
+     el texto blanco (la regla .mobile-nav a le gana por especificidad). */
+  .mobile-nav a.btn-primary {
+    color: var(--color-primary-fg);
   }
 
   .mobile-cta {
