@@ -21,7 +21,8 @@ se commitea con el primer PR de la sesión.
 
 - [x] T1 (S1) — Fix de contraste (estilos del dominio) — inline — cierro con PSI móvil ≥ 98.
   *Ruta: inline. Evidencia: audit CDP propio (algoritmo WCAG como axe) 86 fallos en home / 23 en mediana → 0 en las 8 páginas auditadas tras el fix; test `src/layouts/layout-psi.test.ts` 10/10; `npm test` 66/66.*
-- [ ] T2 (S2) — Identificar y eliminar el/los errores de consola — inline — cierro con consola limpia y BP 100.
+- [x] T2 (S2) — Identificar y eliminar el/los errores de consola — inline — cierro con consola limpia y BP 100.
+  *Ruta: inline. Fix: beacon de Cloudflare Web Analytics eliminado de `Layout.astro` (token auto_install rechazado por el endpoint RUM → CORS 404 en todas las páginas). Verificación local CDP: 0 eventos de consola en home y blog. PSI post-merge.*
 - [ ] T3 (S3) — Optimización de entrega de imágenes en home — inline — cierro con SI ≤ 4s.
 - [x] T4 (S4) — Completar baseline PSI (10 páginas pendientes) + actualizar `sLocal/docs/auditoria-psi-fleet-2026-11-17.md` — *ya hecho en la sesión del 18-11: ALC 14/14 completo (doc del fleet actualizado).*
 - [ ] T5 — Verificación final: `npm test`, `npm run test:unit`, PSI re-corrida de las páginas tocadas, PR(s) con check verde.

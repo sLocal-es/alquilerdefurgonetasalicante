@@ -238,13 +238,12 @@ const ogImageUrl = ogImagePath.startsWith("http") ? ogImagePath : `${siteUrl}${o
     
     <title>{title}</title>
 
-    <!-- Cloudflare Web Analytics (token público, sin cookies) -->
-    <script
-      is:inline
-      type="module"
-      src="https://static.cloudflareinsights.com/beacon.min.js"
-      data-cf-beacon='{"token": "018d814aac234624a12a3ae7137090d7"}'
-    ></script>
+    <!-- Cloudflare Web Analytics: retirado (issue #50). El POST del beacon al
+         endpoint RUM respondía 404 sin CORS y loggeaba un error en la consola
+         de todas las páginas (BP 96 en el baseline PSI 2026-11-17). Sevilla y
+         Getafe no cargan beacon y miden BP 100. El RUM de la zona sigue dado
+         de alta (auto_install) por si el dueño quiere reactivar analytics
+         desde el panel de Cloudflare. -->
   </head>
   <body>
     <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
