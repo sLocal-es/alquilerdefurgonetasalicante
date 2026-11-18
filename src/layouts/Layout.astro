@@ -47,6 +47,14 @@ const ogImageUrl = ogImagePath.startsWith("http") ? ogImagePath : `${siteUrl}${o
     
     <!-- Self-hosted fonts (GDPR compliant, no external dependencies) -->
     <link rel="stylesheet" href="/fonts/fonts.css" />
+    <!-- Preload de las 2 fuentes latinas que toda página pinta sobre el fold
+         (issue #51): sin esto, font-display:swap repinta el viewport entero
+         cuando las fuentes llegan (~2,4s bajo 4G) y hunde el Speed Index.
+         DM Sans latin es un archivo variable (pesos 300-700); Plus Jakarta
+         latin cubre los headings 400-700. Los subsets latin-ext/vietnamese/
+         cirílico NO se precargan (solo se descargan si se usan). -->
+    <link rel="preload" href="/fonts/rP2Yp2ywxg089UriI5-g4vlH9VoD8Cmcqbu0-K4.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/LDIoaomQNQcsA88c7O9yZ4KMCoOg4Ko20yw.woff2" as="font" type="font/woff2" crossorigin />
     
     <!-- Open Graph -->
     <meta property="og:title" content={title} />
@@ -238,13 +246,12 @@ const ogImageUrl = ogImagePath.startsWith("http") ? ogImagePath : `${siteUrl}${o
     
     <title>{title}</title>
 
-    <!-- Cloudflare Web Analytics (token público, sin cookies) -->
-    <script
-      is:inline
-      type="module"
-      src="https://static.cloudflareinsights.com/beacon.min.js"
-      data-cf-beacon='{"token": "018d814aac234624a12a3ae7137090d7"}'
-    ></script>
+    <!-- Cloudflare Web Analytics: retirado (issue #50). El POST del beacon al
+         endpoint RUM respondía 404 sin CORS y loggeaba un error en la consola
+         de todas las páginas (BP 96 en el baseline PSI 2026-11-17). Sevilla y
+         Getafe no cargan beacon y miden BP 100. El RUM de la zona sigue dado
+         de alta (auto_install) por si el dueño quiere reactivar analytics
+         desde el panel de Cloudflare. -->
   </head>
   <body>
     <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
