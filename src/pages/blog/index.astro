@@ -36,7 +36,7 @@ const articles = [...blogArticles].sort((a, b) => b.date.localeCompare(a.date));
     <div class="container">
       <div class="blog-grid">
         {articles.map((article) => (
-          <BlogCard article={article} />
+          <BlogCard article={article} headingLevel="h2" />
         ))}
       </div>
 

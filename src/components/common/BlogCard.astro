@@ -3,9 +3,15 @@ import type { BlogArticle } from '../../config/schema';
 
 interface Props {
   article: BlogArticle;
+  /** Heading tag of the card title. Default "h3" — the landing sections
+   * render a section <h2>, so h3 keeps the heading order there. The blog
+   * index passes "h2": its page title is an <h1> and an <h3> card title
+   * right after it is a Lighthouse heading-order failure (fleet PSI audit
+   * 2026-11-17: /blog/ marks heading-order on all three domains). */
+  headingLevel?: 'h2' | 'h3';
 }
 
-const { article } = Astro.props;
+const { article, headingLevel = 'h3' } = Astro.props;
 ---
 
 <a href={`/blog/${article.slug}/`} class="blog-card">
@@ -13,7 +19,7 @@ const { article } = Astro.props;
     <span class="blog-category">{article.category}</span>
     <span class="blog-date">{article.date}</span>
   </div>
-  <h3>{article.title}</h3>
+  {headingLevel === 'h2' ? <h2>{article.title}</h2> : <h3>{article.title}</h3>}
   <p>{article.excerpt}</p>
   <span class="blog-link">Leer más →</span>
 </a>
@@ -61,7 +67,7 @@ const { article } = Astro.props;
     font-size: 0.8rem;
   }
 
-  .blog-card h3 {
+  .blog-card :is(h2, h3) {
     color: var(--color-fg);
     margin-bottom: 0.5rem;
     font-size: 1.1rem;
