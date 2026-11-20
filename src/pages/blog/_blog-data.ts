@@ -101,7 +101,7 @@ export const blogArticles = [
     excerpt: 'Todo lo que necesitas saber antes de alquilar una furgoneta en Alicante. Documentación, precios, seguros y consejos prácticos.',
     category: 'guia',
     date: '2026-07-10',
-    content: `<p>Alquilar una furgoneta en Alicante es más fácil de lo que parece, pero hay detalles importantes que conviene conocer antes de reservar. Esta guía cubre todo: desde la documentación necesaria hasta los precios reales y los trucos que te ahorrarán dinero.</p>
+    content: `<p>Alquilar una furgoneta en Alicante es más fácil de lo que parece, pero hay detalles importantes que conviene conocer antes de reservar. Si buscas directamente el <a href="/">alquiler de furgonetas en Alicante</a> con precios y flota, eso está en la portada. Esta guía cubre todo lo demás: desde la documentación necesaria hasta los precios reales y los trucos que te ahorrarán dinero.</p>
 
 <h2>¿Qué documentación necesito?</h2>
 <p>Solo tres cosas: <strong>permiso de conducir B</strong> (el estándar, todos nuestros vehículos están por debajo de 3.500 kg), <strong>DNI o pasaporte</strong> en vigor, y una <strong>tarjeta de crédito o débito</strong> a tu nombre para la fianza. El permiso debe tener al menos 2 años de antigüedad. Si tienes un permiso extranjero (UE), también es válido sin necesidad de traducción.</p>
