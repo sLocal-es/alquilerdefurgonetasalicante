@@ -1,5 +1,15 @@
 # AGENTS.md — Convenciones de trabajo
 
+> **⛔ SOLO LECTURA — REPO CONGELADO**
+>
+> **Qué es:** la referencia del fleet sLocal. Este repo nunca es destino de cambios.
+>
+> **Prohibido:** tocar `src/`, `worker/`, los archivos de configuración (`wrangler.jsonc`, `astro.config.mjs`, `tsconfig.json`) o cualquier otro archivo del sitio; implementar features.
+>
+> **Permitido:** editar este `AGENTS.md` y, en el futuro, crear un doc de hallazgos registrados (informativo: los hallazgos NUNCA se ejecutan).
+>
+> Decisión del dueño: 2026-11-23 — spec fleet: `sLocal/odd/tasks/estructura-slocal.md` (§Hallazgos sobre ALC).
+
 Reglas obligatorias para cualquier persona o agente que modifique este repositorio.
 El objetivo es simple: **que ningún error llegue a la web en producción**.
 
